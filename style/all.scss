@@ -151,13 +151,39 @@ header {
         height: 100%;
         display: flex;
         align-items: center;
+        gap: 30px;
 
         li {
           height: 100%;
           
           display: flex;
           align-items: center;
-          gap: 20px;
+          justify-content: space-between;
+
+          a {
+            text-decoration: none;
+            color: $text-especial-color;
+            font-weight: 800;
+          }
+
+          button {
+            width: 100px;
+            height: 44px;
+            border-radius: 9px;
+
+            color: #fff;
+            font-family: 'Karla', sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            
+            border: 0;
+            background-color: $text-especial-color;
+          }
+
+          button:hover {
+            cursor: pointer;
+            opacity: 0.8;
+          }
 
         }
       }

@@ -114,12 +114,33 @@ header .header-distribuition .perfil-cad-login ul {
   height: 100%;
   display: flex;
   align-items: center;
+  gap: 30px;
 }
 header .header-distribuition .perfil-cad-login ul li {
   height: 100%;
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+}
+header .header-distribuition .perfil-cad-login ul li a {
+  text-decoration: none;
+  color: #FF4136;
+  font-weight: 800;
+}
+header .header-distribuition .perfil-cad-login ul li button {
+  width: 100px;
+  height: 44px;
+  border-radius: 9px;
+  color: #fff;
+  font-family: "Karla", sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  border: 0;
+  background-color: #FF4136;
+}
+header .header-distribuition .perfil-cad-login ul li button:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 main {
