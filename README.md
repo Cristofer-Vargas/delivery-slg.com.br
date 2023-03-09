@@ -3,7 +3,9 @@
 Projeto Integrador destinado ao curso Técnico em Informática do Senac São Luiz Gonzaga. 
 
 ## Grupo: 
-Bruna Borck, Cristofer Vargas e Daniel Ferreira. 
+Bruna Borck -  [Perfil](https://github.com/xnectunex)
+Cristofer Vargas - [Perfil](https://github.com/Cristofer-Vargas)
+Daniel Ferreira. - [Perfil](https://github.com/DanielFerreiraFeiden)
 
 ## Professor: 
-Esmério Fabrício - [Perfil Professor](https://github.com/fabricioesmerio)
+Fabrício Esmério - [Perfil Professor](https://github.com/fabricioesmerio)

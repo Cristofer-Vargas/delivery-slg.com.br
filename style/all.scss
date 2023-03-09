@@ -7,25 +7,36 @@
   box-sizing: border-box;
 }
 
-:root {
-  --primary-color: #8A0000;
-  --primary-color-2: #620000;
-  --secundary-color: #FFA500;
-  --text-especial-color: #FF4136;
 
-  --primary-font: 'karla', sans-serif;
-  --especial-font: 'Pacifico', cursive;
-}
+$primary-color: #8A0000;
+$primary-color-2: #620000;
+$secundary-color: #FFA500;
+$text-especial-color: #FF4136;
+
+$primary-font: 'karla', sans-serif;
+$especial-font: 'Pacifico', cursive;
+
 
 body {
   background-color: #EAEAEA;
 }
 
-.max-width-page-limit {
+// Limitação do conteúdo e da página
+
+.max-width-content-limit {
   max-width: 1180px;
   padding: 0 40px;
   margin: 0 auto;
 }
+
+.max-width-page-limit {
+  max-width: 1366px;
+  height: 100%;
+  background-color: #fff;
+  margin: 0 auto;
+
+}
+
 
 // Cabeçalho / Header
 
@@ -36,7 +47,7 @@ header {
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   position: sticky;
 
-  font-family: var(--primary-font);
+  font-family: $primary-font;
 
   li {
     list-style: none;
@@ -54,8 +65,8 @@ header {
       gap: 30px;
       display: flex;
       align-items: center;
-      
-      > ul {
+
+      >ul {
         height: 100%;
         display: flex;
         gap: 20px;
@@ -64,21 +75,104 @@ header {
           height: 100%;
           display: flex;
           align-items: center;
+
+          a {
+            font-size: 1em;
+            font-weight: normal;
+            color: $text-especial-color;
+            text-decoration: none;
+          }
+
+          a:hover {
+            font-weight: bold;
+          }
         }
       }
 
-      > a img {
+      >a img {
         height: 31px;
       }
     }
+
+    .search-products {
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      >div.search-bar {
+        width: 454px;
+        height: 30px;
+        border: 0px solid $text-especial-color;
+        border-right: 1px solid $text-especial-color;
+        border-left: 1px solid $text-especial-color;
+        border-radius: 30px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        input {
+          height: 60%;
+          padding: 0 15px;
+
+          flex: 1;
+          border: 0;
+          border-right: 1px solid $text-especial-color;
+          border-radius: 30px 0 0 30px;
+
+          margin-right: 10px;
+          color: $text-especial-color;
+          font-family: $primary-font;
+          font-weight: 100;
+          font-size: 16px;
+        }
+
+        input::placeholder {
+          color: $text-especial-color;
+        }
+
+        input:focus {
+          outline: 0;
+        }
+
+        img {
+          width: 12px;
+          margin-right: 10px;
+        }
+
+      }
+
+    }
+
+    .perfil-cad-login {
+      height: 100%;
+
+      ul {
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        li {
+          height: 100%;
+          
+          display: flex;
+          align-items: center;
+          gap: 20px;
+
+        }
+      }
+
+    }
+
   }
+
 }
 
 // Corpo da página / Main
 
 main {
   width: 100%;
-  
+
   .main-content {
     background-color: bisque;
     padding: 40px;
@@ -91,20 +185,30 @@ footer {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  
-  > img {
+
+  .wave-divisor {
+    margin-top: 40px;
+    margin-bottom: -5px;
+    max-width: 100%;
+  }
+
+  >img {
     max-width: 1100px;
     padding: 0 40px;
     margin: 0 auto;
   }
-  
+
   .footer-content {
     width: 100%;
-    background-color: var(--primary-color-2);
-    
+    background-color: $primary-color-2;
+
     .background-footer {
-      background-color: var(--primary-color);
+      background-color: $primary-color;
     }
+  }
+
+  .Copyright-logo {
+    height: 31px;
   }
 
 }
