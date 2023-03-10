@@ -1,0 +1,1 @@
+// Fazer um fetch a penas para a página pricipal, e usando replace, mudar a url para que seja compativel com o diretório do index
