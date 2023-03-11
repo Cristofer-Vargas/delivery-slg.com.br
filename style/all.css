@@ -189,6 +189,7 @@ footer .footer-content {
 }
 footer .footer-content .background-footer {
   background-color: #8a0000;
+  border-bottom: 4px solid #FFA500;
 }
 footer .delimitation-contents {
   display: flex;
