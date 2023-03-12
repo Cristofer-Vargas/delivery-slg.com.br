@@ -53,32 +53,11 @@ header .header-distribuition {
   align-items: center;
   justify-content: space-between;
 }
-header .header-distribuition i.menu-bar {
-  display: none;
-  font-size: 22px;
-  color: #FF4136;
-}
 header .header-distribuition .logo-and-nav {
   height: 100%;
   gap: 30px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-}
-header .header-distribuition .logo-and-nav div.menu-side-space {
-  position: absolute;
-  top: 0;
-  left: -480px;
-  min-height: 100vh;
-  width: 480px;
-  background-color: #fff;
-  transition: left ease-in-out 0.5s;
-}
-header .header-distribuition .logo-and-nav label[for=menu-check] {
-  display: none;
-}
-header .header-distribuition .logo-and-nav input#menu-check {
-  display: none;
 }
 header .header-distribuition .logo-and-nav > ul {
   height: 100%;
@@ -308,6 +287,18 @@ footer .delimitation-contents .autorial-rules .content-rules p a:hover {
 }
 footer .Copyright-logo {
   height: 31px;
+}
+
+@media screen and (max-width: 1100px) {
+  header .header-distribuition nav.logo-and-nav label[for=menu-check], header .header-distribuition nav.logo-and-nav i.menu-bar {
+    display: block;
+  }
+  header .header-distribuition nav.logo-and-nav input#menu-check:checked ~ div.menu-side-space {
+    left: 0;
+  }
+  header .header-distribuition nav.logo-and-nav ul {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=all.css.map */

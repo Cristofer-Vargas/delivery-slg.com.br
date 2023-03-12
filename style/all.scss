@@ -16,9 +16,11 @@ $text-especial-color: #FF4136;
 $primary-font: 'karla', sans-serif;
 $especial-font: 'Pacifico', cursive;
 
+$color-neutro: #EAEAEA;
+
 
 body {
-  background-color: #EAEAEA;
+  background-color: $color-neutro;
 }
 
 // Conteúdo Inserido por JS
@@ -26,6 +28,9 @@ body {
 #headInsert {
   width: 100%;
   height: auto;
+
+  position: sticky;
+  top: 0;
 }
 
 #footerInsert {
@@ -73,11 +78,38 @@ header {
     align-items: center;
     justify-content: space-between;
 
+    i.menu-bar {
+      display: none;
+      font-size: 22px;
+      color: $text-especial-color;
+    }
+
     .logo-and-nav {
       height: 100%;
       gap: 30px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
+
+      div.menu-side-space {
+        position: absolute;
+        top: 0;
+        left: -480px;
+
+        min-height: 100vh;
+        width: 480px;
+        background-color: #fff;
+
+        transition: left ease-in-out 0.5s;
+      }
+
+      label[for="menu-check"] {
+        display: none;
+      }
+
+      input#menu-check {
+        display: none;
+      }
 
       >ul {
         height: 100%;
@@ -169,7 +201,7 @@ header {
 
         li {
           height: 100%;
-          
+
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -194,7 +226,7 @@ header {
             font-family: $primary-font;
             font-weight: 800;
             font-size: 18px;
-            
+
             border: 0;
             background-color: $text-especial-color;
             transition: opacity 0.5s;
@@ -264,7 +296,7 @@ footer {
     .title-footer {
       display: flex;
       justify-content: space-around;
-      
+
       h2 {
         font-family: $especial-font;
         font-size: 28px;
@@ -295,6 +327,7 @@ footer {
 
         ul {
           text-align: center;
+
           li {
             list-style: none;
             margin: 12px 0;
@@ -321,17 +354,17 @@ footer {
         .email-contact {
           text-align: center;
           margin: 25px 0;
-          
+
           a {
             color: #fff;
             text-decoration: none;
-            
+
           }
 
           a:hover {
             color: rgba(#fff, $alpha: 0.7);
           }
-          
+
           span {
             color: $secundary-color;
             font-weight: bold;
@@ -349,9 +382,9 @@ footer {
 
           a img {
             margin: 0 10px;
-            
+
           }
-          
+
           a:hover img {
             opacity: 0.5;
           }

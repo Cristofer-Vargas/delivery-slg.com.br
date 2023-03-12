@@ -1,13 +1,35 @@
 @import '../all.scss';
 
-// @media screen and (max-width: 1100px) {
+@media screen and (max-width: 1100px) {
   
-//   header {
-  
-//     .header-distribuition {
-  
-//     }
-  
-//   }
+  // * {
+  //   transition: 0.5s;
+  // }
 
-// }
+  header {
+  
+    .header-distribuition {
+
+      nav.logo-and-nav {
+
+        label[for="menu-check"], i.menu-bar {
+          display: block;
+        }
+
+        input#menu-check:checked ~ div.menu-side-space {
+          left: 0;
+        }
+
+        ul {
+          display: none;
+        }
+
+
+
+      }
+
+    }
+  
+  }
+
+}
