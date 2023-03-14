@@ -69,12 +69,13 @@ header .header-distribuition .logo-and-nav div.menu-side-space {
   position: absolute;
   top: 0;
   left: -480px;
+  z-index: 1;
   min-height: 100vh;
   width: 480px;
   background-color: #fff;
-  transition: left ease-in-out 0.5s;
+  transition: left ease-in-out 0.5s, box-shadow ease-in-out 0.5s;
 }
-header .header-distribuition .logo-and-nav label[for=menu-check] {
+header .header-distribuition .logo-and-nav label.menu-hamburguer {
   display: none;
 }
 header .header-distribuition .logo-and-nav input#menu-check {
@@ -308,6 +309,43 @@ footer .delimitation-contents .autorial-rules .content-rules p a:hover {
 }
 footer .Copyright-logo {
   height: 31px;
+}
+
+div.menu-side-space {
+  padding: 5px;
+  z-index: 1;
+}
+div.menu-side-space div.header-side-space {
+  width: 100%;
+  display: flex;
+}
+div.menu-side-space div.header-side-space > div.search-side-space {
+  height: 50px;
+  flex: 12;
+  position: relative;
+}
+div.menu-side-space div.header-side-space > div.search-side-space > div.posicion-input {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+div.menu-side-space div.header-side-space > div.search-side-space > input {
+  width: 100%;
+  height: 100%;
+}
+div.menu-side-space div.header-side-space > label.close-menu {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div.menu-side-space div.header-side-space > label.close-menu i {
+  font-size: 31px;
+  color: #FF4136;
+}
+div.menu-side-space hr {
+  margin: 5px 0 25px 0;
 }
 
 /*# sourceMappingURL=all.css.map */

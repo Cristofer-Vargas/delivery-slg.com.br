@@ -53,11 +53,32 @@ header .header-distribuition {
   align-items: center;
   justify-content: space-between;
 }
+header .header-distribuition i.menu-bar {
+  display: none;
+  font-size: 22px;
+  color: #FF4136;
+}
 header .header-distribuition .logo-and-nav {
   height: 100%;
   gap: 30px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+header .header-distribuition .logo-and-nav div.menu-side-space {
+  position: absolute;
+  top: 0;
+  left: -480px;
+  min-height: 100vh;
+  width: 480px;
+  background-color: #fff;
+  transition: left ease-in-out 0.5s;
+}
+header .header-distribuition .logo-and-nav label[for=menu-check] {
+  display: none;
+}
+header .header-distribuition .logo-and-nav input#menu-check {
+  display: none;
 }
 header .header-distribuition .logo-and-nav > ul {
   height: 100%;
@@ -290,11 +311,22 @@ footer .Copyright-logo {
 }
 
 @media screen and (max-width: 1100px) {
-  header .header-distribuition nav.logo-and-nav label[for=menu-check], header .header-distribuition nav.logo-and-nav i.menu-bar {
+  header .header-distribuition nav.logo-and-nav > label[for=menu-check], header .header-distribuition nav.logo-and-nav i.menu-bar {
     display: block;
   }
   header .header-distribuition nav.logo-and-nav input#menu-check:checked ~ div.menu-side-space {
+    box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.25);
     left: 0;
+  }
+  header .header-distribuition nav.logo-and-nav input#menu-check:checked ~ div.menu-side-space::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 0;
+    background-color: rgba(234, 234, 234, 0.6);
+    width: 100vw;
+    height: 100vh;
   }
   header .header-distribuition nav.logo-and-nav ul {
     display: none;

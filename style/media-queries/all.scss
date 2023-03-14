@@ -12,12 +12,27 @@
 
       nav.logo-and-nav {
 
-        label[for="menu-check"], i.menu-bar {
+        > label[for="menu-check"], i.menu-bar {
           display: block;
         }
 
         input#menu-check:checked ~ div.menu-side-space {
+          box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.25);
           left: 0;
+        }
+
+        input#menu-check:checked ~ div.menu-side-space::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+
+          z-index: 0;
+
+          background-color: #eaeaea99;
+          width: 100vw;
+          height: 100vh;
+
         }
 
         ul {
