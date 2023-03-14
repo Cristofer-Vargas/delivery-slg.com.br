@@ -21,11 +21,10 @@
           left: 0;
         }
 
-        input#menu-check:checked ~ div.menu-side-space::before {
-          content: '';
+        input#menu-check:checked ~ .background-side-space {
           position: absolute;
           top: 0;
-          right: 0;
+          left: 0;
 
           z-index: 0;
 

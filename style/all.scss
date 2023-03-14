@@ -91,20 +91,6 @@ header {
       align-items: center;
       justify-content: space-between;
 
-      div.menu-side-space {
-        position: absolute;
-        top: 0;
-        left: -480px;
-
-        z-index: 1;
-
-        min-height: 100vh;
-        width: 480px;
-        background-color: #fff;
-
-        transition: left ease-in-out 0.5s, box-shadow ease-in-out 0.5s;
-      }
-
       label.menu-hamburguer {
         display: none;
       }
@@ -429,39 +415,65 @@ footer {
 
 // Menu responsivo da lateral do site
 
+div.background-side-space {
+  transition: all ease-in-out 1s;
+
+  label {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+  }
+}
+
 div.menu-side-space {
-  padding: 5px;
+  position: absolute;
+  top: 0;
+  left: -480px;
 
   z-index: 1;
+
+  padding: 5px;
+  min-height: 100vh;
+  width: 480px;
+  background-color: #fff;
+
+
+
+  transition: left ease-in-out 0.5s, box-shadow ease-in-out 0.5s;
 
   div.header-side-space {
     width: 100%;
     display: flex;
-    
-    > div.search-side-space {
+
+    >div.search-side-space {
       height: 50px;
       flex: 12;
       position: relative;
 
-      > div.posicion-input {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-
-        transform: translate(-50%, -50%);
-
-
-      }
-
-      > input {
+      >input {
+        padding: 15px;
         width: 100%;
         height: 100%;
 
+        font-family: $primary-font;
+        color: $text-especial-color;
+        text-align: center;
+
+        border: 1px solid rgba(0, 0, 0, 0.10);
+        
+      }
+      
+      > input::placeholder {
+        font-family: $primary-font;
+        color: $text-especial-color;
+        text-align: center;
+        background-color: #FBFBFB;
       }
 
     }
 
-    > label.close-menu {
+    >label.close-menu {
       flex: 2;
 
       display: flex;
@@ -479,7 +491,16 @@ div.menu-side-space {
   }
 
   hr {
-    margin: 5px 0 25px 0;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    margin: 5px 0 65px 0;
+
+  }
+
+  div.distribuition-butons-side-space {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
 
   }
 
