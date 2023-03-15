@@ -17,6 +17,7 @@ $primary-font: 'karla', sans-serif;
 $especial-font: 'Pacifico', cursive;
 
 $color-neutro: #EAEAEA;
+$background-gray-white: #FBFBFB;
 
 
 body {
@@ -433,7 +434,7 @@ div.menu-side-space {
 
   z-index: 1;
 
-  padding: 5px;
+  padding: 15px;
   min-height: 100vh;
   width: 480px;
   background-color: #fff;
@@ -461,14 +462,14 @@ div.menu-side-space {
         text-align: center;
 
         border: 1px solid rgba(0, 0, 0, 0.10);
-        
+
       }
-      
-      > input::placeholder {
+
+      >input::placeholder {
         font-family: $primary-font;
         color: $text-especial-color;
         text-align: center;
-        background-color: #FBFBFB;
+        background-color: $background-gray-white;
       }
 
     }
@@ -479,6 +480,8 @@ div.menu-side-space {
       display: flex;
       justify-content: center;
       align-items: center;
+
+      cursor: pointer;
 
       i {
         font-size: 31px;
@@ -500,7 +503,46 @@ div.menu-side-space {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: 25px;
 
+    >div {
+      width: 140px;
+      height: 140px;
+
+      background-color: $background-gray-white;
+      border: 1px solid rgba(0, 0, 0, .25);
+      border-radius: 9px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+
+      transition: transform ease-in-out 0.5s, box-shadow 0.5s;
+
+      h3 {
+        color: $text-especial-color;
+        font-weight: 400;
+
+      }
+
+    }
+
+    >div:hover {
+      background-color: $secundary-color;
+      color: #fff;
+
+      box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+      transform: translate(4px, -4px);
+
+      h3 {
+        color: #fff;
+
+      }
+
+    }
 
   }
 

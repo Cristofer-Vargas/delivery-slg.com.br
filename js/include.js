@@ -41,5 +41,4 @@ fetch('./molde/footer.html')
   })
   .then(htmlNovo => {
     Footer.insertAdjacentHTML('beforeend', htmlNovo)
-    console.log(htmlNovo)
   })

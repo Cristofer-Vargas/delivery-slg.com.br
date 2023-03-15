@@ -315,7 +315,7 @@ div.menu-side-space {
   top: 0;
   left: -480px;
   z-index: 1;
-  padding: 5px;
+  padding: 15px;
   min-height: 100vh;
   width: 480px;
   background-color: #fff;
@@ -350,6 +350,7 @@ div.menu-side-space div.header-side-space > label.close-menu {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 div.menu-side-space div.header-side-space > label.close-menu i {
   font-size: 31px;
@@ -363,6 +364,34 @@ div.menu-side-space div.distribuition-butons-side-space {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 25px;
+}
+div.menu-side-space div.distribuition-butons-side-space > div {
+  width: 140px;
+  height: 140px;
+  background-color: #FBFBFB;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform ease-in-out 0.5s, box-shadow 0.5s;
+}
+div.menu-side-space div.distribuition-butons-side-space > div h3 {
+  color: #FF4136;
+  font-weight: 400;
+}
+div.menu-side-space div.distribuition-butons-side-space > div:hover {
+  background-color: #FFA500;
+  color: #fff;
+  box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+  transform: translate(4px, -4px);
+}
+div.menu-side-space div.distribuition-butons-side-space > div:hover h3 {
+  color: #fff;
 }
 
 /*# sourceMappingURL=all.css.map */
