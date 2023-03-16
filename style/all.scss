@@ -503,11 +503,13 @@ div.menu-side-space {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 25px;
+    gap: 15px;
 
     >div {
       width: 140px;
       height: 140px;
+
+      padding: 5px;
 
       background-color: $background-gray-white;
       border: 1px solid rgba(0, 0, 0, .25);
@@ -517,6 +519,7 @@ div.menu-side-space {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      text-align: center;
       gap: 12px;
       cursor: pointer;
 

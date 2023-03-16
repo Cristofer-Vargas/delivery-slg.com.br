@@ -364,11 +364,12 @@ div.menu-side-space div.distribuition-butons-side-space {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 25px;
+  gap: 15px;
 }
 div.menu-side-space div.distribuition-butons-side-space > div {
   width: 140px;
   height: 140px;
+  padding: 5px;
   background-color: #FBFBFB;
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 9px;
@@ -376,6 +377,7 @@ div.menu-side-space div.distribuition-butons-side-space > div {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   gap: 12px;
   cursor: pointer;
   transition: transform ease-in-out 0.5s, box-shadow 0.5s;

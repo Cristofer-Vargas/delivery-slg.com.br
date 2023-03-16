@@ -315,7 +315,7 @@ div.menu-side-space {
   top: 0;
   left: -480px;
   z-index: 1;
-  padding: 5px;
+  padding: 15px;
   min-height: 100vh;
   width: 480px;
   background-color: #fff;
@@ -323,6 +323,7 @@ div.menu-side-space {
 }
 div.menu-side-space div.header-side-space {
   width: 100%;
+  display: flex;
 }
 div.menu-side-space div.header-side-space > div.search-side-space {
   height: 50px;
@@ -349,6 +350,7 @@ div.menu-side-space div.header-side-space > label.close-menu {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 div.menu-side-space div.header-side-space > label.close-menu i {
   font-size: 31px;
