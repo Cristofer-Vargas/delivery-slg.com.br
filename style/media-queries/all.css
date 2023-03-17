@@ -324,5 +324,10 @@ footer .Copyright-logo {
     display: none;
   }
 }
+@media screen and (max-width: 900px) {
+  header .header-distribuition .search-products {
+    display: none;
+  }
+}
 
 /*# sourceMappingURL=all.css.map */
