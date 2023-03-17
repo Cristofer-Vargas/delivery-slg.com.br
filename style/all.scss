@@ -417,6 +417,7 @@ footer {
 // Menu responsivo da lateral do site
 
 div.background-side-space {
+  display: none;
   transition: all ease-in-out 1s;
 
   label {
@@ -434,18 +435,18 @@ div.menu-side-space {
 
   z-index: 1;
 
-  padding: 15px;
-  min-height: 100vh;
+  height: 100vh;
   width: 480px;
   background-color: #fff;
 
-
+  overflow-y: auto;
 
   transition: left ease-in-out 0.5s, box-shadow ease-in-out 0.5s;
 
   div.header-side-space {
     width: 100%;
     display: flex;
+    padding: 10px 15px;
 
     >div.search-side-space {
       height: 50px;
@@ -495,15 +496,18 @@ div.menu-side-space {
 
   hr {
     border: 1px solid rgba(0, 0, 0, 0.10);
-    margin: 5px 0 65px 0;
+    margin: 5px 15px 5px 15px;
 
   }
 
   div.distribuition-butons-side-space {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     gap: 15px;
+
+    padding: 15px;
+    margin: 25px 0;
 
     >div {
       width: 140px;
@@ -549,4 +553,75 @@ div.menu-side-space {
 
   }
 
+  div.contact-side-space {
+    width: 100%;
+    height: 280px;
+
+    background-color: $primary-color;
+    // padding: -15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 4px solid $secundary-color;
+
+    div.info-side-space-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+
+      h2 {
+        color: $secundary-color;
+        font-family: $especial-font;
+        font-weight: lighter;
+      }
+
+      a {
+        color: #fff;
+        text-decoration: none;
+
+      }
+
+      a:hover {
+        color: rgba(#fff, $alpha: 0.7);
+      }
+
+      span {
+        color: $secundary-color;
+        font-weight: bold;
+
+      }
+
+      div.social-side-space-contact {
+
+        .a {
+          transition: opacity ease-in-out 0.5;
+  
+        }
+  
+        a img {
+          margin: 0 10px;
+  
+        }
+  
+        a:hover img {
+          opacity: 0.5;
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+div.menu-side-space::-webkit-scrollbar {
+  background-color: $secundary-color;
+  width: 6px;
+}
+
+div.menu-side-space::-webkit-scrollbar-thumb {
+  background-color: $primary-color;
 }
