@@ -16,9 +16,12 @@ $text-especial-color: #FF4136;
 $primary-font: 'karla', sans-serif;
 $especial-font: 'Pacifico', cursive;
 
+$color-neutro: #EAEAEA;
+$background-gray-white: #FBFBFB;
+
 
 body {
-  background-color: #EAEAEA;
+  background-color: $color-neutro;
 }
 
 // Conteúdo Inserido por JS
@@ -26,6 +29,9 @@ body {
 #headInsert {
   width: 100%;
   height: auto;
+
+  position: sticky;
+  top: 0;
 }
 
 #footerInsert {
@@ -73,11 +79,26 @@ header {
     align-items: center;
     justify-content: space-between;
 
+    i.menu-bar {
+      display: none;
+      font-size: 22px;
+      color: $text-especial-color;
+    }
+
     .logo-and-nav {
       height: 100%;
       gap: 30px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
+
+      label.menu-hamburguer {
+        display: none;
+      }
+
+      input#menu-check {
+        display: none;
+      }
 
       >ul {
         height: 100%;
@@ -169,7 +190,7 @@ header {
 
         li {
           height: 100%;
-          
+
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -194,7 +215,7 @@ header {
             font-family: $primary-font;
             font-weight: 800;
             font-size: 18px;
-            
+
             border: 0;
             background-color: $text-especial-color;
             transition: opacity 0.5s;
@@ -252,6 +273,7 @@ footer {
 
     .background-footer {
       background-color: $primary-color;
+      border-bottom: 4px solid $secundary-color;
     }
   }
 
@@ -263,7 +285,7 @@ footer {
     .title-footer {
       display: flex;
       justify-content: space-around;
-      
+
       h2 {
         font-family: $especial-font;
         font-size: 28px;
@@ -294,6 +316,7 @@ footer {
 
         ul {
           text-align: center;
+
           li {
             list-style: none;
             margin: 12px 0;
@@ -320,17 +343,17 @@ footer {
         .email-contact {
           text-align: center;
           margin: 25px 0;
-          
+
           a {
             color: #fff;
             text-decoration: none;
-            
+
           }
 
           a:hover {
             color: rgba(#fff, $alpha: 0.7);
           }
-          
+
           span {
             color: $secundary-color;
             font-weight: bold;
@@ -348,9 +371,9 @@ footer {
 
           a img {
             margin: 0 10px;
-            
+
           }
-          
+
           a:hover img {
             opacity: 0.5;
           }
@@ -389,4 +412,216 @@ footer {
     height: 31px;
   }
 
+}
+
+// Menu responsivo da lateral do site
+
+div.background-side-space {
+  display: none;
+  transition: all ease-in-out 1s;
+
+  label {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+  }
+}
+
+div.menu-side-space {
+  position: absolute;
+  top: 0;
+  left: -480px;
+
+  z-index: 1;
+
+  height: 100vh;
+  width: 480px;
+  background-color: #fff;
+
+  overflow-y: auto;
+
+  transition: left ease-in-out 0.5s, box-shadow ease-in-out 0.5s;
+
+  div.header-side-space {
+    width: 100%;
+    display: flex;
+    padding: 10px 15px;
+
+    >div.search-side-space {
+      height: 50px;
+      flex: 12;
+      position: relative;
+
+      >input {
+        padding: 15px;
+        width: 100%;
+        height: 100%;
+
+        font-family: $primary-font;
+        color: $text-especial-color;
+        text-align: center;
+
+        border: 1px solid rgba(0, 0, 0, 0.10);
+
+      }
+
+      >input::placeholder {
+        font-family: $primary-font;
+        color: $text-especial-color;
+        text-align: center;
+        background-color: $background-gray-white;
+      }
+
+    }
+
+    >label.close-menu {
+      flex: 2;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      cursor: pointer;
+
+      i {
+        font-size: 31px;
+        color: $text-especial-color;
+
+      }
+
+    }
+
+  }
+
+  hr {
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    margin: 5px 15px 5px 15px;
+
+  }
+
+  div.distribuition-butons-side-space {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    padding: 15px;
+    margin: 25px 0;
+
+    >div {
+      width: 140px;
+      height: 140px;
+
+      padding: 5px;
+
+      background-color: $background-gray-white;
+      border: 1px solid rgba(0, 0, 0, .25);
+      border-radius: 9px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      cursor: pointer;
+
+      transition: transform ease-in-out 0.5s, box-shadow 0.5s;
+
+      h3 {
+        color: $text-especial-color;
+        font-weight: 400;
+
+      }
+
+    }
+
+    >div:hover {
+      background-color: $secundary-color;
+      color: #fff;
+
+      box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+      transform: translate(4px, -4px);
+
+      h3 {
+        color: #fff;
+
+      }
+
+    }
+
+  }
+
+  div.contact-side-space {
+    width: 100%;
+    height: 280px;
+
+    background-color: $primary-color;
+    // padding: -15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 4px solid $secundary-color;
+
+    div.info-side-space-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+
+      h2 {
+        color: $secundary-color;
+        font-family: $especial-font;
+        font-weight: lighter;
+      }
+
+      a {
+        color: #fff;
+        text-decoration: none;
+
+      }
+
+      a:hover {
+        color: rgba(#fff, $alpha: 0.7);
+      }
+
+      span {
+        color: $secundary-color;
+        font-weight: bold;
+
+      }
+
+      div.social-side-space-contact {
+
+        .a {
+          transition: opacity ease-in-out 0.5;
+  
+        }
+  
+        a img {
+          margin: 0 10px;
+  
+        }
+  
+        a:hover img {
+          opacity: 0.5;
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+div.menu-side-space::-webkit-scrollbar {
+  background-color: $secundary-color;
+  width: 6px;
+}
+
+div.menu-side-space::-webkit-scrollbar-thumb {
+  background-color: $primary-color;
 }

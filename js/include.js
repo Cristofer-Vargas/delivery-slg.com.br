@@ -15,6 +15,11 @@ fetch('./molde/header.html')
     .replace('../images/Logo-Delivery-SLG.png', './images/Logo-Delivery-SLG.png')
     .replace('../images/header/lupa-search.png', './images/header/lupa-search.png')
 
+    .replace('../images/footer/instagram-sign.png', './images/footer/instagram-sign.png')
+    .replace('../images/footer/facebook-sign.png', './images/footer/facebook-sign.png')
+    .replace('../images/footer/twitter-sign.png', './images/footer/twitter-sign.png')
+    .replace('../images/footer/linkedin-sign.png', './images/footer/linkedin-sign.png')
+
     .replace(/\.\.\/index\.html/g, './index.html')
 
   })
@@ -29,10 +34,12 @@ fetch('./molde/footer.html')
   .then(elementoText => {
     return elementoText
     .replace('../images/footer/wave-divisor.svg', './images/footer/wave-divisor.svg')
+
     .replace('../images/footer/instagram-sign.png', './images/footer/instagram-sign.png')
     .replace('../images/footer/facebook-sign.png', './images/footer/facebook-sign.png')
     .replace('../images/footer/twitter-sign.png', './images/footer/twitter-sign.png')
     .replace('../images/footer/linkedin-sign.png', './images/footer/linkedin-sign.png')
+    
     .replace('../images/Logo-Delivery-SLG.png', './images/Logo-Delivery-SLG.png')
 
     
@@ -41,5 +48,4 @@ fetch('./molde/footer.html')
   })
   .then(htmlNovo => {
     Footer.insertAdjacentHTML('beforeend', htmlNovo)
-    console.log(htmlNovo)
   })

@@ -301,152 +301,28 @@ footer .Copyright-logo {
   height: 31px;
 }
 
-div.background-side-space {
-  display: none;
-  transition: all ease-in-out 1s;
-}
-div.background-side-space label {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-div.menu-side-space {
-  position: absolute;
-  top: 0;
-  left: -480px;
-  z-index: 1;
-  height: 100vh;
-  width: 480px;
-  background-color: #fff;
-  overflow-y: auto;
-  transition: left ease-in-out 0.5s, box-shadow ease-in-out 0.5s;
-}
-div.menu-side-space div.header-side-space {
-  width: 100%;
-  display: flex;
-  padding: 10px 15px;
-}
-div.menu-side-space div.header-side-space > div.search-side-space {
-  height: 50px;
-  flex: 12;
-  position: relative;
-}
-div.menu-side-space div.header-side-space > div.search-side-space > input {
-  padding: 15px;
-  width: 100%;
-  height: 100%;
-  font-family: "karla", sans-serif;
-  color: #FF4136;
-  text-align: center;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-div.menu-side-space div.header-side-space > div.search-side-space > input::placeholder {
-  font-family: "karla", sans-serif;
-  color: #FF4136;
-  text-align: center;
-  background-color: #FBFBFB;
-}
-div.menu-side-space div.header-side-space > label.close-menu {
-  flex: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-div.menu-side-space div.header-side-space > label.close-menu i {
-  font-size: 31px;
-  color: #FF4136;
-}
-div.menu-side-space hr {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  margin: 5px 15px 5px 15px;
-}
-div.menu-side-space div.distribuition-butons-side-space {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 15px;
-  padding: 15px;
-  margin: 25px 0;
-}
-div.menu-side-space div.distribuition-butons-side-space > div {
-  width: 140px;
-  height: 140px;
-  padding: 5px;
-  background-color: #FBFBFB;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  border-radius: 9px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 12px;
-  cursor: pointer;
-  transition: transform ease-in-out 0.5s, box-shadow 0.5s;
-}
-div.menu-side-space div.distribuition-butons-side-space > div h3 {
-  color: #FF4136;
-  font-weight: 400;
-}
-div.menu-side-space div.distribuition-butons-side-space > div:hover {
-  background-color: #FFA500;
-  color: #fff;
-  box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
-  transform: translate(4px, -4px);
-}
-div.menu-side-space div.distribuition-butons-side-space > div:hover h3 {
-  color: #fff;
-}
-div.menu-side-space div.contact-side-space {
-  width: 100%;
-  height: 280px;
-  background-color: #8a0000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 4px solid #FFA500;
-}
-div.menu-side-space div.contact-side-space div.info-side-space-contact {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  text-align: center;
-}
-div.menu-side-space div.contact-side-space div.info-side-space-contact h2 {
-  color: #FFA500;
-  font-family: "Pacifico", cursive;
-  font-weight: lighter;
-}
-div.menu-side-space div.contact-side-space div.info-side-space-contact a {
-  color: #fff;
-  text-decoration: none;
-}
-div.menu-side-space div.contact-side-space div.info-side-space-contact a:hover {
-  color: rgba(255, 255, 255, 0.7);
-}
-div.menu-side-space div.contact-side-space div.info-side-space-contact span {
-  color: #FFA500;
-  font-weight: bold;
-}
-div.menu-side-space div.contact-side-space div.info-side-space-contact div.social-side-space-contact .a {
-  transition: opacity ease-in-out 0.5;
-}
-div.menu-side-space div.contact-side-space div.info-side-space-contact div.social-side-space-contact a img {
-  margin: 0 10px;
-}
-div.menu-side-space div.contact-side-space div.info-side-space-contact div.social-side-space-contact a:hover img {
-  opacity: 0.5;
-}
-
-div.menu-side-space::-webkit-scrollbar {
-  background-color: #FFA500;
-  width: 6px;
-}
-
-div.menu-side-space::-webkit-scrollbar-thumb {
-  background-color: #8a0000;
+@media screen and (max-width: 1100px) {
+  header .header-distribuition nav.logo-and-nav > label[for=menu-check], header .header-distribuition nav.logo-and-nav i.menu-bar {
+    display: block;
+    cursor: pointer;
+  }
+  header .header-distribuition nav.logo-and-nav input#menu-check:checked ~ div.menu-side-space {
+    box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    left: 0;
+  }
+  header .header-distribuition nav.logo-and-nav input#menu-check:checked ~ .background-side-space {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-color: rgba(234, 234, 234, 0.6);
+    width: 100%;
+    height: 100vh;
+  }
+  header .header-distribuition nav.logo-and-nav ul {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=all.css.map */
