@@ -244,6 +244,7 @@ main {
     // background-color: bisque;
     padding: 40px;
   }
+
 }
 
 // Rodapé / footer
@@ -278,112 +279,131 @@ footer {
   }
 
   .delimitation-contents {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    padding: 20px 0;
+    display: grid;
+    grid-template-areas:
+      'title-map title-contact'
+      'nav-site-map div-site-contact'
+      'autorial-rules autorial-rules'
+    ;
 
-    .title-footer {
-      display: flex;
-      justify-content: space-around;
-
-      h2 {
-        font-family: $especial-font;
-        font-size: 28px;
-        color: $secundary-color;
-        font-weight: lighter;
-
-      }
+    h2.title-map {
+      grid-area: title-map;
     }
 
-    .menu-footer {
+    h2.title-contact {
+      grid-area: title-contact;
+    }
+
+    nav.site-map {
+      grid-area: nav-site-map;
+    }
+
+    div.site-contact {
+      grid-area: div-site-contact;
+    }
+
+
+
+    h2 {
+      font-family: $especial-font;
+      font-size: 28px;
+      color: $secundary-color;
+      font-weight: lighter;
+      text-align: center;
+
+    }
+
+    .site-map, .site-contact {
+      align-items: center;
+      margin-bottom: 35px;
+
+    }
+
+    .site-map {
+      min-height: 200px;
+      border-right: 2px solid $secundary-color;
+
       display: flex;
-      margin: 45px 0;
+      flex-direction: row;
+      justify-content: space-around;
 
-      .infor-site {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+      ul {
+        text-align: center;
 
-      .site-map {
-        flex: 1;
-
-        border-right: 2px solid $secundary-color;
-
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-
-        ul {
-          text-align: center;
-
-          li {
-            list-style: none;
-            margin: 12px 0;
-
-            a {
-              text-decoration: none;
-              color: $secundary-color;
-              font-weight: bold;
-              transition: color 0.5s;
-            }
-
-            a:hover {
-              color: rgba($text-especial-color, $alpha: 0.7);
-            }
-          }
-        }
-      }
-
-      .site-contact {
-        flex: 1;
-
-        border-left: 2px solid $secundary-color;
-
-        .email-contact {
-          text-align: center;
-          margin: 25px 0;
+        li {
+          list-style: none;
+          margin: 12px 0;
 
           a {
-            color: #fff;
             text-decoration: none;
-
+            color: $secundary-color;
+            font-weight: bold;
+            transition: color 0.5s;
           }
 
           a:hover {
-            color: rgba(#fff, $alpha: 0.7);
+            color: rgba($text-especial-color, $alpha: 0.7);
           }
+        }
+      }
+    }
 
-          span {
-            color: $secundary-color;
-            font-weight: bold;
+    .site-contact {
+      min-height: 200px;
+      border-left: 2px solid $secundary-color;
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
-          }
+      .email-contact {
+        text-align: center;
+        margin: 25px 0;
+
+        a {
+          color: #fff;
+          text-decoration: none;
 
         }
 
-        .social-contact {
+        a:hover {
+          color: rgba(#fff, $alpha: 0.7);
+        }
 
-          a {
-            transition: opacity ease-in-out 0.5;
+        span {
+          color: $secundary-color;
+          font-weight: bold;
 
-          }
-
-          a img {
-            margin: 0 10px;
-
-          }
-
-          a:hover img {
-            opacity: 0.5;
-          }
         }
 
       }
 
+      .social-contact {
+        display: flex;
+        justify-content: center;
+
+        a {
+          transition: opacity ease-in-out 0.5;
+
+        }
+
+        a img {
+          margin: 0 10px;
+
+        }
+
+        a:hover img {
+          opacity: 0.5;
+        }
+      }
+
     }
 
+
+
     .autorial-rules {
+      grid-area: autorial-rules;
       display: flex;
       justify-content: center;
       gap: 20px;
@@ -426,6 +446,7 @@ div.background-side-space {
     height: 100%;
 
   }
+  
 }
 
 div.menu-side-space {
@@ -597,14 +618,14 @@ div.menu-side-space {
 
         .a {
           transition: opacity ease-in-out 0.5;
-  
+
         }
-  
+
         a img {
           margin: 0 10px;
-  
+
         }
-  
+
         a:hover img {
           opacity: 0.5;
         }
