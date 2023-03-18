@@ -244,6 +244,7 @@ main {
     // background-color: bisque;
     padding: 40px;
   }
+
 }
 
 // Rodapé / footer
@@ -278,12 +279,13 @@ footer {
   }
 
   .delimitation-contents {
+    padding: 20px 0;
     display: grid;
     grid-template-areas:
       'title-map title-contact'
       'nav-site-map div-site-contact'
+      'autorial-rules autorial-rules'
     ;
-    grid-auto-columns: 1fr;
 
     h2.title-map {
       grid-area: title-map;
@@ -308,17 +310,18 @@ footer {
       font-size: 28px;
       color: $secundary-color;
       font-weight: lighter;
+      text-align: center;
 
     }
 
-    // .info-site {
-    //   display: flex;
-    //   flex-direction: column;
-    //   align-items: center;
-    // }
+    .site-map, .site-contact {
+      align-items: center;
+      margin-bottom: 35px;
+
+    }
 
     .site-map {
-      height: 250px;
+      min-height: 200px;
       border-right: 2px solid $secundary-color;
 
       display: flex;
@@ -347,8 +350,12 @@ footer {
     }
 
     .site-contact {
-      height: 250px;
+      min-height: 200px;
       border-left: 2px solid $secundary-color;
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
       .email-contact {
         text-align: center;
@@ -373,6 +380,8 @@ footer {
       }
 
       .social-contact {
+        display: flex;
+        justify-content: center;
 
         a {
           transition: opacity ease-in-out 0.5;
@@ -394,6 +403,7 @@ footer {
 
 
     .autorial-rules {
+      grid-area: autorial-rules;
       display: flex;
       justify-content: center;
       gap: 20px;
@@ -436,6 +446,7 @@ div.background-side-space {
     height: 100%;
 
   }
+  
 }
 
 div.menu-side-space {
