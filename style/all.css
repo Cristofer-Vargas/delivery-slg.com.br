@@ -209,6 +209,7 @@ footer .delimitation-contents {
   padding: 20px 0;
   display: grid;
   grid-template-areas: "title-map title-contact" "nav-site-map div-site-contact" "autorial-rules autorial-rules";
+  grid-auto-columns: 1fr;
 }
 footer .delimitation-contents h2.title-map {
   grid-area: title-map;
@@ -221,6 +222,9 @@ footer .delimitation-contents nav.site-map {
 }
 footer .delimitation-contents div.site-contact {
   grid-area: div-site-contact;
+}
+footer .delimitation-contents div.autorial-rules {
+  grid-area: autorial-rules;
 }
 footer .delimitation-contents h2 {
   font-family: "Pacifico", cursive;
@@ -292,7 +296,6 @@ footer .delimitation-contents .site-contact .social-contact a:hover img {
   opacity: 0.5;
 }
 footer .delimitation-contents .autorial-rules {
-  grid-area: autorial-rules;
   display: flex;
   justify-content: center;
   gap: 20px;

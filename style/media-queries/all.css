@@ -206,9 +206,9 @@ footer .footer-content .background-footer {
   border-bottom: 4px solid #FFA500;
 }
 footer .delimitation-contents {
+  padding: 20px 0;
   display: grid;
-  grid-template-areas: "title-map title-contact" "nav-site-map div-site-contact";
-  grid-auto-columns: 1fr;
+  grid-template-areas: "title-map title-contact" "nav-site-map div-site-contact" "autorial-rules autorial-rules";
 }
 footer .delimitation-contents h2.title-map {
   grid-area: title-map;
@@ -227,9 +227,14 @@ footer .delimitation-contents h2 {
   font-size: 28px;
   color: #FFA500;
   font-weight: lighter;
+  text-align: center;
+}
+footer .delimitation-contents .site-map, footer .delimitation-contents .site-contact {
+  align-items: center;
+  margin-bottom: 35px;
 }
 footer .delimitation-contents .site-map {
-  height: 250px;
+  min-height: 200px;
   border-right: 2px solid #FFA500;
   display: flex;
   flex-direction: row;
@@ -252,8 +257,11 @@ footer .delimitation-contents .site-map ul li a:hover {
   color: rgba(255, 65, 54, 0.7);
 }
 footer .delimitation-contents .site-contact {
-  height: 250px;
+  min-height: 200px;
   border-left: 2px solid #FFA500;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 footer .delimitation-contents .site-contact .email-contact {
   text-align: center;
@@ -270,6 +278,10 @@ footer .delimitation-contents .site-contact .email-contact span {
   color: #FFA500;
   font-weight: bold;
 }
+footer .delimitation-contents .site-contact .social-contact {
+  display: flex;
+  justify-content: center;
+}
 footer .delimitation-contents .site-contact .social-contact a {
   transition: opacity ease-in-out 0.5;
 }
@@ -280,6 +292,7 @@ footer .delimitation-contents .site-contact .social-contact a:hover img {
   opacity: 0.5;
 }
 footer .delimitation-contents .autorial-rules {
+  grid-area: autorial-rules;
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -473,9 +486,6 @@ div.menu-side-space::-webkit-scrollbar-thumb {
   }
   header .header-distribuition nav.logo-and-nav ul {
     display: none;
-  }
-  footer .delimitation-contents {
-    grid-template-areas: "title-map title-contact" "nav-site-map div-site-contact" "autorial-rules autorial-rules";
   }
 }
 @media screen and (max-width: 900px) {
