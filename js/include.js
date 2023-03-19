@@ -5,6 +5,9 @@ e usando replace, mudar a url para que seja compativel com o diretório do index
 
 const Head = document.getElementById('headInsert')
 const Footer = document.getElementById('footerInsert')
+const favIconDirectory = document.getElementById('favicon-index-directory')
+
+favIconDirectory.setAttribute("href", "./images/Logo-Delivery-SLG.png")
 
 fetch('./molde/header.html')
   .then(elemento => {
@@ -33,7 +36,7 @@ fetch('./molde/footer.html')
   })
   .then(elementoText => {
     return elementoText
-    .replace('../images/footer/wave-divisor.svg', './images/footer/wave-divisor.svg')
+    .replace('../images/wave-divisor.svg', './images/wave-divisor.svg')
 
     .replace('../images/footer/instagram-sign.png', './images/footer/instagram-sign.png')
     .replace('../images/footer/facebook-sign.png', './images/footer/facebook-sign.png')
