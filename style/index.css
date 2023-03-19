@@ -464,4 +464,113 @@ div.menu-side-space::-webkit-scrollbar-thumb {
   background-color: #8a0000;
 }
 
+main div.apresentation-section {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+}
+main div.apresentation-section div.apresentation-text {
+  font-family: "karla", sans-serif;
+  flex: 1;
+}
+main div.apresentation-section div.apresentation-text span.apresentation-mark {
+  color: #FF4136;
+  font-weight: 800;
+}
+main div.apresentation-section div.apresentation-text h1 {
+  font-size: 2.4em;
+  font-weight: 900;
+  color: #FF4136;
+  margin-bottom: 30px;
+}
+main div.apresentation-section div.apresentation-text p {
+  line-height: 1.4em;
+}
+main div.apresentation-section div.svg-apresentation {
+  flex: 1;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+main div.apresentation-section div.svg-apresentation img {
+  max-width: 450px;
+}
+main div.categoria-section {
+  position: relative;
+  z-index: 0;
+}
+main div.categoria-section div.title-tag-section {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 18px 15px;
+  background-color: #FFA500;
+  font-family: "karla", sans-serif;
+  font-size: 28px;
+  font-weight: bolder;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+main div.categoria-section div.categoria-icones {
+  height: 280px;
+  background-color: #8a0000;
+  display: flex;
+  align-items: center;
+  gap: 90px;
+  padding: 0 90px;
+  overflow-x: auto;
+}
+main div.categoria-section div.categoria-icones > div {
+  min-width: 176px;
+  height: 168px;
+  background-color: #FFA500;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity ease-in-out 0.3s;
+}
+main div.categoria-section div.categoria-icones > div > p {
+  font-family: "karla", sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: #fff;
+}
+main div.categoria-section div.categoria-icones > div > div {
+  padding: 15px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+main div.categoria-section div.categoria-icones > div:hover {
+  opacity: 0.7;
+}
+main div.categoria-section div.categoria-icones::-webkit-scrollbar {
+  background-color: #C27D00;
+  height: 10px;
+}
+main div.categoria-section div.categoria-icones::-webkit-scrollbar-thumb {
+  background-color: #FFA500;
+}
+main div.categoria-wave {
+  max-width: 1366px;
+  height: auto;
+  margin: 0 auto;
+  background-color: #fff;
+}
+main div.categoria-wave > img {
+  width: 100%;
+}
+main div.categoria-wave > img.first-wave {
+  margin-bottom: -5px;
+}
+main div.categoria-wave > img.last-wave {
+  transform: rotate(180deg);
+  z-index: 0;
+}
+
 /*# sourceMappingURL=index.css.map */

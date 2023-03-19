@@ -1,1 +1,161 @@
 @import './all.scss';
+
+main {
+
+  div.apresentation-section {
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+
+    div.apresentation-text {
+      font-family: $primary-font;
+      flex: 1;
+
+      span.apresentation-mark {
+        color: $text-especial-color;
+        font-weight: 800;
+
+      }
+
+      h1 {
+        font-size: 2.4em;
+        font-weight: 900;  
+        color: $text-especial-color;
+        margin-bottom: 30px;
+
+      }
+
+      p {
+        line-height: 1.4em;
+
+      }
+
+    }
+
+    div.svg-apresentation {
+      flex: 1;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+
+      img {
+        max-width: 450px;
+
+      }
+
+    }
+
+  }
+
+  div.categoria-section {
+    position: relative;
+    z-index: 0;
+    
+    div.title-tag-section {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      padding: 18px 15px;
+      background-color: $secundary-color;
+
+      font-family: $primary-font;
+      font-size: 28px;
+      font-weight: bolder;
+      color: #fff;
+
+      border-radius: 10px;
+
+      box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25);
+      
+    }
+
+    div.categoria-icones {
+      height: 280px;
+      background-color: $primary-color;
+
+      display: flex;
+      align-items: center;
+      gap: 90px;
+
+      padding: 0 90px;
+
+      overflow-x: auto;
+
+      >div {
+        min-width: 176px;
+        height: 168px;
+        background-color: $secundary-color;
+        border-radius: 5px;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        cursor: pointer;
+        transition: opacity ease-in-out 0.3s;
+
+        > p {
+          font-family: $primary-font;
+          font-size: 18px;
+          font-weight: 900;
+          color: #fff;
+
+        }
+
+        > div {
+          padding: 15px;
+          border-radius: 50%;
+          background-color: #fff;
+
+        }
+
+      }
+
+      >div:hover {
+        opacity: 0.7;
+
+      }
+
+    }
+
+    div.categoria-icones::-webkit-scrollbar {
+      background-color: #C27D00;
+      height: 10px;
+
+    }
+
+    div.categoria-icones::-webkit-scrollbar-thumb {
+      background-color: $secundary-color;
+
+    }
+    
+  }
+
+  div.categoria-wave {
+    max-width: 1366px;
+    height: auto;
+    margin: 0 auto;
+    background-color: #fff;
+    
+    > img {
+      width: 100%;
+  
+    }
+  
+    > img.first-wave {
+      margin-bottom: -5px;
+  
+    }
+    
+    > img.last-wave {
+      transform: rotate(180deg);
+      z-index: 0;
+    }
+
+  }
+
+}
