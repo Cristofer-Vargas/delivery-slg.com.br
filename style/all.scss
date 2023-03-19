@@ -286,6 +286,7 @@ footer {
       'nav-site-map div-site-contact'
       'autorial-rules autorial-rules'
     ;
+    grid-auto-columns: 1fr;
 
     h2.title-map {
       grid-area: title-map;
@@ -303,7 +304,10 @@ footer {
       grid-area: div-site-contact;
     }
 
+    div.autorial-rules {
+      grid-area: autorial-rules;
 
+    }
 
     h2 {
       font-family: $especial-font;
@@ -403,7 +407,6 @@ footer {
 
 
     .autorial-rules {
-      grid-area: autorial-rules;
       display: flex;
       justify-content: center;
       gap: 20px;

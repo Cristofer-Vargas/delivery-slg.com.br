@@ -487,9 +487,6 @@ div.menu-side-space::-webkit-scrollbar-thumb {
   header .header-distribuition nav.logo-and-nav ul {
     display: none;
   }
-  footer .delimitation-contents {
-    grid-template-areas: "title-map title-contact" "nav-site-map div-site-contact" "autorial-rules autorial-rules";
-  }
 }
 @media screen and (max-width: 900px) {
   header {
