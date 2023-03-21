@@ -456,6 +456,7 @@ div.menu-side-space {
   position: absolute;
   top: 0;
   left: -480px;
+  padding: 0;
 
   z-index: 1;
 
@@ -582,7 +583,6 @@ div.menu-side-space {
     height: 280px;
 
     background-color: $primary-color;
-    // padding: -15px;
 
     display: flex;
     justify-content: center;

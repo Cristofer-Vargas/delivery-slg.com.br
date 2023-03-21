@@ -330,6 +330,7 @@ div.menu-side-space {
   position: absolute;
   top: 0;
   left: -480px;
+  padding: 0;
   z-index: 1;
   height: 100vh;
   width: 480px;
@@ -517,10 +518,10 @@ main div.categoria-section div.title-tag-section {
 main div.categoria-section div.categoria-icones {
   height: 280px;
   background-color: #8a0000;
+  padding: 0 90px;
   display: flex;
   align-items: center;
   gap: 90px;
-  padding: 0 90px;
   overflow-x: auto;
 }
 main div.categoria-section div.categoria-icones > div {

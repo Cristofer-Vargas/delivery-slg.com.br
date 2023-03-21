@@ -10,6 +10,8 @@ Daniel Ferreira. - [Perfil](https://github.com/DanielFerreiraFeiden)
 ## Professor: 
 Fabrício Esmério - [Perfil Professor](https://github.com/fabricioesmerio)
 
+## Termos e Condições
+
 Bem-vindo aos termos e condições do nosso site. Ao acessar e utilizar o nosso site, você concorda com os termos e condições descritos abaixo.
 
 O nosso site contém conteúdo de terceiros que são disponibilizados gratuitamente e produtos sem valor comercial pelos seus respectivos proprietários. Esses conteúdos são fornecidos no nosso site para fins informativos e de entretenimento.

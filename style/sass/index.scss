@@ -75,12 +75,12 @@ main {
     div.categoria-icones {
       height: 280px;
       background-color: $primary-color;
+      padding: 0 90px;
 
       display: flex;
       align-items: center;
       gap: 90px;
 
-      padding: 0 90px;
 
       overflow-x: auto;
 
