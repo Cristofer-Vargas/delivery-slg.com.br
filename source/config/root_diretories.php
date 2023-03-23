@@ -1,5 +1,5 @@
 <?php
 
-define('ROOT_PATH', $_SERVER['DOCUMENT_ROOT'] . '/Delivery-SLG');
+define('ROOT_PATH', $_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br');
 
 // echo "BOM DIAAAAAAAAAAAAA";

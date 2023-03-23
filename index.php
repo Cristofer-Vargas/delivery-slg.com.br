@@ -1,30 +1,26 @@
 <?php
 include_once("./source/config/root_diretories.php");
+include_once("./source/config/estilo_geral.php");
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Inicial</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="shortcut icon" href="./assets/images/Logo-Delivery-SLG.png" id="favicon-index-directory" type="image/x-icon">
-  <link rel="stylesheet" href="<?php echo ROOT_PATH ?>/assets/style/all.css">
-  <link rel="stylesheet" href="<?php echo ROOT_PATH ?>/assets/style/index.css">
+<?php echo HEAD_GERAL ?>
+<title>Página Inicial</title>
+<?php echo ESTILO_GERAL ?>
+<link rel="stylesheet" href="<?php echo ROOT_PATH ?>/assets/style/index.css">
 
-  <link rel="stylesheet" href="<?php echo ROOT_PATH ?>/style/media-queries/all.css" media="(max-width: 1100px)">
+<link rel="stylesheet" href="<?php echo ROOT_PATH ?>/style/media-queries/all.css" media="(max-width: 1100px)">
 
 </head>
 
 <body>
 
   <!-- <div id="headInsert"></div> -->
-  <?php include_once(ROOT_PATH . '/molde/header.php') ?>
+  <?php include_once(ROOT_PATH . '/molde/header.php'); ?>
 
   <main>
+    <?php //var_dump(ESTILO_GERAL); 
+    ?>
     <div class="max-width-page-limit">
       <section class="max-width-content-limit main-content">
         <div class="apresentation-section">

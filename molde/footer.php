@@ -32,7 +32,7 @@ include_once("../source/config/root_diretories.php");
           <div class="info-site site-contact">
             <div class="email-contact">
               <span>Email: <br></span>
-              <a href="#">conotato@deliveryslg.com</a>
+              <a href="#">contato@deliveryslg.com</a>
             </div>
             <div class="social-contact">
               <a href="#"><img src="<?php ROOT_PATH ?>/assets/images/footer/instagram-sign.png" alt="Instagram Sign"></a>

@@ -56,7 +56,7 @@ include_once("../source/config/root_diretories.php");
               <h2>Entre em contato conosco</h2>
               <div>
                 <span>Email: <br></span>
-                <a href="#">conotato@deliveryslg.com</a>
+                <a href="#">contato@deliveryslg.com</a>
               </div>
               <div class="social-side-space-contact">
                 <a href="#"><img src="<?php echo ROOT_PATH ?>/assets/images/footer/instagram-sign.png" alt="Instagram Sign"></a>
