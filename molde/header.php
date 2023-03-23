@@ -1,3 +1,8 @@
+<?php
+include_once("../source/config/root_diretories.php");
+
+?>
+
 <header>
   <div class="max-width-page-limit">
     <section class="max-width-content-limit header-distribuition">
@@ -54,10 +59,10 @@
                 <a href="#">conotato@deliveryslg.com</a>
               </div>
               <div class="social-side-space-contact">
-                <a href="#"><img src="../images/footer/instagram-sign.png" alt="Instagram Sign"></a>
-                <a href="#"><img src="../images/footer/facebook-sign.png" alt="Facebook Sign"></a>
-                <a href="#"><img src="../images/footer/twitter-sign.png" alt="Twitter Sign"></a>
-                <a href="#"><img src="../images/footer/linkedin-sign.png" alt="Linkedin Sign"></a>
+                <a href="#"><img src="<?php echo ROOT_PATH ?>/assets/images/footer/instagram-sign.png" alt="Instagram Sign"></a>
+                <a href="#"><img src="<?php echo ROOT_PATH ?>/assets/images/footer/facebook-sign.png" alt="Facebook Sign"></a>
+                <a href="#"><img src="<?php echo ROOT_PATH ?>/assets/images/footer/twitter-sign.png" alt="Twitter Sign"></a>
+                <a href="#"><img src="<?php echo ROOT_PATH ?>/assets/images/footer/linkedin-sign.png" alt="Linkedin Sign"></a>
               </div>
             </div>
           </div>
@@ -65,9 +70,9 @@
 
         <!--  -->
 
-        <a href="../index.html" title="Início"><img src="../images/Logo-Delivery-SLG.png" alt="Delivery SLG Logo"></a>
+        <a href="<?php echo ROOT_PATH . "/index.php" ?>" title="Início"><img src="<?php echo ROOT_PATH ?>/assets/images/Logo-Delivery-SLG.png" alt="Delivery SLG Logo"></a>
         <ul>
-          <li><a href="../index.html">Início</a></li>
+          <li><a href="<?php echo ROOT_PATH . "/index.php" ?>">Início</a></li>
           <li><a href="#">Restaurantes</a></li>
           <li><a href="#">Sobre Nós</a></li>
         </ul>
@@ -76,7 +81,7 @@
         <div class="search-bar">
           <input type="text" class="searchProductsInput" placeholder="Comida, empresa, lanche predileto!"
             maxlength="50">
-          <img src="../images/header/lupa-search.png" alt="">
+          <img src="<?php echo ROOT_PATH ?>/assets/images/header/lupa-search.png" alt="">
         </div>
       </div>
       <div class="perfil-cad-login">

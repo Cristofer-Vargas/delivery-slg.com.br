@@ -1,6 +1,11 @@
+<?php
+include_once("../source/config/root_diretories.php");
+
+?>
+
 <footer>
   <div class="max-width-page-limit">
-    <img class="wave-divisor" src="../images/wave-divisor.svg" alt="">
+    <img class="wave-divisor" src="<?php ROOT_PATH ?>/images/wave-divisor.svg" alt="">
   </div>
   <div class="footer-content">
     <div class="max-width-page-limit background-footer">
@@ -11,7 +16,7 @@
           <nav class="info-site site-map">
             <ul>
               <li><a href="#">Criar conta</a></li>
-              <li><a href="../pages/cadastroempresa.php">Cadastrar Restaurantes</a></li>
+              <li><a href="<?php ROOT_PATH ?>/pages/cadastroempresa.php">Cadastrar Restaurantes</a></li>
               <li><a href="#">003</a></li>
               <li><a href="#">004</a></li>
             </ul>
@@ -30,16 +35,16 @@
               <a href="#">conotato@deliveryslg.com</a>
             </div>
             <div class="social-contact">
-              <a href="#"><img src="../images/footer/instagram-sign.png" alt="Instagram Sign"></a>
-              <a href="#"><img src="../images/footer/facebook-sign.png" alt="Facebook Sign"></a>
-              <a href="#"><img src="../images/footer/twitter-sign.png" alt="Twitter Sign"></a>
-              <a href="#"><img src="../images/footer/linkedin-sign.png" alt="Linkedin Sign"></a>
+              <a href="#"><img src="<?php ROOT_PATH ?>/assets/images/footer/instagram-sign.png" alt="Instagram Sign"></a>
+              <a href="#"><img src="<?php ROOT_PATH ?>/assets/images/footer/facebook-sign.png" alt="Facebook Sign"></a>
+              <a href="#"><img src="<?php ROOT_PATH ?>/assets/images/footer/twitter-sign.png" alt="Twitter Sign"></a>
+              <a href="#"><img src="<?php ROOT_PATH ?>/assets/images/footer/linkedin-sign.png" alt="Linkedin Sign"></a>
             </div>
           </div>
 
           <!-- Direitos Autorais -->
           <div class="autorial-rules">
-            <img class="Copyright-logo" src="../images/Logo-Delivery-SLG.png" alt="Delivery SLG Logo">
+            <img class="Copyright-logo" src="<?php ROOT_PATH ?>/assets/images/Logo-Delivery-SLG.png" alt="Delivery SLG Logo">
             <div class="content-rules">
               <p>
                 &copy; Copyright 2023 - Todos os direito reservados - <a href="#">Direitos de terceiros</a>
