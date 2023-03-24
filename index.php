@@ -1,12 +1,11 @@
 <?php
 include_once("./source/config/root_diretories.php");
-include_once("./source/config/estilo_geral.php");
+include_once(ROOT_PATH . "/molde/estilo_geral.php");
 ?>
 
 
-<?php echo HEAD_GERAL ?>
+<?php include_once(ROOT_PATH . '/molde/estilo_geral.php') ?>>
 <title>Página Inicial</title>
-<?php echo ESTILO_GERAL ?>
 <link rel="stylesheet" href="<?php echo ROOT_PATH ?>/assets/style/index.css">
 
 <link rel="stylesheet" href="<?php echo ROOT_PATH ?>/style/media-queries/all.css" media="(max-width: 1100px)">
@@ -19,8 +18,6 @@ include_once("./source/config/estilo_geral.php");
   <?php include_once(ROOT_PATH . '/molde/header.php'); ?>
 
   <main>
-    <?php //var_dump(ESTILO_GERAL); 
-    ?>
     <div class="max-width-page-limit">
       <section class="max-width-content-limit main-content">
         <div class="apresentation-section">
