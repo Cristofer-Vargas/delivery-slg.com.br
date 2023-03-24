@@ -534,7 +534,8 @@ div.menu-side-space {
     padding: 15px;
     margin: 25px 0;
 
-    >div {
+    >a {
+      text-decoration: none;
       width: 140px;
       height: 140px;
 

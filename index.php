@@ -1,21 +1,18 @@
 <?php
-include_once("./source/config/root_diretories.php");
-include_once(ROOT_PATH . "/molde/estilo_geral.php");
+
+include_once('./includes/metas_gerais.php') 
+
 ?>
+  <title>Página Inicial</title>
+  <link rel="stylesheet" href="/delivery-slg.com.br/assets/style/index.css">
 
-
-<?php include_once(ROOT_PATH . '/molde/estilo_geral.php') ?>>
-<title>Página Inicial</title>
-<link rel="stylesheet" href="<?php echo ROOT_PATH ?>/assets/style/index.css">
-
-<link rel="stylesheet" href="<?php echo ROOT_PATH ?>/style/media-queries/all.css" media="(max-width: 1100px)">
+  
+  <link rel="stylesheet" href="/delivery-slg.com.br/assets/style/media-queries/all.css">
 
 </head>
 
 <body>
-
-  <!-- <div id="headInsert"></div> -->
-  <?php include_once(ROOT_PATH . '/molde/header.php'); ?>
+  <?php include_once('./includes/header.php'); ?>
 
   <main>
     <div class="max-width-page-limit">
@@ -34,7 +31,7 @@ include_once(ROOT_PATH . "/molde/estilo_geral.php");
             </p>
           </div>
           <div class="svg-apresentation">
-            <img src="./images/main/index/delivery-apresentation-svg.svg" alt="Apresentação Delivery, mulher com lanche">
+            <img src="/delivery-slg.com.br/assets/images/main/index/delivery-apresentation-svg.svg" alt="Apresentação Delivery, mulher com lanche">
           </div>
         </div>
       </section>
@@ -45,62 +42,62 @@ include_once(ROOT_PATH . "/molde/estilo_geral.php");
         O Que Temos
       </div>
       <div class="categoria-wave">
-        <img class="first-wave" src="./images/wave-divisor.svg" alt="">
+        <img class="first-wave" src="/delivery-slg.com.br/assets/images/wave-divisor.svg" alt="">
       </div>
 
       <div class="categoria-icones">
         <div>
           <div>
-            <img src="./images/icones/sorvete-icon.png" alt="Sorvete categoria">
+            <img src="/delivery-slg.com.br/assets/images/icones/sorvete-icon.png" alt="Sorvete categoria">
           </div>
           <p>Sorvete</p>
         </div>
 
         <div>
           <div>
-            <img src="./images/icones/pastel-icon.png" alt="Pastel categoria">
+            <img src="/delivery-slg.com.br/assets/images/icones/pastel-icon.png" alt="Pastel categoria">
           </div>
           <p>Pastel</p>
         </div>
 
         <div>
           <div>
-            <img src="./images/icones/pizza-icon.png" alt="Pizza categoria">
+            <img src="/delivery-slg.com.br/assets/images/icones/pizza-icon.png" alt="Pizza categoria">
           </div>
           <p>Pizza</p>
         </div>
 
         <div>
           <div>
-            <img src="./images/icones/acai-icon.png" alt="Açai categoria">
+            <img src="/delivery-slg.com.br/assets/images/icones/acai-icon.png" alt="Açai categoria">
           </div>
           <p>Açai</p>
         </div>
 
         <div>
           <div>
-            <img src="./images/icones/frango-frito-icon.png" alt="Frango frito categoria">
+            <img src="/delivery-slg.com.br/assets/images/icones/frango-frito-icon.png" alt="Frango frito categoria">
           </div>
           <p>Frango Frito</p>
         </div>
 
         <div>
           <div>
-            <img src="./images/icones/hamburguer-icon.png" alt="Hamburguer categoria">
+            <img src="/delivery-slg.com.br/assets/images/icones/hamburguer-icon.png" alt="Hamburguer categoria">
           </div>
           <p>Hamburguer</p>
         </div>
 
         <div>
           <div>
-            <img src="./images/icones/cachorro-quente-icon.png" alt="Cachorro quente categoria">
+            <img src="/delivery-slg.com.br/assets/images/icones/cachorro-quente-icon.png" alt="Cachorro quente categoria">
           </div>
           <p>Cachorro Quente</p>
         </div>
 
         <div>
           <div>
-            <img src="./images/icones/x-burger-icon.png" alt="X-Burguer categoria">
+            <img src="/delivery-slg.com.br/assets/images/icones/x-burger-icon.png" alt="X-Burguer categoria">
           </div>
           <p>X-Burguer</p>
         </div>
@@ -108,7 +105,7 @@ include_once(ROOT_PATH . "/molde/estilo_geral.php");
       </div>
 
       <div class="categoria-wave">
-        <img class="last-wave" src="./images/wave-divisor.svg" alt="">
+        <img class="last-wave" src="/delivery-slg.com.br/assets/images/wave-divisor.svg" alt="">
       </div>
     </div>
 
@@ -120,11 +117,7 @@ include_once(ROOT_PATH . "/molde/estilo_geral.php");
     </div>
   </main>
 
-  <?php include_once(ROOT_PATH . '/molde/footer.php'); ?>
-
-  <!-- <div id="footerInsert"></div> -->
-
-  <!-- <script src="./js/include.js"></script> -->
+  <?php include_once('./includes/footer.php'); ?>
 </body>
 
 </html>

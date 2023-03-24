@@ -385,7 +385,8 @@ div.menu-side-space div.distribuition-butons-side-space {
   padding: 15px;
   margin: 25px 0;
 }
-div.menu-side-space div.distribuition-butons-side-space > div {
+div.menu-side-space div.distribuition-butons-side-space > a {
+  text-decoration: none;
   width: 140px;
   height: 140px;
   padding: 5px;
@@ -401,17 +402,17 @@ div.menu-side-space div.distribuition-butons-side-space > div {
   cursor: pointer;
   transition: transform ease-in-out 0.5s, box-shadow 0.5s;
 }
-div.menu-side-space div.distribuition-butons-side-space > div h3 {
+div.menu-side-space div.distribuition-butons-side-space > a h3 {
   color: #FF4136;
   font-weight: 400;
 }
-div.menu-side-space div.distribuition-butons-side-space > div:hover {
+div.menu-side-space div.distribuition-butons-side-space > a:hover {
   background-color: #FFA500;
   color: #fff;
   box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
   transform: translate(4px, -4px);
 }
-div.menu-side-space div.distribuition-butons-side-space > div:hover h3 {
+div.menu-side-space div.distribuition-butons-side-space > a:hover h3 {
   color: #fff;
 }
 div.menu-side-space div.contact-side-space {

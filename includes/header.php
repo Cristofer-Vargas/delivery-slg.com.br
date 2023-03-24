@@ -1,5 +1,6 @@
 <?php
-include_once("../source/config/root_diretories.php");
+// Verificar a partir da sessão se o usuário esta logado ou não, 
+// e mostrar um cabeçalho diferente: perfil e carrinho
 
 ?>
 
@@ -30,25 +31,30 @@ include_once("../source/config/root_diretories.php");
           <hr>
 
           <div class="distribuition-butons-side-space">
-            <div>
+            <a>
               <i class="fa-solid fa-shop"></i>
               <h3>Restaurantes</h3>
-            </div>
+            </a>
+            
+            <a href="/delivery-slg.com.br/pages/cadastroempresa.php">
+              <i class="fa-solid fa-shop"></i>
+              <h3>Cadastrar Restaurante</h3>
+            </a>
 
-            <div>
+            <a>
               <i class="fa-sharp fa-solid fa-circle-info"></i>
               <h3>Sobre Nós</h3>
-            </div>
+            </a>
 
-            <div>
+            <a>
               <i class="fa-solid fa-user"></i>
               <h3>Criar Conta</h3>
-            </div>
+            </a>
 
-            <div>
+            <a>
               <i class="fa-regular fa-user"></i>
               <h3>Entrar</h3>
-            </div>
+            </a>
           </div>
 
           <div class="contact-side-space">
@@ -59,10 +65,10 @@ include_once("../source/config/root_diretories.php");
                 <a href="#">contato@deliveryslg.com</a>
               </div>
               <div class="social-side-space-contact">
-                <a href="#"><img src="<?php echo ROOT_PATH ?>/assets/images/footer/instagram-sign.png" alt="Instagram Sign"></a>
-                <a href="#"><img src="<?php echo ROOT_PATH ?>/assets/images/footer/facebook-sign.png" alt="Facebook Sign"></a>
-                <a href="#"><img src="<?php echo ROOT_PATH ?>/assets/images/footer/twitter-sign.png" alt="Twitter Sign"></a>
-                <a href="#"><img src="<?php echo ROOT_PATH ?>/assets/images/footer/linkedin-sign.png" alt="Linkedin Sign"></a>
+                <a href="#"><img src="/delivery-slg.com.br/assets/images/footer/instagram-sign.png" alt="Instagram Sign"></a>
+                <a href="#"><img src="/delivery-slg.com.br/assets/images/footer/facebook-sign.png" alt="Facebook Sign"></a>
+                <a href="#"><img src="/delivery-slg.com.br/assets/images/footer/twitter-sign.png" alt="Twitter Sign"></a>
+                <a href="#"><img src="/delivery-slg.com.br/assets/images/footer/linkedin-sign.png" alt="Linkedin Sign"></a>
               </div>
             </div>
           </div>
@@ -70,9 +76,9 @@ include_once("../source/config/root_diretories.php");
 
         <!--  -->
 
-        <a href="<?php echo ROOT_PATH . "/index.php" ?>" title="Início"><img src="<?php echo ROOT_PATH ?>/assets/images/Logo-Delivery-SLG.png" alt="Delivery SLG Logo"></a>
+        <a href="/delivery-slg.com.br/index.php" title="Início"><img src="/delivery-slg.com.br/assets/images/Logo-Delivery-SLG.png" alt="Delivery SLG Logo"></a>
         <ul>
-          <li><a href="<?php echo ROOT_PATH . "/index.php" ?>">Início</a></li>
+          <li><a href="/delivery-slg.com.br/index.php">Início</a></li>
           <li><a href="#">Restaurantes</a></li>
           <li><a href="#">Sobre Nós</a></li>
         </ul>
@@ -81,7 +87,7 @@ include_once("../source/config/root_diretories.php");
         <div class="search-bar">
           <input type="text" class="searchProductsInput" placeholder="Comida, empresa, lanche predileto!"
             maxlength="50">
-          <img src="<?php echo ROOT_PATH ?>/assets/images/header/lupa-search.png" alt="">
+          <img src="/delivery-slg.com.br/assets/images/header/lupa-search.png" alt="">
         </div>
       </div>
       <div class="perfil-cad-login">
