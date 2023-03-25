@@ -31,27 +31,27 @@
           <hr>
 
           <div class="distribuition-butons-side-space">
-            <a>
+            <a href="#">
               <i class="fa-solid fa-shop"></i>
               <h3>Restaurantes</h3>
             </a>
-            
+
             <a href="/delivery-slg.com.br/pages/cadastroempresa.php">
               <i class="fa-solid fa-shop"></i>
               <h3>Cadastrar Restaurante</h3>
             </a>
 
-            <a>
+            <a href="#">
               <i class="fa-sharp fa-solid fa-circle-info"></i>
               <h3>Sobre Nós</h3>
             </a>
 
-            <a>
+            <a href="#">
               <i class="fa-solid fa-user"></i>
               <h3>Criar Conta</h3>
             </a>
 
-            <a>
+            <a href="#">
               <i class="fa-regular fa-user"></i>
               <h3>Entrar</h3>
             </a>
@@ -85,15 +85,14 @@
       </nav>
       <div class="search-products">
         <div class="search-bar">
-          <input type="text" class="searchProductsInput" placeholder="Comida, empresa, lanche predileto!"
-            maxlength="50">
+          <input type="text" class="searchProductsInput" placeholder="Comida, empresa, lanche predileto!" maxlength="50">
           <img src="/delivery-slg.com.br/assets/images/header/lupa-search.png" alt="">
         </div>
       </div>
       <div class="perfil-cad-login">
         <ul>
-          <li><a href="#" title="Criar Conta">Criar Conta</a></li>
-          <li><button>Entrar</button></li>
+          <li><a class="perfil-cad-criar-conta" href="#" title="Criar Conta">Criar Conta</a></li>
+          <li><a class="button-entrar" href="#">Entrar</a></li>
         </ul>
       </div>
     </section>

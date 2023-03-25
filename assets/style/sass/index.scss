@@ -48,29 +48,32 @@ main {
 
   }
 
+
+  div.title-tag-section {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 18px 15px;
+    background-color: $secundary-color;
+
+    font-family: $primary-font;
+    font-size: 28px;
+    font-weight: bolder;
+    color: #fff;
+    text-align: center;
+
+    border-radius: 10px;
+
+    box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25);
+    
+  }
+
+
   div.categoria-section {
     position: relative;
     z-index: 0;
-    
-    div.title-tag-section {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translate(-50%, -50%);
-
-      padding: 18px 15px;
-      background-color: $secundary-color;
-
-      font-family: $primary-font;
-      font-size: 28px;
-      font-weight: bolder;
-      color: #fff;
-
-      border-radius: 10px;
-
-      box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25);
-      
-    }
 
     div.categoria-icones {
       height: 280px;
@@ -132,10 +135,8 @@ main {
       background-color: $secundary-color;
 
     }
-    
-  }
 
-  div.categoria-wave {
+    div.categoria-wave {
     max-width: 1366px;
     height: auto;
     margin: 0 auto;
@@ -154,6 +155,238 @@ main {
     > img.last-wave {
       transform: rotate(180deg);
       z-index: 0;
+    }
+
+  }
+    
+  }
+
+
+  div.como-pedir {
+    position: relative;
+    width: 100%;
+
+    margin: 100px 0;
+    padding: 50px 0;
+
+    > p.sign-staps {
+      font-family: $primary-font;
+      font-style: italic;
+      font-size: 24px;
+      text-align: center;
+
+    }
+
+    picture.como-pedir-passos-imagens {
+      width: 100%;
+      padding-top: 80px;
+      display: flex;
+      justify-content: center;
+
+      img {
+        max-width: 90%;
+
+      }
+    }
+  }
+
+
+  div.container-destaque-with-tag {
+    width: auto;
+    height: auto;
+
+    section.tag-destaque-restaurantes {
+      position: relative;
+      padding: 70px 0;
+    }
+
+    div.background-faixa-destaque {
+      max-width: 100%;
+      height: 500px;
+      background-color: $primary-color-2;
+  
+      div.primary-background-destaque-restaurante {
+        height: 100%;
+        background-color: $primary-color;
+
+        section.destaque-restaurante-container {
+          width: 100%;
+          height: 100%;
+          display: grid;
+          grid-template-areas: 
+          'restaurante-destaque-1 restaurante-destaque-2 restaurante-destaque-3'
+          ;
+          justify-content: space-between;
+          
+          div.restaurante-destaque-card {
+            width: 250px;
+            height: 380px;
+            background-color: $secundary-color;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            div.restaurante-card-image {
+
+              img {
+                width: 100%;
+                border-radius: 9px;
+
+              }
+
+            }
+
+            div.name-restaurante-destaque {
+
+              h3 {
+                text-align: center;
+                font-family: $primary-font;
+                font-size: 24px;
+                font-weight: 900;
+
+              }
+
+            }
+
+            div.restaurante-destaque-categorias {
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+
+              a.restaurante-categoria-icone {
+                width: 55px;
+                height: 55px;
+                background-color: $primary-color-2;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                transition: box-shadow 0.5s, transform 0.5s;
+
+                img {
+                  width: 70%;
+                }
+
+              }
+
+              > a.destaque-restaurante-categoria-icone {
+                width: 80px;
+                height: 80px;
+
+              }
+
+              > a:hover {
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                transform: translateY(-4px);
+              }
+
+            }
+
+          }
+
+          div.restaurante-destaque-1 {
+            grid-area: restaurante-destaque-1;
+          }
+
+          div.restaurante-destaque-2 {
+            grid-area: restaurante-destaque-2;
+            scale: 1.6;
+          }
+
+          div.restaurante-destaque-3 {
+            grid-area: restaurante-destaque-3;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+
+  div.sobre-nos-section {
+    width: 100%;
+    height: auto;
+    background-color: $primary-color-2;
+    font-family: $primary-font;
+    color: #fff;
+
+    div.sobre-nos-background {
+      background-color: $primary-color;
+
+      section.sobre-nos-container {
+
+        h2, h3 {
+          font-family: $especial-font;
+          font-weight: lighter;
+          color: $secundary-color;
+
+        }
+
+        div.sobre-nos-title {
+          width: 100%;
+
+          h2 {
+            font-size: 32px;
+            text-align: center;
+            padding: 30px;
+
+          }
+
+        }
+
+        div.sobre-nos-layout-container {
+          display: grid;
+          grid-template-areas: 
+          'sobre-nos-quem-somos sobre-nos-image'
+          'sobre-nos-objetivo sobre-nos-image'
+          ;
+          
+
+          span.sobre-nos-text-destaque {
+            color: $secundary-color;
+
+          }
+
+        }
+
+        div.sobre-nos-quem-somos {
+          grid-area: sobre-nos-quem-somos;
+        }
+
+        div.sobre-nos-objetivo {
+          grid-area: sobre-nos-objetivo;
+        }
+
+        div.sobre-nos-image {
+          grid-area: sobre-nos-image;
+          display: flex;
+          align-items: center;
+          padding-left: 20px;
+
+        }
+
+        div.sobre-nos-content {
+          
+          h3 {
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 32px;
+          }
+
+          p {
+            margin-bottom: 20px;
+            line-height: 1.4em;
+          }
+
+        }
+
+      }
+
     }
 
   }
