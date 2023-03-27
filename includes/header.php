@@ -41,7 +41,7 @@
               <h3>Cadastrar Restaurante</h3>
             </a>
 
-            <a href="#">
+            <a href="#sobre-nos-sessao" onclick="levarAoSobreNos()">
               <i class="fa-sharp fa-solid fa-circle-info"></i>
               <h3>Sobre Nós</h3>
             </a>
@@ -80,15 +80,23 @@
         <ul>
           <li><a href="/delivery-slg.com.br/index.php">Início</a></li>
           <li><a href="#">Restaurantes</a></li>
-          <li><a href="#">Sobre Nós</a></li>
+          <li><a href="#sobre-nos-sessao" onclick="levarAoSobreNos()">Sobre Nós</a></li>
         </ul>
-      </nav>
+      </nav> 
+
       <div class="search-products">
         <div class="search-bar">
           <input type="text" class="searchProductsInput" placeholder="Comida, empresa, lanche predileto!" maxlength="50">
           <img src="/delivery-slg.com.br/assets/images/header/lupa-search.png" alt="">
         </div>
       </div>
+      
+      <!-- <input type="checkbox" id="search-box">
+
+      <div class="container-search">
+        <h1>Teste</h1>
+      </div> -->
+
       <div class="perfil-cad-login">
         <ul>
           <li><a class="perfil-cad-criar-conta" href="#" title="Criar Conta">Criar Conta</a></li>

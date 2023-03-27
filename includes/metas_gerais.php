@@ -16,3 +16,4 @@
   crossorigin="anonymous" referrerpolicy="no-referrer">
   
   <link rel="stylesheet" href="/delivery-slg.com.br/assets/style/all.css">
+  <script src="/delivery-slg.com.br/assets/javascript/main.js" defer></script>

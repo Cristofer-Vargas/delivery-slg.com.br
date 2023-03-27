@@ -190,7 +190,7 @@ include_once('./includes/metas_gerais.php')
     </div>
 
 
-    <div class="sobre-nos-section">
+    <div class="sobre-nos-section" id="sobreNosSsessao">
       <div class="max-width-page-limit sobre-nos-background">
         <section class="max-width-content-limit main-content sobre-nos-container">
           <div class="sobre-nos-title">

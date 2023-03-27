@@ -79,6 +79,19 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    // position: relative;
+
+    // input#search-box:checked ~ div.container-search{
+    //   display: block;
+
+    // }
+
+    // div.container-search {
+    //   display: none;
+    //   position: absolute;
+    //   top: 0;
+
+    // }
 
     i.menu-bar {
       display: none;
