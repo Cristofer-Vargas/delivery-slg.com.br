@@ -17,7 +17,7 @@
             <ul>
               <li><a href="#">Criar conta</a></li>
               <li><a href="/delivery-slg.com.br/pages/cadastroempresa.php">Cadastrar Restaurantes</a></li>
-              <li><a href="#">003</a></li>
+              <li><a href="/delivery-slg.com.br/pages/produtos.php">Produtos</a></li>
               <li><a href="#">004</a></li>
             </ul>
             <ul>
