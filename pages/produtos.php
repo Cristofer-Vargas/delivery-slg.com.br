@@ -3,6 +3,7 @@
 ?>
 
   <?php include_once('../includes/metas_gerais.php'); ?>
+  <title>Produtos</title>
 
   <link rel="stylesheet" href="../assets/style/produtos.css">
 
@@ -13,12 +14,207 @@
   <?php include_once('../includes/header.php'); ?>
   <main>
 
-  <div class="max-width-page-limit">
-    <picture class="banner-delivery">
-      <source media="(max-width: 768px)" srcset="../assets/images/main/produtos/banner-delivery-pequeno-medio">
-      <img src="../assets/images/main/produtos/banner-delivery-medio-baixo.jpg" alt="Banner delivery slg A cozinha que você ama, entregue na sua casa.">
-    </picture>
-  </div>
+    <div class="max-width-page-limit">
+      <picture class="banner-delivery">
+        <source media="(max-width: 480px)" srcset="../assets/images/main/produtos/banner-delivery-480">
+        <source media="(max-width: 768px)" srcset="../assets/images/main/produtos/banner-delivery-768">
+        <img src="../assets/images/main/produtos/banner-delivery-medio-baixo.jpg" alt="Banner delivery slg A cozinha que você ama, entregue na sua casa.">
+      </picture>
+    </div>
+
+    <div class="max-width-page-limit">
+      <section class="max-width-content-limit main-content">
+        <div class="produtos-main-container">
+
+          <div class="produtos-filtro">
+            <div class="filtros-container">
+              <h2 class="filtro-title">Filtros</h2>
+              <div class="filtro ">Preço</div>
+              <div class="filtro ">Categoria A a Z</div>
+              <div class="filtro ">Restaurante A a Z</div>
+            </div>
+          </div>
+          
+          <div class="produtos-cards-lista">
+
+            <div class="card-produto">
+              <div class="nome-image-restaurante">
+                <div class="restaurante-name">
+                  <i class="fa-solid fa-shop"></i>
+                  <span>Casa do Pastel</span>
+                </div>
+                <div>
+                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                </div>
+              </div>
+              <div class="informacoes-restaurante">
+                <div>
+                  <h2>Pastel de Frango com Catupiry</h2>
+                  <div>
+                    <span>
+                      R$
+                    </span>
+                    <span>
+                      5,50
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-produto">
+              <div class="nome-image-restaurante">
+                <div class="restaurante-name">
+                  <i class="fa-solid fa-shop"></i>
+                  <span>Casa do Pastel</span>
+                </div>
+                <div>
+                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                </div>
+              </div>
+              <div class="informacoes-restaurante">
+                <div>
+                  <h2>Pastel de Frango com Catupiry</h2>
+                  <div>
+                    <span>
+                      R$
+                    </span>
+                    <span>
+                      5,50
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-produto">
+              <div class="nome-image-restaurante">
+                <div class="restaurante-name">
+                  <i class="fa-solid fa-shop"></i>
+                  <span>Casa do Pastel</span>
+                </div>
+                <div>
+                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                </div>
+              </div>
+              <div class="informacoes-restaurante">
+                <div>
+                  <h2>Pastel de Frango com Catupiry</h2>
+                  <div>
+                    <span>
+                      R$
+                    </span>
+                    <span>
+                      5,50
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-produto">
+              <div class="nome-image-restaurante">
+                <div class="restaurante-name">
+                  <i class="fa-solid fa-shop"></i>
+                  <span>Casa do Pastel</span>
+                </div>
+                <div>
+                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                </div>
+              </div>
+              <div class="informacoes-restaurante">
+                <div>
+                  <h2>Pastel de Frango com Catupiry</h2>
+                  <div>
+                    <span>
+                      R$
+                    </span>
+                    <span>
+                      5,50
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-produto">
+              <div class="nome-image-restaurante">
+                <div class="restaurante-name">
+                  <i class="fa-solid fa-shop"></i>
+                  <span>Casa do Pastel</span>
+                </div>
+                <div>
+                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                </div>
+              </div>
+              <div class="informacoes-restaurante">
+                <div>
+                  <h2>Pastel de Frango com Catupiry</h2>
+                  <div>
+                    <span>
+                      R$
+                    </span>
+                    <span>
+                      5,50
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-produto">
+              <div class="nome-image-restaurante">
+                <div class="restaurante-name">
+                  <i class="fa-solid fa-shop"></i>
+                  <span>Casa do Pastel</span>
+                </div>
+                <div>
+                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                </div>
+              </div>
+              <div class="informacoes-restaurante">
+                <div>
+                  <h2>Pastel de Frango com Catupiry</h2>
+                  <div>
+                    <span>
+                      R$
+                    </span>
+                    <span>
+                      5,50
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-produto">
+              <div class="nome-image-restaurante">
+                <div class="restaurante-name">
+                  <i class="fa-solid fa-shop"></i>
+                  <span>Casa do Pastel</span>
+                </div>
+                <div>
+                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                </div>
+              </div>
+              <div class="informacoes-restaurante">
+                <div>
+                  <h2>Pastel de Frango com Catupiry</h2>
+                  <div>
+                    <span>
+                      R$
+                    </span>
+                    <span>
+                      5,50
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+      </section>
+    </div>
 
   </main>
   <?php include_once('../includes/footer.php'); ?>
