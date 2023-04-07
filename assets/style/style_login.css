@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+body {
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+main {
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_content {
+    width: 1100px;
+    padding: 40px;
+}
+
+button {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    width: 280px;
+    height: 48px;
+    text-align: center;
+    border-radius: 100px;
+    border: 0px;
+    font-weight: bold;
+    background-color: #cecece;
+    padding: 0px 12px;
+}
+
+.pd-left-16 {
+    padding-left: 34px;
+}
+
+button img {
+    width: 25px;
+}
+
+.text_start {
+    text-align: left;
+}
+
+.main_content form {
+    align-items: center;
+}
+
+
+.divdoform {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 286px;
+    justify-content: space-around;
+}
+
+.form_align {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn_logar {
+    max-width: 100%;
+    width: 200px;
+    border-radius: 10px;
+    background-color: rgba(138, 0, 0, 1);
+    color: white;
+    font-weight: bold;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn_criarconta {
+    width: 200px;
+    border-radius: 10px;
+    background-color: #FFA500;
+    color: white;
+    font-weight: bold;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    width: 248px;
+    height: 45px;
+    border: 0px;
+    border-radius: 100px;
+    /*background-color: #cecece;*/
+    padding: 0px 12px;
+}
+
+.cor {
+    background-color: #cecece;
+}
+
+label {
+    padding-bottom: 5px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: #FF4136;
+    text-align: center;
+    font-weight: bold;
+}
