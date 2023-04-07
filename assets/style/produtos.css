@@ -474,7 +474,10 @@ div.menu-side-space::-webkit-scrollbar-thumb {
   background-color: #8a0000;
 }
 
-main img {
+main {
+  color: rgba(0, 0, 0, 0.2509803922);
+}
+main picture.banner-delivery img {
   width: 100%;
 }
 
