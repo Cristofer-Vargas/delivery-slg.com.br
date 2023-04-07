@@ -79,6 +79,69 @@ main {
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+
+        .nome-image-restaurante {
+
+          .restaurante-name {
+            margin-bottom: 10px;
+          }
+
+        }
+
+        .flip-card:hover .card-back {
+          transform: rotateY(180deg);
+        }
+
+        .informacoes-restaurante {
+          width: 100%;
+          position: relative;
+          transition: transform 0.8s;
+          transform-style: preserve-3d;
+
+          .card-front, .card-back {
+            backface-visibility: hidden;
+          }
+
+          .produto-nome-preco {
+
+            .produto-preco {
+              width: 100%;
+              padding: 10px;
+
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 6px;
+
+              color: $secundary-color;
+              background-color: $primary-color;
+
+              border-radius: 5px;
+
+              .tipo-preco {
+                font-size: 18px;
+              }
+
+              .valor-produto {
+                font-weight: bolder;
+                font-size: 26px;
+              }
+            }
+
+            >h2 {
+              margin-bottom: 15px;
+              color: $text-especial-color;
+            }
+          }
+
+          .card-back {
+            position: absolute;
+            transform: rotateX(180deg);
+
+          }
+
+        }
+
       }
 
     }

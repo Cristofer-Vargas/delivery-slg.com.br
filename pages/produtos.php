@@ -29,12 +29,15 @@
           <div class="produtos-filtro">
             <div class="filtros-container">
               <h2 class="filtro-title">Filtros</h2>
-              <div class="filtro ">Preço</div>
-              <div class="filtro ">Categoria A a Z</div>
-              <div class="filtro ">Restaurante A a Z</div>
+              <div class="filtro ">Maior Preço</div>
+              <div class="filtro ">Menor Preço</div>
+              <div class="filtro ">Categoria Crescente</div>
+              <div class="filtro ">Categoria Decrescente</div>
+              <div class="filtro ">Restaurante Crescente</div>
+              <div class="filtro ">Restaurante Decrescente</div>
             </div>
           </div>
-          
+
           <div class="produtos-cards-lista">
 
             <div class="card-produto">
@@ -47,14 +50,47 @@
                   <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
                 </div>
               </div>
-              <div class="informacoes-restaurante">
-                <div>
+              <div class="informacoes-restaurante flip-card">
+                <div class="produto-nome-preco card-front">
                   <h2>Pastel de Frango com Catupiry</h2>
-                  <div>
-                    <span>
+                  <div class="produto-preco">
+                    <span class="tipo-preco">
                       R$
                     </span>
-                    <span>
+                    <span class="valor-produto">
+                      5,50
+                    </span>
+                  </div>
+                </div>
+                <div class="card-back">
+                  <p>
+                    Delicioso pastel com recheio de frango desfiado e Catupiry cremoso. Frito na hora e servido quente.
+                  </p>
+                  <div class="btn-adicionar-carrinho">
+                    Adicionar ao carrinho
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-produto">
+              <div class="nome-image-restaurante">
+                <div class="restaurante-name">
+                  <i class="fa-solid fa-shop"></i>
+                  <span>Casa do Pastel</span>
+                </div>
+                <div>
+                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                </div>
+              </div>
+              <div class="informacoes-restaurante">
+                <div class="produto-nome-preco">
+                  <h2>Pastel de Frango com Catupiry</h2>
+                  <div class="produto-preco">
+                    <span class="tipo-preco">
+                      R$
+                    </span>
+                    <span class="valor-produto">
                       5,50
                     </span>
                   </div>
@@ -73,13 +109,13 @@
                 </div>
               </div>
               <div class="informacoes-restaurante">
-                <div>
+                <div class="produto-nome-preco">
                   <h2>Pastel de Frango com Catupiry</h2>
-                  <div>
-                    <span>
+                  <div class="produto-preco">
+                    <span class="tipo-preco">
                       R$
                     </span>
-                    <span>
+                    <span class="valor-produto">
                       5,50
                     </span>
                   </div>
@@ -98,13 +134,13 @@
                 </div>
               </div>
               <div class="informacoes-restaurante">
-                <div>
+                <div class="produto-nome-preco">
                   <h2>Pastel de Frango com Catupiry</h2>
-                  <div>
-                    <span>
+                  <div class="produto-preco">
+                    <span class="tipo-preco">
                       R$
                     </span>
-                    <span>
+                    <span class="valor-produto">
                       5,50
                     </span>
                   </div>
@@ -123,13 +159,13 @@
                 </div>
               </div>
               <div class="informacoes-restaurante">
-                <div>
+                <div class="produto-nome-preco">
                   <h2>Pastel de Frango com Catupiry</h2>
-                  <div>
-                    <span>
+                  <div class="produto-preco">
+                    <span class="tipo-preco">
                       R$
                     </span>
-                    <span>
+                    <span class="valor-produto">
                       5,50
                     </span>
                   </div>
@@ -148,13 +184,13 @@
                 </div>
               </div>
               <div class="informacoes-restaurante">
-                <div>
+                <div class="produto-nome-preco">
                   <h2>Pastel de Frango com Catupiry</h2>
-                  <div>
-                    <span>
+                  <div class="produto-preco">
+                    <span class="tipo-preco">
                       R$
                     </span>
-                    <span>
+                    <span class="valor-produto">
                       5,50
                     </span>
                   </div>
@@ -162,55 +198,6 @@
               </div>
             </div>
 
-            <div class="card-produto">
-              <div class="nome-image-restaurante">
-                <div class="restaurante-name">
-                  <i class="fa-solid fa-shop"></i>
-                  <span>Casa do Pastel</span>
-                </div>
-                <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
-                </div>
-              </div>
-              <div class="informacoes-restaurante">
-                <div>
-                  <h2>Pastel de Frango com Catupiry</h2>
-                  <div>
-                    <span>
-                      R$
-                    </span>
-                    <span>
-                      5,50
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-produto">
-              <div class="nome-image-restaurante">
-                <div class="restaurante-name">
-                  <i class="fa-solid fa-shop"></i>
-                  <span>Casa do Pastel</span>
-                </div>
-                <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
-                </div>
-              </div>
-              <div class="informacoes-restaurante">
-                <div>
-                  <h2>Pastel de Frango com Catupiry</h2>
-                  <div>
-                    <span>
-                      R$
-                    </span>
-                    <span>
-                      5,50
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
 
         </div>
       </section>
