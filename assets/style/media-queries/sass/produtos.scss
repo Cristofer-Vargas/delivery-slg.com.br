@@ -1,0 +1,77 @@
+@import '../sass/all.scss';
+
+@media screen and (max-width: 768px) {
+
+  main {
+
+    .produtos-main-container {
+      grid-template-areas:
+      'filtro'
+      'produtos'
+      ;
+
+      .produtos-filtro {
+        position: sticky;
+        top: 0;
+        background-color: #fff;
+        max-width: 100%;
+        z-index: 1;
+        
+        .filtros-container {
+          width: 100%;
+          display: grid;
+          grid-template-areas: 
+          'filtro-titulo'
+          'filtro-btn'
+          ;
+
+          >h2 {
+            text-align: center;
+            grid-area: filtro-titulo;
+          }
+
+          .filtro-btn {
+            grid-area: filtro-btn;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .filtro {
+              min-width: 150px;
+              margin: 0;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+            }
+
+          }
+
+        }
+        
+      }
+
+      .produtos-cards-lista {
+        justify-content: center;
+      }
+
+    }
+
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+  main {
+
+    .produtos-main-container {
+
+      .produtos-filtro {
+        position: relative;
+      }
+
+    }
+
+  }
+
+}
