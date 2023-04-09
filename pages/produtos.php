@@ -50,7 +50,7 @@
                   <span>Casa do Pastel</span>
                 </div>
                 <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                  <img src="../assets/images/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
                 </div>
               </div>
               <div class="informacoes-restaurante flip-card">
@@ -83,7 +83,7 @@
                   <span>Casa do Pastel</span>
                 </div>
                 <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                  <img src="../assets/images/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
                 </div>
               </div>
               <div class="informacoes-restaurante flip-card">
@@ -116,7 +116,7 @@
                   <span>Casa do Pastel</span>
                 </div>
                 <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                  <img src="../assets/images/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
                 </div>
               </div>
               <div class="informacoes-restaurante flip-card">
@@ -149,7 +149,7 @@
                   <span>Casa do Pastel</span>
                 </div>
                 <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                  <img src="../assets/images/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
                 </div>
               </div>
               <div class="informacoes-restaurante flip-card">
@@ -182,7 +182,7 @@
                   <span>Casa do Pastel</span>
                 </div>
                 <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                  <img src="../assets/images/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
                 </div>
               </div>
               <div class="informacoes-restaurante flip-card">
@@ -215,7 +215,7 @@
                   <span>Casa do Pastel</span>
                 </div>
                 <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                  <img src="../assets/images/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
                 </div>
               </div>
               <div class="informacoes-restaurante flip-card">
@@ -248,7 +248,7 @@
                   <span>Casa do Pastel</span>
                 </div>
                 <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                  <img src="../assets/images/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
                 </div>
               </div>
               <div class="informacoes-restaurante flip-card">
@@ -281,7 +281,7 @@
                   <span>Casa do Pastel</span>
                 </div>
                 <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                  <img src="../assets/images/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
                 </div>
               </div>
               <div class="informacoes-restaurante flip-card">
@@ -314,7 +314,7 @@
                   <span>Casa do Pastel</span>
                 </div>
                 <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                  <img src="../assets/images/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
                 </div>
               </div>
               <div class="informacoes-restaurante flip-card">
