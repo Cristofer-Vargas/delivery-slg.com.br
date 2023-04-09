@@ -3,7 +3,7 @@
 main {
 
   picture.banner-delivery {
-    
+
     img {
       width: 100%;
     }
@@ -15,19 +15,20 @@ main {
     width: 100%;
     display: grid;
     gap: 30px;
-    grid-template-areas: 
-    'filtro filtro produtos produtos produtos produtos produtos produtos'
+    grid-template-areas:
+      'filtro filtro produtos produtos produtos produtos produtos produtos'
     ;
 
     .produtos-filtro {
       grid-area: filtro;
     }
-    
+
     .produtos-cards-lista {
       grid-area: produtos;
     }
 
     .produtos-filtro {
+      max-width: 300px;
       background-color: #fff;
       border-radius: 5px;
       border: 1px solid rgba(0, 0, 0, 0.25);
@@ -45,8 +46,9 @@ main {
 
         .filtro {
           padding: 10px 15px;
-          border-radius: 5px;
           border: 1px solid rgba(0, 0, 0, 0.10);
+          border-right: 0px;
+          border-left: 0px;
           transition: background-color 0.5s;
         }
 
@@ -88,18 +90,31 @@ main {
 
         }
 
-        .flip-card:hover .card-back {
+        .informacoes-restaurante:hover .card-back {
+          transform: rotateY(360deg);
+        }
+
+        .informacoes-restaurante:hover .card-front {
           transform: rotateY(180deg);
         }
 
         .informacoes-restaurante {
           width: 100%;
           position: relative;
-          transition: transform 0.8s;
+          cursor: pointer;
           transform-style: preserve-3d;
+          // perspective: 1000px;
 
-          .card-front, .card-back {
+          .card-front,
+          .card-back {
+            transition: transform 0.8s;
             backface-visibility: hidden;
+          }
+
+          .card-back {
+            position: absolute;
+            top: 0;
+            transform: rotateY(180deg);
           }
 
           .produto-nome-preco {
@@ -135,8 +150,43 @@ main {
           }
 
           .card-back {
-            position: absolute;
-            transform: rotateX(180deg);
+
+            >p {
+              width: 230px;
+              max-height: 80px;
+
+              overflow: hidden;
+              text-overflow: ellipsis;
+
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 4;
+
+              margin-bottom: 10px;
+            }
+
+            > button {
+              width: 100%;
+
+              background-color: $secundary-color;
+              padding: 10px 0;
+
+              border: 0;
+              border-radius: 5px;
+
+              color: #fff;
+              font-size: 900;
+
+              cursor: pointer;
+
+              transition: box-shadow 0.5s, scale 0.5s;
+            }
+
+            > button:hover {
+              box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+              // transform: translateY(-2px);
+              scale: 1.15;
+            }
 
           }
 

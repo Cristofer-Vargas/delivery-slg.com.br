@@ -475,138 +475,138 @@ div.menu-side-space::-webkit-scrollbar-thumb {
   background-color: #8a0000;
 }
 
-main picture.banner-delivery img {
-  width: 100%;
+@media screen and (max-width: 1100px) {
+  header {
+    position: sticky;
+  }
+  header .header-distribuition nav.logo-and-nav > label[for=menu-check],
+  header .header-distribuition nav.logo-and-nav i.menu-bar {
+    display: block;
+    cursor: pointer;
+  }
+  header .header-distribuition nav.logo-and-nav input#menu-check:checked ~ div.menu-side-space {
+    box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    left: 0;
+  }
+  header .header-distribuition nav.logo-and-nav input#menu-check:checked ~ .background-side-space {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-color: rgba(234, 234, 234, 0.6);
+    width: 100%;
+    height: 100vh;
+  }
+  header .header-distribuition nav.logo-and-nav ul {
+    display: none;
+  }
 }
-main .produtos-main-container {
-  font-family: "karla", sans-serif;
-  width: 100%;
-  display: grid;
-  gap: 30px;
-  grid-template-areas: "filtro filtro produtos produtos produtos produtos produtos produtos";
+@media screen and (max-width: 900px) {
+  header {
+    position: sticky;
+  }
+  header .header-distribuition .search-products {
+    display: none;
+  }
+  footer .delimitation-contents {
+    grid-template-areas: "title-map" "nav-site-map" "title-contact" "div-site-contact" "autorial-rules";
+  }
+  footer .delimitation-contents .site-map,
+  footer .delimitation-contents .site-contact {
+    height: auto;
+    border: 0;
+    margin-bottom: 35px;
+  }
+  footer .delimitation-contents h2 {
+    margin-top: 15px;
+  }
+  footer .delimitation-contents .autorial-rules {
+    margin-top: 10px;
+  }
 }
-main .produtos-main-container .produtos-filtro {
-  grid-area: filtro;
+@media screen and (max-width: 768px) {
+  .autorial-rules {
+    flex-direction: column;
+    align-items: center;
+  }
+  .autorial-rules img.Copyright-logo {
+    width: 50px;
+    height: auto;
+  }
+  .autorial-rules .content-rules {
+    text-align: center;
+  }
 }
-main .produtos-main-container .produtos-cards-lista {
-  grid-area: produtos;
+@media screen and (max-width: 480px) {
+  .max-width-content-limit {
+    padding: 0 20px;
+  }
+  main .main-content {
+    padding: 20px;
+  }
+  div.background-side-space {
+    display: none;
+  }
+  div.menu-side-space {
+    width: 100%;
+  }
+  footer .delimitation-contents .site-map {
+    flex-direction: column;
+  }
 }
-main .produtos-main-container .produtos-filtro {
-  max-width: 300px;
-  background-color: #fff;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.25);
+@media screen and (max-width: 375px) {
+  header .header-distribuition nav.logo-and-nav {
+    width: 50%;
+  }
+  header .header-distribuition nav.logo-and-nav > a img {
+    transform: translateX(50%);
+  }
+  header .header-distribuition .perfil-cad-login {
+    display: none;
+  }
 }
-main .produtos-main-container .produtos-filtro .filtros-container {
-  position: sticky;
-  top: 70px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+@media screen and (max-width: 768px) {
+  main .produtos-main-container {
+    grid-template-areas: "filtro" "produtos";
+  }
+  main .produtos-main-container .produtos-filtro {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    max-width: 100%;
+    z-index: 1;
+  }
+  main .produtos-main-container .produtos-filtro .filtros-container {
+    width: 100%;
+    display: grid;
+    grid-template-areas: "filtro-titulo" "filtro-btn";
+  }
+  main .produtos-main-container .produtos-filtro .filtros-container > h2 {
+    text-align: center;
+    grid-area: filtro-titulo;
+  }
+  main .produtos-main-container .produtos-filtro .filtros-container .filtro-btn {
+    grid-area: filtro-btn;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  main .produtos-main-container .produtos-filtro .filtros-container .filtro-btn .filtro {
+    min-width: 150px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  main .produtos-main-container .produtos-cards-lista {
+    justify-content: center;
+  }
 }
-main .produtos-main-container .produtos-filtro .filtros-container .filtro-title {
-  padding: 15px 20px;
-}
-main .produtos-main-container .produtos-filtro .filtros-container .filtro {
-  padding: 10px 15px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-right: 0px;
-  border-left: 0px;
-  transition: background-color 0.5s;
-}
-main .produtos-main-container .produtos-filtro .filtros-container .filtro:hover {
-  cursor: pointer;
-  background-color: #ebebeb;
-}
-main .produtos-main-container .produtos-cards-lista {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-between;
-}
-main .produtos-main-container .produtos-cards-lista .card-produto {
-  width: 250px;
-  height: 350px;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-main .produtos-main-container .produtos-cards-lista .card-produto .nome-image-restaurante .restaurante-name {
-  margin-bottom: 10px;
-}
-main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante:hover .card-back {
-  transform: rotateY(360deg);
-}
-main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante:hover .card-front {
-  transform: rotateY(180deg);
-}
-main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante {
-  width: 100%;
-  position: relative;
-  cursor: pointer;
-  transform-style: preserve-3d;
-}
-main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .card-front,
-main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .card-back {
-  transition: transform 0.8s;
-  backface-visibility: hidden;
-}
-main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .card-back {
-  position: absolute;
-  top: 0;
-  transform: rotateY(180deg);
-}
-main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .produto-nome-preco .produto-preco {
-  width: 100%;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  color: #FFA500;
-  background-color: #8a0000;
-  border-radius: 5px;
-}
-main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .produto-nome-preco .produto-preco .tipo-preco {
-  font-size: 18px;
-}
-main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .produto-nome-preco .produto-preco .valor-produto {
-  font-weight: bolder;
-  font-size: 26px;
-}
-main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .produto-nome-preco > h2 {
-  margin-bottom: 15px;
-  color: #FF4136;
-}
-main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .card-back > p {
-  width: 230px;
-  max-height: 80px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-  margin-bottom: 10px;
-}
-main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .card-back > button {
-  width: 100%;
-  background-color: #FFA500;
-  padding: 10px 0;
-  border: 0;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 900;
-  cursor: pointer;
-  transition: box-shadow 0.5s, scale 0.5s;
-}
-main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .card-back > button:hover {
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
-  scale: 1.15;
+@media screen and (max-width: 480px) {
+  main .produtos-main-container .produtos-filtro {
+    position: relative;
+  }
 }
 
 /*# sourceMappingURL=produtos.css.map */
