@@ -13,7 +13,18 @@ class ProdutosController {
 
   function BuscarNomeRestaurante(int $id) {
     $dao = new RestaurantesDAO();
-    return $dao->BuscarPorId($id);
+    $restaurante = $dao->BuscarPorId($id);
+    if (isset($restaurante) && !empty($restaurante)) {
+      return $restaurante->getNome();
+    }
+    return 'Esse produto não está associado a um restaurante';
+  }
+
+  function BuscarProdutosComFiltro(string $preco, $ordem) {
+    $dao = new ProdutoDAO();
+    $produtoFIltrado = $dao->BuscarProdutosPorFiltro($preco, $ordem);
+
+
   }
 
 }

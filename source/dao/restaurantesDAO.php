@@ -15,7 +15,6 @@ class RestaurantesDAO {
 
       if ($stmt->rowCount()) {
         $restaurante = new Restaurantes();
-        $arr = array();
 
         while ($result = $stmt->fetch(PDO::FETCH_OBJ)) {
           $restaurante->setId($result->id);
@@ -28,16 +27,12 @@ class RestaurantesDAO {
           $restaurante->setTelefone($result->telefone);
           $restaurante->setCnpj($result->cnpj);
           $restaurante->setHora_Funcionamento($result->hora_Funcionamento);
+          $restaurante->setFormas_Pagamento($result->formas_De_Pagamento);
+          $restaurante->setFormas_Entrega($result->forma_De_Entrega);
           $restaurante->setChave_Pix($result->chave_Pix);
           $restaurante->setSenha($result->senha);
           $restaurante->setAtivo($result->ativo);
           $restaurante->setImagem($result->imagem);
-          $restaurante->setDinheiro($result->dinheiro);
-          $restaurante->setCartao_Credito($result->cartao_Credito);
-          $restaurante->setCartao_Debito($result->cartao_Debito);
-          $restaurante->setPix($result->pix);
-          $restaurante->setRetirada_Local($result->retirada_Local);
-          $restaurante->setMotoboy($result->motoboy);
         }
         return $restaurante;
 

@@ -31,7 +31,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/controller
             <div class="filtros-container">
               <h2 class="filtro-title">Filtros</h2>
               <div class="filtro-btn">
-                <div class="filtro">Maior Preço</div>
+                <div class="filtro"><a href="./produtos.php?filtro=preco&ordem=desc">Maior Preço</a></div>
                 <div class="filtro">Menor Preço</div>
                 <div class="filtro">Categoria Crescente</div>
                 <div class="filtro">Categoria Decrescente</div>
@@ -45,38 +45,43 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/controller
 
           <?php 
           $controller = new ProdutosController();
-          var_dump($controller->BuscarProdutos());
+          //Verificar se tem item no $_GET e armazenar na variavel que vai buscar no foreach se nao, busca por todos mesmo
+          if (isset($_GET)) {
+            $preco = addslashes(filter_input(INPUT_GET, 'preco'));
+            $ordem = addslashes(filter_input(INPUT_GET, 'ordem'));
+            $controller->BuscarProdutosComFiltro($preco, $ordem);
+          } else {
+            $controller->BuscarProdutos();
+          }
 
-          foreach ($controller->BuscarProdutos() as $row) : ?>
+          foreach ($controller as $row) : ?>
 
             <div class="card-produto">
               <div class="nome-image-restaurante">
                 <div class="restaurante-name">
                   <i class="fa-solid fa-shop"></i>
                   <span>
-                  <?=
-                    $controller->BuscarNomeRestaurante($row->getId());
-                  ?></span>
+                  <?= $controller->BuscarNomeRestaurante($row->getId_Restaurante()) ?></span>
                 </div>
                 <div>
-                  <img src="../assets/images/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                  <img src="<?= $row->getImagem() ?>" alt="<?= $row->getNome() ?>">
                 </div>
               </div>
               <div class="informacoes-restaurante flip-card">
                 <div class="produto-nome-preco card-front">
-                  <h2>Pastel de Frango com Catupiry</h2>
+                  <h2><?= $row->getNome() ?></h2>
                   <div class="produto-preco">
                     <span class="tipo-preco">
                       R$
                     </span>
                     <span class="valor-produto">
-                      5,50
+                      <?= $row->getPreco() ?>
                     </span>
                   </div>
                 </div>
                 <div class="card-back">
                   <p>
-                    Delicioso pastel com recheio de frango desfiado e Catupiry cremoso. Frito na hora e servido quente.
+                    <?= $row->getDescricao() ?>
                   </p>
                   <button class="btn-adicionar-carrinho">
                     Adicionar ao carrinho

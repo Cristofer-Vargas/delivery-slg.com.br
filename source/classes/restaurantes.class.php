@@ -11,16 +11,12 @@ class Restaurantes {
   private string $telefone;
   private string $cnpj;
   private string $hora_Funcionamento;
+  private string $formas_Pagamento;
+  private string $formas_Entrega;
   private string $chave_Pix;
   private string $senha;
   private bool $ativo;
   private string $imagem;
-  private bool $dinheiro;
-  private bool $cartao_Credito;
-  private bool $cartao_Debito;
-  private bool $pix;
-  private bool $retirada_Local;
-  private bool $motoboy;
 
   public function getId(): int {
     return $this->id;
@@ -101,6 +97,22 @@ class Restaurantes {
   public function setHora_Funcionamento(string $hora_Funcionamento) {
     $this->hora_Funcionamento = $hora_Funcionamento;
   }
+
+  public function getFormas_Pagamento(): string {
+    return $this->formas_Pagamento;
+  }
+
+  public function setFormas_Pagamento(string $formas_Pagamento) {
+    $this->formas_Pagamento = $formas_Pagamento;
+  }
+
+  public function getFormas_Entrega(): string {
+    return $this->formas_Entrega;
+  }
+
+  public function setFormas_Entrega(string $formas_Entrega) {
+    $this->formas_Entrega = $formas_Entrega;
+  }
   
   public function getChave_Pix(): string {
     return $this->chave_Pix;
@@ -133,54 +145,5 @@ class Restaurantes {
   public function setImagem(string $imagem) {
     $this->imagem = $imagem;
   }
-
-  public function getDinheiro(): bool {
-    return $this->dinheiro;
-  }
-
-  public function setDinheiro(bool $dinheiro) {
-    $this->dinheiro = $dinheiro;
-  }
-
-  public function getCartao_Credito(): bool {
-    return $this->cartao_Credito;
-  }
-
-  public function setCartao_Credito(bool $cartao_Credito) {
-    $this->cartao_Credito = $cartao_Credito;
-  }
-
-  public function getCartao_Debito(): bool {
-    return $this->cartao_Debito;
-  }
-
-  public function setCartao_Debito(bool $cartao_Debito) {
-    $this->cartao_Debito = $cartao_Debito;
-  }
-
-  public function getPix(): bool {
-    return $this->pix;
-  }
-
-  public function setPix(bool $pix) {
-    $this->pix = $pix;
-  }
-
-  public function getRetirada_Local(): bool {
-    return $this->retirada_Local;
-  }
-
-  public function setRetirada_Local(bool $retirada_Local) {
-    $this->retirada_Local = $retirada_Local;
-  }
-
-  public function getMotoboy(): bool {
-    return $this->motoboy;
-  }
-
-  public function setMotoboy(bool $motoboy) {
-    $this->motoboy = $motoboy;
-  }
-
   
 }
