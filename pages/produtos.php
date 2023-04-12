@@ -31,12 +31,19 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/controller
             <div class="filtros-container">
               <h2 class="filtro-title">Filtros</h2>
               <div class="filtro-btn">
-                <div class="filtro"><a href="./produtos.php?filtro=preco&ordem=desc">Maior Preço</a></div>
-                <div class="filtro">Menor Preço</div>
-                <div class="filtro">Categoria Crescente</div>
-                <div class="filtro">Categoria Decrescente</div>
-                <div class="filtro">Restaurante Crescente</div>
-                <div class="filtro">Restaurante Decrescente</div>
+                <?php
+                if (isset($_GET) && isset($_GET['campo']) || isset($_GET['ordem'])) {
+                  ?>
+                    <div class="filtro limpar-filtro"><a href="produtos.php">Limpar Filtro</a></div>
+                  <?php
+                }
+                ?>
+                <div class="filtro"><a href="produtos.php?campo=preco&ordem=desc">Maior Preço</a></div>
+                <div class="filtro"><a href="produtos.php?campo=preco&ordem=asc">Menor Preço</a></div>
+                <div class="filtro"><a href="produtos.php?campo=categoria&ordem=desc">Categoria Decrescente</a></div>
+                <div class="filtro"><a href="produtos.php?campo=categoria&ordem=asc">Categoria Crescente</a></div>
+                <div class="filtro"><a href="produtos.php?campo=id_Restaurante&ordem=desc">Restaurante Decrescente</a></div>
+                <div class="filtro"><a href="produtos.php?campo=id_Restaurante&ordem=asc">Restaurante Crescente</a></div>
               </div>
             </div>
           </div>
@@ -45,16 +52,17 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/controller
 
           <?php 
           $controller = new ProdutosController();
-          //Verificar se tem item no $_GET e armazenar na variavel que vai buscar no foreach se nao, busca por todos mesmo
-          if (isset($_GET)) {
-            $preco = addslashes(filter_input(INPUT_GET, 'preco'));
+          if (isset($_GET) && isset($_GET['campo']) && isset($_GET['ordem'])) {
+            $campo = addslashes(filter_input(INPUT_GET, 'campo'));
             $ordem = addslashes(filter_input(INPUT_GET, 'ordem'));
-            $controller->BuscarProdutosComFiltro($preco, $ordem);
+
+            $produtos = $controller->BuscarProdutosComFiltro($campo, $ordem);
           } else {
-            $controller->BuscarProdutos();
+            $produtos = $controller->BuscarProdutos();
           }
 
-          foreach ($controller as $row) : ?>
+          if (!empty($produtos)) {
+          foreach ($produtos as $row) : ?>
 
             <div class="card-produto">
               <div class="nome-image-restaurante">
@@ -90,7 +98,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/controller
               </div>
             </div>
 
-            <?php endforeach; ?>
+            <?php endforeach; 
+          } else {
+            echo "Não existe nenhum produto registrado no Banco de Dados";
+          }
+          ?>
 
           </div>
         </div>

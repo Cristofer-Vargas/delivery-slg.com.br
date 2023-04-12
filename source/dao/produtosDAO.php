@@ -9,7 +9,7 @@ class ProdutoDAO {
     $conection = ConexaoBD();
 
     try {
-      $stmt = $conection->query('SELECT * FROM produtos ORDER BY id_Restaurante');
+      $stmt = $conection->query('SELECT * FROM produtos ORDER BY categoria ASC');
 
       if ($stmt->rowCount()) {
         $produto = new Produtos();
@@ -32,28 +32,29 @@ class ProdutoDAO {
       }
 
     } catch (PDOException $ex) {
-      echo "Erro ao buscar produtos no banco de dados: " . $ex->getMessage();
+      echo "Erro ao buscar produtos no banco de dados: ";
       die();
     }
   }
 
-  // Varios parametros para varios "regras" que serão inseridas no sql
-  // function BuscarProdutosPorFiltro(string $sql_filtro) {
-  function BuscarProdutosPorFiltro(string $campo, $ordem) {
+  function BuscarProdutosPorFiltro(string $campo, string $ordem) {
     $conection = ConexaoBD();
 
     try {
-      $sql = "";
       if (!empty($campo) && !empty($ordem)) {
-        $sql = "SELECT * FROM produtos ORDER BY :campo :ordem";
-        $stmt = $conection->prepare($sql);
-        $stmt->bindValue(":campo", $campo);
+        $stmt = $conection->prepare('SELECT * FROM produtos ORDER BY ' . "$campo " . "$ordem");
+
+      } else if ($campo === 'id_Restaurante') {
+        $stmt = $conection->prepare('SELECT p.* FROM `produtos` as p INNER JOIN `restaurantes` 
+        as r ON p.id_Restaurante = r.id ORDER BY r.nome ' . $ordem);
+
       } else {
-        $sql = "SELECT * FROM produtos ORDER BY nome desc";
-        $stmt = $conection->prepare($sql);
+        echo "Compos incorretos para a filtragem de dados";
+        $stmt = $conection->prepare("SELECT * FROM produtos ORDER BY categoria ASC");
       }
 
       $stmt->execute();
+
       if ($stmt->rowCount()) {
         $produto = new Produtos();
         $arr = array();
@@ -75,7 +76,8 @@ class ProdutoDAO {
       }
 
     } catch (PDOException $ex) {
-      echo "Erro ao buscar produtos com esse filtro no banco de dados: " . $ex->getMessage();
+      $_SESSION['mensagemError'] = 'Erro ao buscar produtos com esse filtro no banco de dados:';
+      $_SESSION['erroSucessOrFail'] = false;
       die();
     }
   }

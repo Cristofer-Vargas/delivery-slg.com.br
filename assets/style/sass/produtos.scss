@@ -50,6 +50,28 @@ main {
           border-right: 0px;
           border-left: 0px;
           transition: background-color 0.5s;
+
+          a {
+            display: block;
+            text-decoration: none;
+            color: #000;
+          }
+        }
+
+        .limpar-filtro {
+          background-color: #3f3f3f;
+          
+          a {
+            color: #fff;
+          }
+        }
+
+        .limpar-filtro:hover {
+
+          a {
+            color: #000;
+          }
+
         }
 
         .filtro:hover {
@@ -100,13 +122,20 @@ main {
 
         .informacoes-restaurante {
           width: 100%;
+          height: 100%;
+          margin-top: 25px;
           position: relative;
           cursor: pointer;
           transform-style: preserve-3d;
-          // perspective: 1000px;
+          
 
           .card-front,
           .card-back {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
             transition: transform 0.8s;
             backface-visibility: hidden;
           }
@@ -144,7 +173,6 @@ main {
             }
 
             >h2 {
-              margin-bottom: 15px;
               color: $text-especial-color;
             }
           }

@@ -1,6 +1,9 @@
 <?php
 // Verificar a partir da sessão se o usuário esta logado ou não, 
 // e mostrar um cabeçalho diferente: perfil e carrinho
+session_start();
+require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/functions.php');
+MsgPerssonalizadaDeErro();
 
 ?>
 

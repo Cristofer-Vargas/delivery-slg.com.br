@@ -3,6 +3,7 @@
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/dao/produtosDAO.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/dao/restaurantesDAO.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/functions.php');
 
 class ProdutosController {
 
@@ -17,12 +18,18 @@ class ProdutosController {
     if (isset($restaurante) && !empty($restaurante)) {
       return $restaurante->getNome();
     }
-    return 'Esse produto não está associado a um restaurante';
+    return 'Restaurante não encontrado';
   }
 
-  function BuscarProdutosComFiltro(string $preco, $ordem) {
+  function BuscarProdutosComFiltro(string $campo, string $ordem) {
     $dao = new ProdutoDAO();
-    $produtoFIltrado = $dao->BuscarProdutosPorFiltro($preco, $ordem);
+    $produtoFiltrado = $dao->BuscarProdutosPorFiltro($campo, $ordem);
+
+    if(!empty($produtoFiltrado)) {
+      return $produtoFiltrado;
+    } else {
+      return 'Não foi possível retornar produtos com esse filtro';
+    }
 
 
   }

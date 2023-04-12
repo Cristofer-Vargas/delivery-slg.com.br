@@ -6,3 +6,21 @@ function levarAoSobreNos() {
     window.location.href = "/delivery-slg.com.br/index.php#sobreNosSsessao";
   }
 }
+
+const notification = document.querySelector('.notification');
+notification.classList.add('show');
+
+const tempoVisivel = 5000;
+
+// Define uma função para remover a notificação após o tempo visível
+const removerNotification = () => {
+  notification.classList.add('hidden');
+  // Espera o tempo de transição do fade-out antes de remover o elemento
+  setTimeout(() => {
+    notification.remove();
+  }, 500);
+};
+
+// Chama a função para remover a notificação após o tempo visível
+setTimeout(removerNotification, tempoVisivel);
+
