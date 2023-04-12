@@ -1,5 +1,7 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/controller/produtos_controller.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/functions.php');
+header("Cache-Control: no-cache, must-revalidate");
 ?>
 
   <?php include_once('../includes/metas_gerais.php'); ?>
@@ -12,7 +14,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/controller
 </head>
 
 <body>
-  <?php include_once('../includes/header.php'); ?>
+  <?php include('../includes/header.php'); ?>
   <main>
 
     <div class="max-width-page-limit">

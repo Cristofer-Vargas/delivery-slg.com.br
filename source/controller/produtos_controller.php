@@ -1,9 +1,6 @@
 <?php
-// str_replace('\\', '/', dirname(__FILE__, 2)) . 
-
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/dao/produtosDAO.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/dao/restaurantesDAO.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/functions.php');
 
 class ProdutosController {
 

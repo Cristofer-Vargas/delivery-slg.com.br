@@ -3,8 +3,8 @@
 // e mostrar um cabeçalho diferente: perfil e carrinho
 session_start();
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/functions.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/error_message.php');
 MsgPerssonalizadaDeErro();
-
 ?>
 
 <header>
