@@ -24,3 +24,12 @@ const removerNotification = () => {
 // Chama a função para remover a notificação após o tempo visível
 setTimeout(removerNotification, tempoVisivel);
 
+
+document.addEventListener('keydown', (event) => {
+
+  if(event.key === 'Enter') {
+    let searchBarValue = document.getElementById('searchProductsInput').value;
+    window.location.href = `/delivery-slg.com.br/pages/produtos.php?busca=${searchBarValue}`;
+  }
+
+})

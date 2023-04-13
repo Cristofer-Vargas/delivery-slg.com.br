@@ -3,13 +3,16 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/classes/produtos.class.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/functions.php');
 
-class ProdutoDAO {
+class ProdutoDAO
+{
 
-  function BuscarProdutos() {
+  function BuscarProdutos()
+  {
     $conection = ConexaoBD();
 
     try {
-      $stmt = $conection->query('SELECT * FROM produtos ORDER BY categoria ASC');
+      $stmt = $conection->query('SELECT r.nome as nome_restaurante, p.* FROM `produtos` as p INNER JOIN `restaurantes` 
+      as r ON p.id_Restaurante = r.id ORDER BY p.categoria ASC');
 
       if ($stmt->rowCount()) {
         $produto = new Produtos();
@@ -22,6 +25,7 @@ class ProdutoDAO {
           $produto->setPreco($result->preco);
           $produto->setCategoria($result->categoria);
           $produto->setId_Restaurante($result->id_Restaurante);
+          $produto->setNomeRestaurante($result->nome_restaurante);
           $arr[] = clone $produto;
         }
 
@@ -30,27 +34,32 @@ class ProdutoDAO {
         echo "A busca por produtos não trouxe resultados!";
         return FALSE;
       }
-
     } catch (PDOException $ex) {
       echo "Erro ao buscar produtos no banco de dados: ";
+      throw $ex;
       die();
     }
   }
 
-  function BuscarProdutosPorFiltro(string $campo, string $ordem) {
+  function BuscarProdutosPorFiltro(string $campo, string $ordem)
+  {
     $conection = ConexaoBD();
 
+
+
     try {
-      if (!empty($campo) && !empty($ordem)) {
-        $stmt = $conection->prepare('SELECT * FROM produtos ORDER BY ' . "$campo " . "$ordem");
+      if (!empty($campo) && !empty($ordem) && $campo !== 'id_Restaurante') {
+        $stmt = $conection->prepare('SELECT r.nome as nome_restaurante, p.* FROM `produtos` as p INNER JOIN `restaurantes` 
+        as r ON p.id_Restaurante = r.id ORDER BY ' . "$campo " . "$ordem");
 
       } else if ($campo === 'id_Restaurante') {
-        $stmt = $conection->prepare('SELECT p.* FROM `produtos` as p INNER JOIN `restaurantes` 
+        $stmt = $conection->prepare('SELECT r.nome as nome_restaurante, p.* FROM `produtos` as p INNER JOIN `restaurantes` 
         as r ON p.id_Restaurante = r.id ORDER BY r.nome ' . $ordem);
 
       } else {
         echo "Compos incorretos para a filtragem de dados";
         $stmt = $conection->prepare("SELECT * FROM produtos ORDER BY categoria ASC");
+        
       }
 
       $stmt->execute();
@@ -66,6 +75,7 @@ class ProdutoDAO {
           $produto->setPreco($result->preco);
           $produto->setCategoria($result->categoria);
           $produto->setId_Restaurante($result->id_Restaurante);
+          $produto->setNomeRestaurante($result->nome_restaurante);
           $arr[] = clone $produto;
         }
 
@@ -74,12 +84,11 @@ class ProdutoDAO {
         echo "A busca por produtos no filtro não trouxe resultados!";
         return FALSE;
       }
-
     } catch (PDOException $ex) {
-      $_SESSION['mensagemError'] = 'Erro ao buscar produtos com esse filtro no banco de dados:';
+      $_SESSION['mensagemError'] = 'Erro ao buscar produtos com filtro no banco de dados';
       $_SESSION['erroSucessOrFail'] = false;
+      throw $ex;
       die();
     }
   }
-
 }

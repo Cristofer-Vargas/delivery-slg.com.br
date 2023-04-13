@@ -571,14 +571,12 @@ main .produtos-main-container .produtos-filtro .filtros-container {
 main .produtos-main-container .produtos-filtro .filtros-container .filtro-title {
   padding: 15px 20px;
 }
-main .produtos-main-container .produtos-filtro .filtros-container .filtro {
+main .produtos-main-container .produtos-filtro .filtros-container .filtro a {
   padding: 10px 15px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-right: 0px;
   border-left: 0px;
   transition: background-color 0.5s;
-}
-main .produtos-main-container .produtos-filtro .filtros-container .filtro a {
   display: block;
   text-decoration: none;
   color: #000;

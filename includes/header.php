@@ -3,8 +3,8 @@
 // e mostrar um cabeçalho diferente: perfil e carrinho
 session_start();
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/functions.php');
-require($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/error_message.php');
-MsgPerssonalizadaDeErro();
+require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/error_message.php');
+
 ?>
 
 <header>
@@ -89,7 +89,7 @@ MsgPerssonalizadaDeErro();
 
       <div class="search-products">
         <div class="search-bar">
-          <input type="text" class="searchProductsInput" placeholder="Comida, empresa, lanche predileto!" maxlength="50">
+          <input id="searchProductsInput" type="text" class="searchProductsInput" placeholder="Comida, empresa, lanche predileto!" maxlength="50">
           <img src="/delivery-slg.com.br/assets/images/header/lupa-search.png" alt="">
         </div>
       </div>

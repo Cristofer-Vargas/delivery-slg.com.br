@@ -8,6 +8,15 @@ class Produtos {
   private string $imagem;
   private float $preco;
   private string $categoria;
+  private string $nomeRestaurante;
+
+  public function setNomeRestaurante(string $nome) {
+    $this->nomeRestaurante = $nome;
+  }
+
+  public function getNomeRestaurante() :string {
+    return $this->nomeRestaurante;
+  }
 
   public function getId(): int {
     return $this->id;

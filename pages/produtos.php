@@ -1,7 +1,7 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/controller/produtos_controller.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/functions.php');
-header("Cache-Control: no-cache, must-revalidate");
+// header("Cache-Control: no-cache, must-revalidate");
 ?>
 
   <?php include_once('../includes/metas_gerais.php'); ?>
@@ -57,21 +57,24 @@ header("Cache-Control: no-cache, must-revalidate");
           if (isset($_GET) && isset($_GET['campo']) && isset($_GET['ordem'])) {
             $campo = addslashes(filter_input(INPUT_GET, 'campo'));
             $ordem = addslashes(filter_input(INPUT_GET, 'ordem'));
-
-            $produtos = $controller->BuscarProdutosComFiltro($campo, $ordem);
+            try {
+              $produtos = $controller->BuscarProdutosComFiltro($campo, $ordem);
+            } catch (Exception $ex) {
+              MsgPerssonalizadaDeErro();
+            }
           } else {
             $produtos = $controller->BuscarProdutos();
           }
 
           if (!empty($produtos)) {
-          foreach ($produtos as $row) : ?>
+            foreach ($produtos as $row) : ?>
 
             <div class="card-produto">
               <div class="nome-image-restaurante">
                 <div class="restaurante-name">
                   <i class="fa-solid fa-shop"></i>
                   <span>
-                  <?= $controller->BuscarNomeRestaurante($row->getId_Restaurante()) ?></span>
+                  <?= $row->getNomeRestaurante() ?></span>
                 </div>
                 <div>
                   <img src="<?= $row->getImagem() ?>" alt="<?= $row->getNome() ?>">
