@@ -85,10 +85,50 @@ class ProdutoDAO
         return FALSE;
       }
     } catch (PDOException $ex) {
-      $_SESSION['mensagemError'] = 'Erro ao buscar produtos com filtro no banco de dados';
+      $_SESSION['mensagemError'] = 'Erro ao buscar produtos com filtro';
       $_SESSION['erroSucessOrFail'] = false;
       throw $ex;
       die();
     }
+  }
+
+  function BuscarPorNome($busca) {
+    $conection = ConexaoBD();
+
+    try {
+      $stmt = $conection->prepare("SELECT * FROM produtos WHERE nome LIKE '%" . $busca . "%'");
+      $stmt->execute();
+
+      if ($stmt->rowCount()) {
+        $produto = new Produtos();
+        $arr = array();
+
+        while ($result = $stmt->fetch(PDO::FETCH_OBJ)) {
+          $produto->setId($result->id);
+          $produto->setNome($result->nome);
+          $produto->setDescricao($result->descricao);
+          $produto->setImagem($result->imagem);
+          $produto->setPreco($result->preco);
+          $produto->setCategoria($result->categoria);
+          $produto->setId_Restaurante($result->id_Restaurante);
+
+          $arr[] = clone $produto;
+        }
+
+        return $arr;
+
+      } else {
+        $_SESSION['mensagemError'] = 'Não foi possível um resultado para: ' . $busca;
+        $_SESSION['erroSucessOrFail'] = false;
+        return false;
+      }
+
+    } catch (PDOException $ex) {
+      $_SESSION['mensagemError'] = 'Erro ao tentar encontrar produtos no banco de dados';
+      $_SESSION['erroSucessOrFail'] = false;
+      throw $ex;
+      die();
+    }
+    
   }
 }

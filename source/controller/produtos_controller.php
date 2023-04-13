@@ -9,14 +9,7 @@ class ProdutosController {
     $produtos = $dao->BuscarProdutos();
 
     if (!empty($produtos) && $produtos !== false) {
-      $_SESSION['mensagemError'] = 'Produtos encontrados com sucesso!';
-      $_SESSION['erroSucessOrFail'] = true;
-      MsgPerssonalizadaDeErro();
       return $produtos;
-    } else {
-      $_SESSION['mensagemError'] = 'Produtos não encontrados no banco de dados!';
-      $_SESSION['erroSucessOrFail'] = false;
-      MsgPerssonalizadaDeErro();
     }
   }
 
@@ -34,17 +27,18 @@ class ProdutosController {
     $produtoFiltrado = $dao->BuscarProdutosPorFiltro($campo, $ordem);
 
     if(!empty($produtoFiltrado) && $produtoFiltrado !== false) {
-      $_SESSION['mensagemError'] = 'Busca com filtro foi um sucesso!';
-      $_SESSION['erroSucessOrFail'] = true;
-      MsgPerssonalizadaDeErro();
-      return $produtoFiltrado;
-      
-    } else {
-      $_SESSION['mensagemError'] = 'Não foi possível retornar produtos com esse filtro!';
-      $_SESSION['erroSucessOrFail'] = false;
-      MsgPerssonalizadaDeErro();
+      return $produtoFiltrado; 
     }
+  }
 
+  function BuscarProdutosPorNome(string $busca) {
+    $dao = new ProdutoDAO;
+    $produtos = $dao->BuscarPorNome($busca);
+
+    if (!empty($produtos) && $produtos !== false) {
+      return $produtos;
+    }
+    return false;
 
   }
 

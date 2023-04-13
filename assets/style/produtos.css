@@ -674,7 +674,10 @@ main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-r
   -webkit-line-clamp: 4;
   margin-bottom: 10px;
 }
-main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .card-back > button {
+main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .card-back > a {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
   width: 100%;
   background-color: #FFA500;
   padding: 10px 0;
@@ -685,7 +688,7 @@ main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-r
   cursor: pointer;
   transition: box-shadow 0.5s, scale 0.5s;
 }
-main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .card-back > button:hover {
+main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .card-back > a:hover {
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
   scale: 1.15;
 }

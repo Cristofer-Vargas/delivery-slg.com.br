@@ -193,7 +193,10 @@ main {
               margin-bottom: 10px;
             }
 
-            >button {
+            >a {
+              display: flex;
+              justify-content: center;
+              text-decoration: none;
               width: 100%;
 
               background-color: $secundary-color;
@@ -210,7 +213,7 @@ main {
               transition: box-shadow 0.5s, scale 0.5s;
             }
 
-            >button:hover {
+            >a:hover {
               box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
               // transform: translateY(-2px);
               scale: 1.15;

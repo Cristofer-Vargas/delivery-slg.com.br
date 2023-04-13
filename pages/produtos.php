@@ -28,7 +28,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
     <div class="max-width-page-limit">
       <section class="max-width-content-limit main-content">
         <div class="produtos-main-container">
-
+        <?php 
+          if (!isset($_GET['busca'])) {
+            ?>
           <div class="produtos-filtro">
             <div class="filtros-container">
               <h2 class="filtro-title">Filtros</h2>
@@ -49,32 +51,49 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
               </div>
             </div>
           </div>
+            <?php
+          }
+        ?>
 
           <div class="produtos-cards-lista">
 
           <?php 
           $controller = new ProdutosController();
-          if (isset($_GET) && isset($_GET['campo']) && isset($_GET['ordem'])) {
-            $campo = addslashes(filter_input(INPUT_GET, 'campo'));
-            $ordem = addslashes(filter_input(INPUT_GET, 'ordem'));
-            try {
-              $produtos = $controller->BuscarProdutosComFiltro($campo, $ordem);
-            } catch (Exception $ex) {
-              MsgPerssonalizadaDeErro();
+          if (isset($_GET)) {
+
+            if (isset($_GET['campo']) && isset($_GET['ordem'])){
+              $campo = addslashes(filter_input(INPUT_GET, 'campo'));
+              $ordem = addslashes(filter_input(INPUT_GET, 'ordem'));
+              try {
+                $produtos = $controller->BuscarProdutosComFiltro($campo, $ordem);
+              } catch (Exception $ex) {
+                MsgPerssonalizadaDeErro();
+              }
             }
+
+            if (isset($_GET['busca'])) {
+              $busca = addslashes(filter_input(INPUT_GET, 'busca'));
+              try {
+                $produtos = $controller->BuscarProdutosPorNome($busca);
+              } catch (Exception $ex) {
+                MsgPerssonalizadaDeErro();
+              }
+            }
+
           } else {
             $produtos = $controller->BuscarProdutos();
           }
 
           if (!empty($produtos)) {
-            foreach ($produtos as $row) : ?>
+            foreach ($produtos as $row) : 
+            ?>
 
             <div class="card-produto">
               <div class="nome-image-restaurante">
                 <div class="restaurante-name">
                   <i class="fa-solid fa-shop"></i>
                   <span>
-                  <?= $row->getNomeRestaurante() ?></span>
+                  <?= $controller->BuscarNomeRestaurante($row->getId_Restaurante()) ?></span>
                 </div>
                 <div>
                   <img src="<?= $row->getImagem() ?>" alt="<?= $row->getNome() ?>">
@@ -96,16 +115,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
                   <p>
                     <?= $row->getDescricao() ?>
                   </p>
-                  <button class="btn-adicionar-carrinho">
+                  <a href="./produtos.php?adc-car=<?= $row->getId() ?>" class="btn-adicionar-carrinho">
                     Adicionar ao carrinho
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
 
             <?php endforeach; 
           } else {
-            echo "Não existe nenhum produto registrado no Banco de Dados";
+            echo "Não foi possível retornar resusltados!";
           }
           ?>
 
