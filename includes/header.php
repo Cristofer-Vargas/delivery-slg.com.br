@@ -100,7 +100,7 @@
       <div class="perfil-cad-login">
         <ul>
           <li><a class="perfil-cad-criar-conta" href="#" title="Criar Conta">Criar Conta</a></li>
-          <li><a class="button-entrar" href="#">Entrar</a></li>
+          <li><a class="button-entrar" href="/delivery-slg.com.br/pages/login.php">Entrar</a></li>
         </ul>
       </div>
     </section>

@@ -24,7 +24,7 @@ main {
     padding: 40px;
 }
 
-button {
+.divdoform button {
     display: flex;
     /* justify-content: center; */
     align-items: center;
@@ -60,7 +60,7 @@ button img {
     justify-content: center;
 }
 
-form {
+form.form-login {
     display: flex;
     flex-direction: column;
     height: 500px;
@@ -73,7 +73,7 @@ form {
     flex-direction: column;
 }
 
-.btn_logar {
+.divdoform button.btn_logar {
     max-width: 100%;
     width: 200px;
     border-radius: 10px;
@@ -94,6 +94,7 @@ form {
     height: 32px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 input {
