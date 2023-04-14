@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/style/media-queries/all.css">
-    <link rel="stylesheet" href="../assets/style/style_login.css">
+    <link rel="stylesheet" href="../assets/style/login.css">
     <link rel="stylesheet" href="../assets/style/cadastrousuario.css">
     <title>Cadastro de Usuario</title>
 </head>

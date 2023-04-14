@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -12,6 +11,7 @@
     <link rel="stylesheet" href="../assets/style/flex.css">
     <link rel="stylesheet" href="../assets/style/all.css">
     <link rel="stylesheet" href="../assets/style/login.css">
+    <link rel="stylesheet" href="../assets/style/media-queries/all.css">
 </head>
 
 <body>
@@ -26,11 +26,11 @@
                     <div class="divdoform">
                         <form method="POST" action="../source/controller/login.controller.php" class="form-login">
                             <div class="form_align">
-                                <label for="E-mail">E-mail ou CPF:</label>
+                                <label class="style_label" for="E-mail">E-mail ou CPF:</label>
                                 <input type="text" class="cor" id="email" name="email">
                             </div>
                             <div class="form_align">
-                                <label for="senha">Senha:</label>
+                                <label class="style_label" for="senha">Senha:</label>
                                 <input type="password" class="cor" id="senha" name="senha">
                             </div>
                             <button type="submit" class="btn_logar">
@@ -39,14 +39,14 @@
                             <a href="#" class="btn_criarconta">
                                 <div>Criar uma conta</div>
                             </a>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#ModalEsqueciSenha">Esqueci minha senha</a>
+                            <a href="#" class="style_link" data-bs-toggle="modal" data-bs-target="#ModalEsqueciSenha">Esqueci minha senha</a>
                             <?php
                             if (isset($_SESSION) && isset($_SESSION['mensagem'])) { ?>
                                 <div class="alert alert-danger" role="alert">
                                     <?= $_SESSION['mensagem']; ?>
                                 </div>
-                            <?php }
-                            unset($_SESSION['mensagem']);
+                            <?php unset($_SESSION['mensagem']);
+                            }
                             ?>
                         </form>
                     </div>

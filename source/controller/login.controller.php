@@ -21,7 +21,7 @@ if (isset($_POST)) {
     if (!isset($login) || empty($login) || empty($login->getId())) {
         $_SESSION['mensagem'] = "O Email/CPF e/ou senha inseridos estão incorretos.";
         header("Location:../../pages/login.php");
-        echo json_encode(array('sucesso' => false, 'mensagem' => "O Email/CPF e/ou senha inseridos estão incorretos"));
+        echo json_encode(array('sucesso' => false, 'mensagem' => "O Email/CPF inseridos estão incorretos"));
         die();
     }
 

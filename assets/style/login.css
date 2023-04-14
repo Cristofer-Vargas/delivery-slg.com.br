@@ -95,6 +95,7 @@ form.form-login {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
 }
 
 input {
@@ -110,13 +111,13 @@ input {
     background-color: #cecece;
 }
 
-label {
+label.style_label{
     padding-bottom: 5px;
     font-weight: bold;
     font-size: 15px;
 }
 
-a {
+a.style_link {
     text-decoration: none;
     color: #FF4136;
     text-align: center;

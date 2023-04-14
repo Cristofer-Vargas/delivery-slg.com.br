@@ -22,8 +22,7 @@
                   <div class="alert alert-danger" role="alert">
                       <?= $_SESSION['mensagem']; ?>
                   </div>
-              <?php }
-                unset($_SESSION['mensagem']);
+              <?php unset($_SESSION['mensagem']);}
                 ?>
           </div>
           <div class="modal-footer">
