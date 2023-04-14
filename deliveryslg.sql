@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `carrinho` (
   KEY `id_Produto` (`id_Produto`),
   KEY `id_Restaurante` (`id_Restaurante`),
   KEY `id_Usuario` (`id_Usuario`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -74,12 +74,12 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   `nome` varchar(100) NOT NULL,
   `descricao` varchar(250) NOT NULL,
   `imagem` varchar(255) NOT NULL,
-  `preco` decimal(10,0) NOT NULL,
-  `categoria` varchar(100) NOT NULL,
+  `preco` decimal(10,2) NOT NULL,
+  `categoria` enum('sorvete','pastel','pizza','açai','frango_frito','hamburguer','cachorro_quente','x_burguer') NOT NULL,
   `id_Restaurante` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_Restaurante` (`id_Restaurante`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -99,10 +99,10 @@ CREATE TABLE IF NOT EXISTS `restaurantes` (
   `telefone` varchar(11) NOT NULL,
   `cnpj` varchar(14) NOT NULL,
   `hora_Funcionamento` varchar(100) NOT NULL,
-  `formas_De_Pagamento` set('dinheiro','carta_credito','cartao_debito','pix') NOT NULL,
+  `formas_De_Pagamento` set('dinheiro','cartao_credito','cartao_debito','pix') DEFAULT 'dinheiro' NOT NULL,
   `chave_Pix` varchar(150) NOT NULL,
   `senha` varchar(100) NOT NULL,
-  `forma_De_Entrega` set('Retirada no Local','Motoboy') NOT NULL,
+  `forma_De_Entrega` set('Retirada no Local','Motoboy') DEFAULT 'Retirada no Local' NOT NULL,
   `ativo` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `senha` varchar(50) NOT NULL,
   `imagem` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `usuarios`

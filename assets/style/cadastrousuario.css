@@ -4,72 +4,70 @@
 
 body {
     margin: 0px;
-    font-family: Arial, Helvetica, sans-serif;
-    
+    font-family: 'Karla', sans-serif;
 }
-
 
 .max-width-content-limit {
     max-width: 1180px;
     padding: 0 40px;
     margin: 0 auto;
-  }
+}
 
-  .max-width-page-limit {
+.max-width-page-limit {
     max-width: 1366px;
     height: 100%;
     background-color: #fff;
     margin: 0 auto;
     width: 100%;
-  }
+}
   
-
-main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: auto;
-    align-items: center;
-}
-
-form.form-usuario
-input{
-   background-color: #cecece;
-}
-
 .cadastrousuario-main-container{
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
 }
 
-form{
-    padding-left: 10px;
-  
+form.form-usuario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-p {
+form.form-usuario > div {
+    display: flex;
+    flex-direction: column;
+}
+
+form.form-usuario input{
+    width: 100%;
+    border-radius: 10px;
+    background-color: #cecece;
+}
+
+.cadastrousuario-main-container p {
     text-decoration: none;
     color: black;
     text-align: center;
     font-weight: bold;
 }
 
-h1{
+.cadastrousuario-main-container h1{
     padding: 10px;
     text-align: center;
 }
-button {
+.cadastrousuario-main-container button {
     width: 280px;
     height: 45px;
-    border-radius: 100px;
+    border-radius: 10px;
     border: 0px;
     font-weight: bold;
-    background-color: #cecece;
+    background-color: #aa0000;
+    color: #fff;
     padding: 0px 12px;
+    cursor: pointer;
 }
 
-
-  
-
-
+.cadastrousuario-main-container button:hover {
+    background-color: #8d0000;
+}
