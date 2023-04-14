@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+
+body {
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+
+.max-width-content-limit {
+    max-width: 1180px;
+    padding: 0 40px;
+    margin: 0 auto;
+  }
+
+  .max-width-page-limit {
+    max-width: 1366px;
+    height: 100%;
+    background-color: #fff;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: auto;
+    align-items: center;
+}
+
+form.form-usuario
+input{
+   background-color: #cecece;
+}
+
+.cadastrousuario-main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form{
+    padding-left: 10px;
+  
+}
+
+p {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+}
+
+h1{
+    padding: 10px;
+    text-align: center;
+}
+button {
+    width: 280px;
+    height: 45px;
+    border-radius: 100px;
+    border: 0px;
+    font-weight: bold;
+    background-color: #cecece;
+    padding: 0px 12px;
+}
+
+
+  
+
+
