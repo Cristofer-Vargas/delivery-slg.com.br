@@ -79,19 +79,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // position: relative;
-
-    // input#search-box:checked ~ div.container-search{
-    //   display: block;
-
-    // }
-
-    // div.container-search {
-    //   display: none;
-    //   position: absolute;
-    //   top: 0;
-
-    // }
 
     i.menu-bar {
       display: none;
@@ -118,8 +105,10 @@ header {
         height: 100%;
         display: flex;
         gap: 20px;
-
+        margin: 0;
+        
         li {
+          margin-bottom: 0;
           height: 100%;
           display: flex;
           align-items: center;

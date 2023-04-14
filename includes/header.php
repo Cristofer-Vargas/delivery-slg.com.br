@@ -102,7 +102,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
 
       <div class="perfil-cad-login">
         <ul>
-          <li><a class="perfil-cad-criar-conta" href="#" title="Criar Conta">Criar Conta</a></li>
+          <li><a class="perfil-cad-criar-conta" href="/delivery-slg.com.br/pages/cadastrousuario.php" title="Criar Conta">Criar Conta</a></li>
           <li><a class="button-entrar" href="/delivery-slg.com.br/pages/login.php">Entrar</a></li>
         </ul>
       </div>
