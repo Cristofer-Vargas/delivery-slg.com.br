@@ -59,7 +59,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
 
           <?php 
           $controller = new ProdutosController();
-          if (isset($_GET)) {
+          if (isset($_GET) && (isset($_GET['campo']) && isset($_GET['ordem'])) || isset($_GET['busca'])) {
 
             if (isset($_GET['campo']) && isset($_GET['ordem'])){
               $campo = addslashes(filter_input(INPUT_GET, 'campo'));
@@ -83,6 +83,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
           } else {
             $produtos = $controller->BuscarProdutos();
           }
+
 
           if (!empty($produtos)) {
             foreach ($produtos as $row) : 

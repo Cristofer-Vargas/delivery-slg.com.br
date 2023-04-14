@@ -44,17 +44,17 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
               <h3>Cadastrar Restaurante</h3>
             </a>
 
-            <a href="#sobre-nos-sessao" onclick="levarAoSobreNos()">
+            <a href="/delivery-slg.com.br/index.php#sobre-nos-sessao" onclick="levarAoSobreNos()">
               <i class="fa-sharp fa-solid fa-circle-info"></i>
               <h3>Sobre Nós</h3>
             </a>
 
-            <a href="#">
+            <a href="/delivery-slg.com.br/pages/cadastrousuario.php">
               <i class="fa-solid fa-user"></i>
               <h3>Criar Conta</h3>
             </a>
 
-            <a href="#">
+            <a href="/delivery-slg.com.br/pages/login.php">
               <i class="fa-regular fa-user"></i>
               <h3>Entrar</h3>
             </a>
