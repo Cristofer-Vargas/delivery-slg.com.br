@@ -28,9 +28,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
     <div class="max-width-page-limit">
       <section class="max-width-content-limit main-content">
         <div class="produtos-main-container">
-        <?php 
-          if (!isset($_GET['busca'])) {
-            ?>
           <div class="produtos-filtro">
             <div class="filtros-container">
               <h2 class="filtro-title">Filtros</h2>
@@ -41,6 +38,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
                     <div class="filtro limpar-filtro"><a href="produtos.php">Limpar Filtro</a></div>
                   <?php
                 }
+                if (!isset($_GET['busca'])) {
                 ?>
                 <div class="filtro"><a href="produtos.php?campo=preco&ordem=desc">Maior Preço</a></div>
                 <div class="filtro"><a href="produtos.php?campo=preco&ordem=asc">Menor Preço</a></div>
@@ -48,12 +46,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
                 <div class="filtro"><a href="produtos.php?campo=categoria&ordem=asc">Categoria Crescente</a></div>
                 <div class="filtro"><a href="produtos.php?campo=id_Restaurante&ordem=desc">Restaurante Decrescente</a></div>
                 <div class="filtro"><a href="produtos.php?campo=id_Restaurante&ordem=asc">Restaurante Crescente</a></div>
+                <?php
+                  } else {
+                    ?>
+                      <div class="filtro limpar-filtro"><a href="produtos.php">Limpar Filtro</a></div>
+                    <?php
+                  }
+                ?>
               </div>
             </div>
           </div>
-            <?php
-          }
-        ?>
 
           <div class="produtos-cards-lista">
 

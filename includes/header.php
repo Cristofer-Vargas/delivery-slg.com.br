@@ -89,7 +89,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
 
       <div class="search-products">
         <div class="search-bar">
-          <input id="searchProductsInput" type="text" class="searchProductsInput" placeholder="Comida, empresa, lanche predileto!" maxlength="50">
+          <input id="searchProductsInput" type="text" class="searchProductsInput" placeholder="Ache seu lanche da vez!" maxlength="50">
           <img src="/delivery-slg.com.br/assets/images/header/lupa-search.png" alt="">
         </div>
       </div>
