@@ -559,3 +559,68 @@ div.menu-side-space::-webkit-scrollbar-thumb {
 }
 
 /*# sourceMappingURL=all.css.map */
+div.notification {
+  width: 300px;
+  height: 100px;
+  padding: 2px;
+  font-family: "karla", sans-serif;
+  background-color: #FFA500;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 1.5s, right 0.8s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+div.notification .notification-title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 8px;
+  flex: 1;
+}
+div.notification .notification-title > i {
+  margin-right: 8px;
+}
+div.notification .notification-title > span {
+  font-size: 18px;
+}
+div.notification .notification-mesage {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 0 8px;
+  background-color: #fff;
+  flex: 2;
+}
+
+div.notification-error {
+  background-color: #ff0000;
+}
+div.notification-error .notification-title {
+  color: #fff;
+}
+
+div.notification-sucess {
+  background-color: #00ff2a;
+}
+div.notification-sucess .notification-title {
+  color: #000;
+}
+
+div.notification.show {
+  opacity: 1;
+}
+
+div.notification.hidden {
+  right: -320px;
+}
+
+/*# sourceMappingURL=all.css.map */

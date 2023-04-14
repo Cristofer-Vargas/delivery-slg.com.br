@@ -475,6 +475,70 @@ div.menu-side-space::-webkit-scrollbar-thumb {
   background-color: #8a0000;
 }
 
+div.notification {
+  width: 300px;
+  height: 100px;
+  padding: 2px;
+  font-family: "karla", sans-serif;
+  background-color: #FFA500;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 1.5s, right 0.8s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+div.notification .notification-title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 8px;
+  flex: 1;
+}
+div.notification .notification-title > i {
+  margin-right: 8px;
+}
+div.notification .notification-title > span {
+  font-size: 18px;
+}
+div.notification .notification-mesage {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 0 8px;
+  background-color: #fff;
+  flex: 2;
+}
+
+div.notification-error {
+  background-color: #ff0000;
+}
+div.notification-error .notification-title {
+  color: #fff;
+}
+
+div.notification-sucess {
+  background-color: #00ff2a;
+}
+div.notification-sucess .notification-title {
+  color: #000;
+}
+
+div.notification.show {
+  opacity: 1;
+}
+
+div.notification.hidden {
+  right: -320px;
+}
+
 main picture.banner-delivery img {
   width: 100%;
 }
@@ -507,12 +571,24 @@ main .produtos-main-container .produtos-filtro .filtros-container {
 main .produtos-main-container .produtos-filtro .filtros-container .filtro-title {
   padding: 15px 20px;
 }
-main .produtos-main-container .produtos-filtro .filtros-container .filtro {
+main .produtos-main-container .produtos-filtro .filtros-container .filtro a {
   padding: 10px 15px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-right: 0px;
   border-left: 0px;
   transition: background-color 0.5s;
+  display: block;
+  text-decoration: none;
+  color: #000;
+}
+main .produtos-main-container .produtos-filtro .filtros-container .limpar-filtro {
+  background-color: #3f3f3f;
+}
+main .produtos-main-container .produtos-filtro .filtros-container .limpar-filtro a {
+  color: #fff;
+}
+main .produtos-main-container .produtos-filtro .filtros-container .limpar-filtro:hover a {
+  color: #000;
 }
 main .produtos-main-container .produtos-filtro .filtros-container .filtro:hover {
   cursor: pointer;
@@ -547,12 +623,18 @@ main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-r
 }
 main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante {
   width: 100%;
+  height: 100%;
+  margin-top: 25px;
   position: relative;
   cursor: pointer;
   transform-style: preserve-3d;
 }
 main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .card-front,
 main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .card-back {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   transition: transform 0.8s;
   backface-visibility: hidden;
 }
@@ -580,7 +662,6 @@ main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-r
   font-size: 26px;
 }
 main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .produto-nome-preco > h2 {
-  margin-bottom: 15px;
   color: #FF4136;
 }
 main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .card-back > p {
@@ -593,7 +674,10 @@ main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-r
   -webkit-line-clamp: 4;
   margin-bottom: 10px;
 }
-main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .card-back > button {
+main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .card-back > a {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
   width: 100%;
   background-color: #FFA500;
   padding: 10px 0;
@@ -604,7 +688,7 @@ main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-r
   cursor: pointer;
   transition: box-shadow 0.5s, scale 0.5s;
 }
-main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .card-back > button:hover {
+main .produtos-main-container .produtos-cards-lista .card-produto .informacoes-restaurante .card-back > a:hover {
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
   scale: 1.15;
 }

@@ -16,6 +16,7 @@ class Restaurantes {
   private string $chave_Pix;
   private string $senha;
   private bool $ativo;
+  private string $imagem;
 
   public function getId(): int {
     return $this->id;
@@ -96,7 +97,7 @@ class Restaurantes {
   public function setHora_Funcionamento(string $hora_Funcionamento) {
     $this->hora_Funcionamento = $hora_Funcionamento;
   }
-  
+
   public function getFormas_Pagamento(): string {
     return $this->formas_Pagamento;
   }
@@ -104,7 +105,7 @@ class Restaurantes {
   public function setFormas_Pagamento(string $formas_Pagamento) {
     $this->formas_Pagamento = $formas_Pagamento;
   }
-  
+
   public function getFormas_Entrega(): string {
     return $this->formas_Entrega;
   }
@@ -136,4 +137,13 @@ class Restaurantes {
   public function setAtivo(bool $ativo) {
     $this->ativo = $ativo;
   }
+  
+  public function getImagem(): string {
+    return $this->imagem;
+  }
+
+  public function setImagem(string $imagem) {
+    $this->imagem = $imagem;
+  }
+  
 }
