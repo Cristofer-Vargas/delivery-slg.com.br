@@ -22,7 +22,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
         </div>
 
         <div class="menu-side-space">
-
           <div class="header-side-space">
             <div class="search-side-space">
               <input type="text" id="searchInputSideSpace" placeholder="Pesquisar">
@@ -76,16 +75,17 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
             </div>
           </div>
         </div>
-
         <!--  -->
 
-        <a href="/delivery-slg.com.br/index.php" title="Início"><img src="/delivery-slg.com.br/assets/images/Logo-Delivery-SLG.png" alt="Delivery SLG Logo"></a>
+        <a href="/delivery-slg.com.br/index.php" title="Início">
+          <img src="/delivery-slg.com.br/assets/images/Logo-Delivery-SLG.png" alt="Delivery SLG Logo">
+        </a>
         <ul>
           <li><a href="/delivery-slg.com.br/index.php">Início</a></li>
           <li><a href="#">Restaurantes</a></li>
           <li><a href="#sobre-nos-sessao" onclick="levarAoSobreNos()">Sobre Nós</a></li>
         </ul>
-      </nav> 
+      </nav>
 
       <div class="search-products">
         <div class="search-bar">
@@ -93,19 +93,44 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
           <img src="/delivery-slg.com.br/assets/images/header/lupa-search.png" alt="">
         </div>
       </div>
-      
-      <!-- <input type="checkbox" id="search-box">
 
-      <div class="container-search">
-        <h1>Teste</h1>
-      </div> -->
-
-      <div class="perfil-cad-login">
+      <!-- <div class="perfil-cad-login">
         <ul>
           <li><a class="perfil-cad-criar-conta" href="/delivery-slg.com.br/pages/cadastrousuario.php" title="Criar Conta">Criar Conta</a></li>
           <li><a class="button-entrar" href="/delivery-slg.com.br/pages/login.php">Entrar</a></li>
         </ul>
+      </div> -->
+
+      <div class="perfil-logged">
+        <ul>
+          <li class="carrinho-container">
+            <label for="carrinhoLateralInput">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </label>
+            <span>
+              1
+              <!-- Na tabela carrinho da para usar a função rowCount()
+              para trazer o número de itens no carrinho -->
+            </span>
+
+          </li>
+          <li class="login-container">
+            <a title="Perfil" href="/delivery-slg.com.br/pages/perfilusuario.php">
+              <i class="fa-solid fa-circle-user"></i>
+            </a>
+          </li>
+        </ul>
       </div>
+
     </section>
   </div>
 </header>
+
+<input type="checkbox" id="carrinhoLateralInput">
+
+<div class="carrinho-lateral-background">
+  <label class="disable-carrinho-lateral" for="carrinhoLateralInput"></label>
+  <div class="carrinho-lateral-container">
+    
+  </div>
+</div>

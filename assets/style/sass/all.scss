@@ -239,6 +239,126 @@ header {
 
     }
 
+    .perfil-logged {
+      height: 100%;
+
+      ul {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 50px;
+
+        li {
+          font-size: 22px;
+
+          a, i {
+            text-decoration: none;
+            color: $text-especial-color;
+            transition: color 0.5s;
+            cursor: pointer;
+          }
+        }
+        
+        li.carrinho-container {
+          position: relative;
+
+          i:hover {
+            color: $secundary-color;
+          }
+
+          span {
+            width: 20px;
+            height: 20px;
+
+
+            font-size: 14px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+
+            background-color: #fff;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.10);
+
+            position: absolute;
+            top: -50%;
+            right: -50%;
+          }
+        }
+
+        li.login-container i{
+          font-size: 32px;
+        }
+
+        li.login-container:hover i {
+          color: $secundary-color;
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+input#carrinhoLateralInput {
+  display: none;
+}
+
+div.carrinho-lateral-background {
+  width: 0;
+  min-height: 100vh;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  
+  z-index: 1;
+  transition: width 0.5s;
+  
+  label.disable-carrinho-lateral {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    
+    opacity: 0;
+    transition: opacity 0.5s;
+    
+    background-color: rgba($color: $background-gray-white, $alpha: 0.6);
+  }
+
+  .carrinho-lateral-container {
+    width: 480px;
+    min-height: 100vh;
+    background-color: #fff;
+
+    position: absolute;
+    top: 64px;
+    right: -480px;
+
+    transition: right 0.5s;
+  }
+
+}
+
+input#carrinhoLateralInput:checked ~ {
+
+  div.carrinho-lateral-background {
+    width: 100%;
+
+    label.disable-carrinho-lateral {
+      opacity: 1;
+    }
+
+    .carrinho-lateral-container {
+      right: 0;
+    }
+
   }
 
 }
@@ -246,6 +366,7 @@ header {
 // Corpo da página / Main
 
 main {
+  font-family: 'Karla', sans-serif;
   width: 100%;
 
   .main-content {
