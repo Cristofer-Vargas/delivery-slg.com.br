@@ -12,7 +12,8 @@ class ProdutoDAO
 
     try {
       $stmt = $conection->query('SELECT r.nome as nome_restaurante, p.* FROM `produtos` as p INNER JOIN `restaurantes` 
-      as r ON p.id_Restaurante = r.id ORDER BY p.categoria ASC');
+      as r ON p.id_Restaurante = r.id ORDER BY LOWER(p.categoria) ASC
+');
 
       if ($stmt->rowCount()) {
         $produto = new Produtos();
@@ -50,7 +51,7 @@ class ProdutoDAO
     try {
       if (!empty($campo) && !empty($ordem) && $campo !== 'id_Restaurante') {
         $stmt = $conection->prepare('SELECT r.nome as nome_restaurante, p.* FROM `produtos` as p INNER JOIN `restaurantes` 
-        as r ON p.id_Restaurante = r.id ORDER BY ' . "$campo " . "$ordem");
+        as r ON p.id_Restaurante = r.id ORDER BY ' . 'LOWER(' . $campo . ') ' . "$ordem");
 
       } else if ($campo === 'id_Restaurante') {
         $stmt = $conection->prepare('SELECT r.nome as nome_restaurante, p.* FROM `produtos` as p INNER JOIN `restaurantes` 
