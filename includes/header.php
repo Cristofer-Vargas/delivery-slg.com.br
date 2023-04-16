@@ -33,6 +33,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
           <hr>
 
           <div class="distribuition-butons-side-space">
+            <a href="/delivery-slg.com.br/pages/produtos.php">
+              <i class="fa-solid fa-shop"></i>
+              <h3>Produtos</h3>
+            </a>
+
             <a href="#">
               <i class="fa-solid fa-shop"></i>
               <h3>Restaurantes</h3>
@@ -126,11 +131,57 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
   </div>
 </header>
 
-<input type="checkbox" id="carrinhoLateralInput">
+<input type="checkbox" id="carrinhoLateralInput" checked>
 
 <div class="carrinho-lateral-background">
   <label class="disable-carrinho-lateral" for="carrinhoLateralInput"></label>
   <div class="carrinho-lateral-container">
-    
+    <h3>Carrinho</h3>
+    <div class="carrinho-itens-container">
+
+      <div>
+        <div>
+          <img src="" alt="">
+          <div>
+            <i class="fa-solid fa-shop"></i>
+            <span>Casa dos Pasteis</span>
+          </div>
+        </div>
+        <div>
+          <h4>Pastel de Frango</h4>
+          <div>
+            <span>23.99</span>
+            <div>
+              <i class="fa-solid fa-caret-left"></i>
+              <span class="quantidade-item">1</span>
+              <i class="fa-solid fa-caret-right"></i>
+            </div>
+            <a href="">Remover</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="total-dos-pedidos">
+      <table>
+        <tbody>
+          <tr>
+            <td>Entrega:</td>
+            <td>7,00</td>
+          </tr>
+          <tr>
+            <td>Subtotal:</td>
+            <td>23,99</td>
+          </tr>
+          <tr>
+            <td>Total:</td>
+            <td>30,99</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="finalizar-compra">
+        Finalizar compra
+      </div>
+    </div>
   </div>
 </div>

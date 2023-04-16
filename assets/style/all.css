@@ -189,6 +189,7 @@ header .header-distribuition .perfil-logged ul {
   display: flex;
   align-items: center;
   gap: 50px;
+  margin: 0;
 }
 header .header-distribuition .perfil-logged ul li {
   font-size: 22px;
