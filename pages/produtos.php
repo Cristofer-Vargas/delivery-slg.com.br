@@ -7,6 +7,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
   <?php include_once('../includes/metas_gerais.php'); ?>
   <title>Produtos</title>
 
+  <link rel="stylesheet" href="../assets/style/all.css">
   <link rel="stylesheet" href="../assets/style/produtos.css">
 
   <link rel="stylesheet" href="../assets/style/media-queries/all.css">

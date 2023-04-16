@@ -4,11 +4,11 @@ include_once('../includes/metas_gerais.php')
 
 ?>
 
+  <link rel="stylesheet" href="../assets/style/media-queries/all.css">
+  <link rel="stylesheet" href="../assets/style/cadastroempresa.css">
+
+  <link rel="stylesheet" href="../assets/style/media-queries/all.css">
   <title>cadastro de empresa</title>
-  <link rel="stylesheet" href="/delivery-slg.com.br/assets/style/cadastroempresa.css">
-
-
-  <link rel="stylesheet" href="/delivery-slg.com.br/assets/style/media-queries/all.css">
 
 </head>
 
