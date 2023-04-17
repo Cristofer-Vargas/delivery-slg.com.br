@@ -131,7 +131,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
   </div>
 </header>
 
-<input type="checkbox" id="carrinhoLateralInput" checked>
+<input type="checkbox" id="carrinhoLateralInput">
 
 <div class="carrinho-lateral-background">
   <label class="disable-carrinho-lateral" for="carrinhoLateralInput"></label>
