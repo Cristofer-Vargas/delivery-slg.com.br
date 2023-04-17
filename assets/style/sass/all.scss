@@ -1,24 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import './variables.scss';
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-
-
-$primary-color: #8a0000;
-$primary-color-2: #620000;
-$secundary-color: #FFA500;
-$text-especial-color: #FF4136;
-
-$primary-font: 'karla', sans-serif;
-$especial-font: 'Pacifico', cursive;
-
-$color-neutro: #EAEAEA;
-$background-gray-white: #FBFBFB;
-
 
 body {
   background-color: $color-neutro;
@@ -311,7 +297,7 @@ input#carrinhoLateralInput {
 
 div.carrinho-lateral-background {
   width: 0;
-  min-height: 100vh;
+  height: 100vh;
 
   position: fixed;
   top: 0;
@@ -335,14 +321,124 @@ div.carrinho-lateral-background {
 
   .carrinho-lateral-container {
     width: 480px;
-    min-height: 100vh;
+    height: 100vh;
     background-color: #fff;
+    box-shadow: -4px 0px 4px 0px rgba(0, 0, 0, 0.10);
 
     position: absolute;
-    top: 64px;
-    right: -480px;
+    top: 0;
+    right: -484px;
+
+    display: grid;
+    align-content: space-between;
+
+    padding-top: 64px;
 
     transition: right 0.5s;
+
+    font-family: $primary-font;
+
+    > div::-webkit-scrollbar {
+      width: 5px;
+    }
+    
+    > div::-webkit-scrollbar-thumb {
+      background-color: $primary-color;
+    }
+    
+    > div {
+      // max-height: 50vh;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      padding-bottom: 20px;
+
+      > h3 {
+        width: 100%;
+        margin: 20px;
+        text-align: center;
+        font-size: 1.75em;
+        color: $text-especial-color;
+      }
+
+      div.carrinho-itens-container {
+        width: 100%;
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+  
+        div.pedido-item {
+          display: flex;
+          padding: 10px;
+          border: 1px solid rgba(0, 0, 0, 0.10);
+        }
+  
+      }
+      
+    }
+
+    div.total-dos-pedidos {
+      width: 100%;
+      height: auto;
+      // position: absolute;
+      // bottom: 0;
+      // left: 0;
+      padding: 10px;
+      background-color: #fff;
+      box-shadow: 0px -4px 4px 0px rgba(0, 0, 0, .25);
+      overflow: hidden;
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        tbody {
+
+          td, th {
+            padding: 5px 10px;
+          }
+
+          td {
+            text-align: right;
+          }
+
+          th {
+            text-align: left;
+            font-weight: normal;
+          }
+
+          th.total-pedidos, td.valor-total-pedidos {
+            font-weight: bolder;
+            font-size: 1.3em;
+          }
+          
+          tr:nth-child(2n - 1) {
+            background-color: $color-neutro;
+          }
+
+        }
+
+      }
+
+      button.finalizar-compra {
+        width: 100%;
+        padding: 10px;
+        margin-top: 15px;
+        border: 0;
+        border-radius: 5px;
+        background-color: $secundary-color;
+        color: #fff;
+        font-size: 1.3em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      button.finalizar-compra:hover {
+        background-color: $secundary-color-2;
+      }
+
+    }
+
   }
 
 }

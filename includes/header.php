@@ -113,7 +113,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
               <i class="fa-solid fa-cart-shopping"></i>
             </label>
             <span>
-              1
+              4
               <!-- Na tabela carrinho da para usar a função rowCount()
               para trazer o número de itens no carrinho -->
             </span>
@@ -136,52 +136,115 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
 <div class="carrinho-lateral-background">
   <label class="disable-carrinho-lateral" for="carrinhoLateralInput"></label>
   <div class="carrinho-lateral-container">
-    <h3>Carrinho</h3>
-    <div class="carrinho-itens-container">
-
-      <div>
-        <div>
-          <img src="" alt="">
+    <div>
+      <h3>Carrinho</h3>
+      <div class="carrinho-itens-container">
+        <div class="pedido-item">
           <div>
-            <i class="fa-solid fa-shop"></i>
-            <span>Casa dos Pasteis</span>
+            <img src="/delivery-slg.com.br/assets/images/default-images/lanches-produtos.png" alt="">
+            <div>
+              <i class="fa-solid fa-shop"></i>
+              <span>Casa dos Pasteis</span>
+            </div>
+          </div>
+          <div>
+            <h4>Pastel de Frango</h4>
+            <div>
+              <span>23.99</span>
+              <div>
+                <i class="fa-solid fa-caret-left"></i>
+                <span class="quantidade-item">1</span>
+                <i class="fa-solid fa-caret-right"></i>
+              </div>
+              <a href="">Remover</a>
+            </div>
           </div>
         </div>
-        <div>
-          <h4>Pastel de Frango</h4>
+        <div class="pedido-item">
           <div>
-            <span>23.99</span>
+            <img src="/delivery-slg.com.br/assets/images/default-images/lanches-produtos.png" alt="">
             <div>
-              <i class="fa-solid fa-caret-left"></i>
-              <span class="quantidade-item">1</span>
-              <i class="fa-solid fa-caret-right"></i>
+              <i class="fa-solid fa-shop"></i>
+              <span>Casa dos Pasteis</span>
             </div>
-            <a href="">Remover</a>
+          </div>
+          <div>
+            <h4>Pastel de Frango</h4>
+            <div>
+              <span>23.99</span>
+              <div>
+                <i class="fa-solid fa-caret-left"></i>
+                <span class="quantidade-item">1</span>
+                <i class="fa-solid fa-caret-right"></i>
+              </div>
+              <a href="">Remover</a>
+            </div>
+          </div>
+        </div>
+        <div class="pedido-item">
+          <div>
+            <img src="/delivery-slg.com.br/assets/images/default-images/lanches-produtos.png" alt="">
+            <div>
+              <i class="fa-solid fa-shop"></i>
+              <span>Casa dos Pasteis</span>
+            </div>
+          </div>
+          <div>
+            <h4>Pastel de Frango</h4>
+            <div>
+              <span>23.99</span>
+              <div>
+                <i class="fa-solid fa-caret-left"></i>
+                <span class="quantidade-item">1</span>
+                <i class="fa-solid fa-caret-right"></i>
+              </div>
+              <a href="">Remover</a>
+            </div>
+          </div>
+        </div>
+        <div class="pedido-item">
+          <div>
+            <img src="/delivery-slg.com.br/assets/images/default-images/lanches-produtos.png" alt="">
+            <div>
+              <i class="fa-solid fa-shop"></i>
+              <span>Casa dos Pasteis</span>
+            </div>
+          </div>
+          <div>
+            <h4>Pastel de Frango</h4>
+            <div>
+              <span>23.99</span>
+              <div>
+                <i class="fa-solid fa-caret-left"></i>
+                <span class="quantidade-item">1</span>
+                <i class="fa-solid fa-caret-right"></i>
+              </div>
+              <a href="">Remover</a>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
     <div class="total-dos-pedidos">
       <table>
         <tbody>
           <tr>
-            <td>Entrega:</td>
-            <td>7,00</td>
+            <th scope="row">Entrega:</th>
+            <td>R$ 7,00</td>
           </tr>
           <tr>
-            <td>Subtotal:</td>
-            <td>23,99</td>
+            <th scope="row">Subtotal:</th>
+            <td>R$ 23,99</td>
           </tr>
           <tr>
-            <td>Total:</td>
-            <td>30,99</td>
+            <th scope="row" class="total-pedidos">Total:</th>
+            <td class="valor-total-pedidos">R$ 30,99</td>
           </tr>
         </tbody>
       </table>
-      <div class="finalizar-compra">
+      <button class="finalizar-compra">
         Finalizar compra
-      </div>
+      </button>
     </div>
   </div>
 </div>
