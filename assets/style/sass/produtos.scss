@@ -10,6 +10,19 @@ main {
 
   }
 
+  .resultado-busca {
+    padding: 15px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin-bottom: 30px;
+
+    span.busca {
+      color: $text-especial-color;
+      font-weight: bold;
+    }
+
+  }
+
   .produtos-main-container {
     font-family: $primary-font;
     width: 100%;
