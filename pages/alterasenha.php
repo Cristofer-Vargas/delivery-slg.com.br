@@ -11,18 +11,19 @@
               </div>
               <div class="form_align">
                   <label for="senha">Nova senha:</label>
-                  <input type="password" class="cor input_altera_senha" id="senha" name="senha">
+                  <input type="password" class="cor input_altera_senha" id="novasenha" name="senha">
               </div>
               <div class="form_align">
                   <label for="senha">Confirme a nova senha:</label>
-                  <input type="password" class="cor input_altera_senha" id="senha" name="senha">
+                  <input type="password" class="cor input_altera_senha" id="confirmasenha" name="senha">
               </div>
               <?php
                 if (isset($_SESSION) && isset($_SESSION['mensagem'])) { ?>
                   <div class="alert alert-danger" role="alert">
                       <?= $_SESSION['mensagem']; ?>
                   </div>
-              <?php unset($_SESSION['mensagem']);}
+              <?php unset($_SESSION['mensagem']);
+                }
                 ?>
           </div>
           <div class="modal-footer">
@@ -32,10 +33,36 @@
       </div>
   </form>
 
+
   <script>
+      toastr.options = {
+          "closeButton": false,
+          "debug": false,
+          "newestOnTop": false,
+          "progressBar": false,
+          "positionClass": "toast-bottom-right",
+          "preventDuplicates": false,
+          "onclick": null,
+          "showDuration": "300",
+          "hideDuration": "1000",
+          "timeOut": "5000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+      }
+
       function save() {
           var inp = document.getElementsByClassName('input_altera_senha');
           var form_Data = new FormData();
+          var novasenha = document.getElementById('novasenha');
+          var confirmasenha = document.getElementById('confirmasenha');
+
+          if (novasenha.value != confirmasenha.value) {
+              toastr.error('As senhas inseridas não são iguais.');
+              return;
+          }
 
           for (let i = 0; i < inp.length; i++) {
               form_Data.append(inp[i].name, inp[i].value);
@@ -46,10 +73,11 @@
                   body: form_Data
               }).then(res => res.json())
               .then(res => {
+                  console.log(res);
                   if (res.sucesso == true) {
-                    setTimeout(() => {
-                        window.location.href = "../index.php";
-                    }, 2000);
+                      toastr.success(res.mensagem);
+                  } else {
+                      toastr.error(res.mensagem);
                   }
               })
               .catch(err => console.error('erro :: ', err))
