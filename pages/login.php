@@ -40,7 +40,7 @@
                             <button type="submit" class="btn_logar">
                                 <div>Logar</div>
                             </button>
-                            <a href="#" class="btn_criarconta">
+                            <a href="/delivery-slg.com.br/pages/cadastrousuario.php" class="btn_criarconta">
                                 <div>Criar uma conta</div>
                             </a>
                             <a href="#" class="style_link" data-bs-toggle="modal" data-bs-target="#ModalEsqueciSenha">Esqueci minha senha</a>

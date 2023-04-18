@@ -3,12 +3,13 @@
 include_once('./includes/metas_gerais.php')
 
 ?>
+<link rel="stylesheet" href="./assets/style/all.css">
+<link rel="stylesheet" href="./assets/style/index.css">
+
+
+<link rel="stylesheet" href="./assets/style/media-queries/index.css">
+<link rel="stylesheet" href="./assets/style/media-queries/all.css">
 <title>Página Inicial</title>
-<link rel="stylesheet" href="/delivery-slg.com.br/assets/style/index.css">
-
-
-<link rel="stylesheet" href="/delivery-slg.com.br/assets/style/media-queries/index.css">
-<link rel="stylesheet" href="/delivery-slg.com.br/assets/style/media-queries/all.css">
 
 </head>
 

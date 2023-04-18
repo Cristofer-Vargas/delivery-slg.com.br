@@ -1,10 +1,13 @@
 <?php
-
+require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/controller/produtos_controller.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/functions.php');
+// header("Cache-Control: no-cache, must-revalidate");
 ?>
 
   <?php include_once('../includes/metas_gerais.php'); ?>
   <title>Produtos</title>
 
+  <link rel="stylesheet" href="../assets/style/all.css">
   <link rel="stylesheet" href="../assets/style/produtos.css">
 
   <link rel="stylesheet" href="../assets/style/media-queries/all.css">
@@ -12,7 +15,7 @@
 </head>
 
 <body>
-  <?php include_once('../includes/header.php'); ?>
+  <?php include('../includes/header.php'); ?>
   <main>
 
     <div class="max-width-page-limit">
@@ -25,320 +28,118 @@
 
     <div class="max-width-page-limit">
       <section class="max-width-content-limit main-content">
+        <?php
+          if (isset($_GET['busca']) && !empty($_GET['busca'])) {
+          ?>
+            <div class="resultado-busca">
+              <p>Resutado para "<span class="busca"><?= $_GET['busca'] ?></span>"</p>
+            </div>
+          <?php
+          }
+        ?>
         <div class="produtos-main-container">
-
           <div class="produtos-filtro">
             <div class="filtros-container">
               <h2 class="filtro-title">Filtros</h2>
               <div class="filtro-btn">
-                <div class="filtro">Maior Preço</div>
-                <div class="filtro">Menor Preço</div>
-                <div class="filtro">Categoria Crescente</div>
-                <div class="filtro">Categoria Decrescente</div>
-                <div class="filtro">Restaurante Crescente</div>
-                <div class="filtro">Restaurante Decrescente</div>
+                <?php
+                if (isset($_GET) && isset($_GET['campo']) || isset($_GET['ordem'])) {
+                  ?>
+                    <div class="filtro limpar-filtro"><a href="produtos.php">Limpar Filtro</a></div>
+                  <?php
+                }
+                if (!isset($_GET['busca'])) {
+                ?>
+                <div class="filtro"><a href="produtos.php?campo=preco&ordem=desc">Maior Preço</a></div>
+                <div class="filtro"><a href="produtos.php?campo=preco&ordem=asc">Menor Preço</a></div>
+                <div class="filtro"><a href="produtos.php?campo=categoria&ordem=desc">Categoria Decrescente</a></div>
+                <div class="filtro"><a href="produtos.php?campo=categoria&ordem=asc">Categoria Crescente</a></div>
+                <div class="filtro"><a href="produtos.php?campo=id_Restaurante&ordem=desc">Restaurante Decrescente</a></div>
+                <div class="filtro"><a href="produtos.php?campo=id_Restaurante&ordem=asc">Restaurante Crescente</a></div>
+                <?php
+                  } else {
+                    ?>
+                      <div class="filtro limpar-filtro"><a href="produtos.php">Limpar Filtro</a></div>
+                    <?php
+                  }
+                ?>
               </div>
             </div>
           </div>
 
           <div class="produtos-cards-lista">
 
+          <?php 
+          $controller = new ProdutosController();
+          if (isset($_GET) && (isset($_GET['campo']) && isset($_GET['ordem'])) || isset($_GET['busca'])) {
+
+            if (isset($_GET['campo']) && isset($_GET['ordem'])){
+              $campo = addslashes(filter_input(INPUT_GET, 'campo'));
+              $ordem = addslashes(filter_input(INPUT_GET, 'ordem'));
+              try {
+                $produtos = $controller->BuscarProdutosComFiltro($campo, $ordem);
+              } catch (Exception $ex) {
+                MsgPerssonalizadaDeErro();
+              }
+            }
+
+            if (isset($_GET['busca'])) {
+              $busca = addslashes(filter_input(INPUT_GET, 'busca'));
+              try {
+                $produtos = $controller->BuscarProdutosPorNome($busca);
+              } catch (Exception $ex) {
+                MsgPerssonalizadaDeErro();
+              }
+            }
+
+          } else {
+            $produtos = $controller->BuscarProdutos();
+          }
+
+
+          if (!empty($produtos)) {
+            foreach ($produtos as $row) : 
+            ?>
+
             <div class="card-produto">
               <div class="nome-image-restaurante">
                 <div class="restaurante-name">
                   <i class="fa-solid fa-shop"></i>
-                  <span>Casa do Pastel</span>
+                  <span>
+                  <?= $controller->BuscarNomeRestaurante($row->getId_Restaurante()) ?></span>
                 </div>
                 <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
+                  <img src="<?= $row->getImagem() ?>" alt="<?= $row->getNome() ?>">
                 </div>
               </div>
               <div class="informacoes-restaurante flip-card">
                 <div class="produto-nome-preco card-front">
-                  <h2>Pastel de Frango com Catupiry</h2>
+                  <h2><?= $row->getNome() ?></h2>
                   <div class="produto-preco">
                     <span class="tipo-preco">
                       R$
                     </span>
                     <span class="valor-produto">
-                      5,50
+                      <?= $row->getPreco() ?>
                     </span>
                   </div>
                 </div>
                 <div class="card-back">
                   <p>
-                    Delicioso pastel com recheio de frango desfiado e Catupiry cremoso. Frito na hora e servido quente.
+                    <?= $row->getDescricao() ?>
                   </p>
-                  <button class="btn-adicionar-carrinho">
+                  <button onclick="adicionarAoCarrinho(<?= $row->getId() ?>)" class="btn-adicionar-carrinho">
                     Adicionar ao carrinho
                   </button>
                 </div>
               </div>
             </div>
 
-            <div class="card-produto">
-              <div class="nome-image-restaurante">
-                <div class="restaurante-name">
-                  <i class="fa-solid fa-shop"></i>
-                  <span>Casa do Pastel</span>
-                </div>
-                <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
-                </div>
-              </div>
-              <div class="informacoes-restaurante flip-card">
-                <div class="produto-nome-preco card-front">
-                  <h2>Pastel de Frango com Catupiry</h2>
-                  <div class="produto-preco">
-                    <span class="tipo-preco">
-                      R$
-                    </span>
-                    <span class="valor-produto">
-                      5,50
-                    </span>
-                  </div>
-                </div>
-                <div class="card-back">
-                  <p>
-                    Delicioso pastel com recheio de frango desfiado e Catupiry cremoso. Frito na hora e servido quente.
-                  </p>
-                  <button class="btn-adicionar-carrinho">
-                    Adicionar ao carrinho
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-produto">
-              <div class="nome-image-restaurante">
-                <div class="restaurante-name">
-                  <i class="fa-solid fa-shop"></i>
-                  <span>Casa do Pastel</span>
-                </div>
-                <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
-                </div>
-              </div>
-              <div class="informacoes-restaurante flip-card">
-                <div class="produto-nome-preco card-front">
-                  <h2>Pastel de Frango com Catupiry</h2>
-                  <div class="produto-preco">
-                    <span class="tipo-preco">
-                      R$
-                    </span>
-                    <span class="valor-produto">
-                      5,50
-                    </span>
-                  </div>
-                </div>
-                <div class="card-back">
-                  <p>
-                    Delicioso pastel com recheio de frango desfiado e Catupiry cremoso. Frito na hora e servido quente.
-                  </p>
-                  <button class="btn-adicionar-carrinho">
-                    Adicionar ao carrinho
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-produto">
-              <div class="nome-image-restaurante">
-                <div class="restaurante-name">
-                  <i class="fa-solid fa-shop"></i>
-                  <span>Casa do Pastel</span>
-                </div>
-                <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
-                </div>
-              </div>
-              <div class="informacoes-restaurante flip-card">
-                <div class="produto-nome-preco card-front">
-                  <h2>Pastel de Frango com Catupiry</h2>
-                  <div class="produto-preco">
-                    <span class="tipo-preco">
-                      R$
-                    </span>
-                    <span class="valor-produto">
-                      5,50
-                    </span>
-                  </div>
-                </div>
-                <div class="card-back">
-                  <p>
-                    Delicioso pastel com recheio de frango desfiado e Catupiry cremoso. Frito na hora e servido quente.
-                  </p>
-                  <button class="btn-adicionar-carrinho">
-                    Adicionar ao carrinho
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-produto">
-              <div class="nome-image-restaurante">
-                <div class="restaurante-name">
-                  <i class="fa-solid fa-shop"></i>
-                  <span>Casa do Pastel</span>
-                </div>
-                <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
-                </div>
-              </div>
-              <div class="informacoes-restaurante flip-card">
-                <div class="produto-nome-preco card-front">
-                  <h2>Pastel de Frango com Catupiry</h2>
-                  <div class="produto-preco">
-                    <span class="tipo-preco">
-                      R$
-                    </span>
-                    <span class="valor-produto">
-                      5,50
-                    </span>
-                  </div>
-                </div>
-                <div class="card-back">
-                  <p>
-                    Delicioso pastel com recheio de frango desfiado e Catupiry cremoso. Frito na hora e servido quente.
-                  </p>
-                  <button class="btn-adicionar-carrinho">
-                    Adicionar ao carrinho
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-produto">
-              <div class="nome-image-restaurante">
-                <div class="restaurante-name">
-                  <i class="fa-solid fa-shop"></i>
-                  <span>Casa do Pastel</span>
-                </div>
-                <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
-                </div>
-              </div>
-              <div class="informacoes-restaurante flip-card">
-                <div class="produto-nome-preco card-front">
-                  <h2>Pastel de Frango com Catupiry</h2>
-                  <div class="produto-preco">
-                    <span class="tipo-preco">
-                      R$
-                    </span>
-                    <span class="valor-produto">
-                      5,50
-                    </span>
-                  </div>
-                </div>
-                <div class="card-back">
-                  <p>
-                    Delicioso pastel com recheio de frango desfiado e Catupiry cremoso. Frito na hora e servido quente.
-                  </p>
-                  <button class="btn-adicionar-carrinho">
-                    Adicionar ao carrinho
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-produto">
-              <div class="nome-image-restaurante">
-                <div class="restaurante-name">
-                  <i class="fa-solid fa-shop"></i>
-                  <span>Casa do Pastel</span>
-                </div>
-                <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
-                </div>
-              </div>
-              <div class="informacoes-restaurante flip-card">
-                <div class="produto-nome-preco card-front">
-                  <h2>Pastel de Frango com Catupiry</h2>
-                  <div class="produto-preco">
-                    <span class="tipo-preco">
-                      R$
-                    </span>
-                    <span class="valor-produto">
-                      5,50
-                    </span>
-                  </div>
-                </div>
-                <div class="card-back">
-                  <p>
-                    Delicioso pastel com recheio de frango desfiado e Catupiry cremoso. Frito na hora e servido quente.
-                  </p>
-                  <button class="btn-adicionar-carrinho">
-                    Adicionar ao carrinho
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-produto">
-              <div class="nome-image-restaurante">
-                <div class="restaurante-name">
-                  <i class="fa-solid fa-shop"></i>
-                  <span>Casa do Pastel</span>
-                </div>
-                <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
-                </div>
-              </div>
-              <div class="informacoes-restaurante flip-card">
-                <div class="produto-nome-preco card-front">
-                  <h2>Pastel de Frango com Catupiry</h2>
-                  <div class="produto-preco">
-                    <span class="tipo-preco">
-                      R$
-                    </span>
-                    <span class="valor-produto">
-                      5,50
-                    </span>
-                  </div>
-                </div>
-                <div class="card-back">
-                  <p>
-                    Delicioso pastel com recheio de frango desfiado e Catupiry cremoso. Frito na hora e servido quente.
-                  </p>
-                  <button class="btn-adicionar-carrinho">
-                    Adicionar ao carrinho
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-produto">
-              <div class="nome-image-restaurante">
-                <div class="restaurante-name">
-                  <i class="fa-solid fa-shop"></i>
-                  <span>Casa do Pastel</span>
-                </div>
-                <div>
-                  <img src="../assets/images/error/default-images/lanches-produtos.png" alt="Produto sem imagem / Imagem de produto não encontrada">
-                </div>
-              </div>
-              <div class="informacoes-restaurante flip-card">
-                <div class="produto-nome-preco card-front">
-                  <h2>Pastel de Frango com Catupiry</h2>
-                  <div class="produto-preco">
-                    <span class="tipo-preco">
-                      R$
-                    </span>
-                    <span class="valor-produto">
-                      5,50
-                    </span>
-                  </div>
-                </div>
-                <div class="card-back">
-                  <p>
-                    Delicioso pastel com recheio de frango desfiado e Catupiry cremoso. Frito na hora e servido quente.
-                  </p>
-                  <button class="btn-adicionar-carrinho">
-                    Adicionar ao carrinho
-                  </button>
-                </div>
-              </div>
-            </div>
+            <?php endforeach; 
+          } else {
+            echo "Não foi possível retornar resusltados!";
+          }
+          ?>
 
           </div>
         </div>

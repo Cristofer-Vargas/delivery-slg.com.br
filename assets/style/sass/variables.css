@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+:root {
+  --primary-color: #8a0000;
+  --primary-color-2: #620000;
+  --secundary-color: #FFA500;
+  --secundary-color-2: #d68b00;
+  --text-especial-color: #FF4136;
+
+  --primary-font: 'karla', sans-serif;
+  --especial-font: 'Pacifico', cursive;
+
+  --color-neutro: #EAEAEA;
+  --background-gray-white: #FBFBFB;
+}
