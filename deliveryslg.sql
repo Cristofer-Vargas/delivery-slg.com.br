@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `carrinho` (
   `id_Produto` int(11) NOT NULL,
   `id_Restaurante` int(11) NOT NULL,
   `id_Usuario` int(11) NOT NULL,
-  `quantidade` int(100) NOT NULL,
+  `quantidade` int(100) DEFAULT 1,
   PRIMARY KEY (`id`),
   KEY `id_Produto` (`id_Produto`),
   KEY `id_Restaurante` (`id_Restaurante`),
