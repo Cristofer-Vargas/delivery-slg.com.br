@@ -139,90 +139,29 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
     <div>
       <h3>Carrinho</h3>
       <div class="carrinho-itens-container">
+
         <div class="pedido-item">
-          <div>
-            <img src="/delivery-slg.com.br/assets/images/default-images/lanches-produtos.png" alt="">
-            <div>
+          <div class="image-container">
+            <div class="image" style="background-image: url('/delivery-slg.com.br/assets/images/default-images/lanches-produtos.png')">
+            </div>
+            <!-- <img src="/delivery-slg.com.br/assets/images/default-images/lanches-produtos.png" alt=""> -->
+            <div class="carrinho-restaurante-nome">
               <i class="fa-solid fa-shop"></i>
               <span>Casa dos Pasteis</span>
             </div>
           </div>
-          <div>
+          <div class="carrinho-nome-produto">
             <h4>Pastel de Frango</h4>
-            <div>
-              <span>23.99</span>
-              <div>
-                <i class="fa-solid fa-caret-left"></i>
-                <span class="quantidade-item">1</span>
-                <i class="fa-solid fa-caret-right"></i>
-              </div>
-              <a href="">Remover</a>
+            <span class="carrinho-produto-valor">23.99</span>
+            <div class="carrinho-quantidade-items">
+              <i class="fa-solid fa-caret-left"></i>
+              <span class="quantidade-item">1</span>
+              <i class="fa-solid fa-caret-right"></i>
             </div>
+            <a href="#">Remover</a>
           </div>
         </div>
-        <div class="pedido-item">
-          <div>
-            <img src="/delivery-slg.com.br/assets/images/default-images/lanches-produtos.png" alt="">
-            <div>
-              <i class="fa-solid fa-shop"></i>
-              <span>Casa dos Pasteis</span>
-            </div>
-          </div>
-          <div>
-            <h4>Pastel de Frango</h4>
-            <div>
-              <span>23.99</span>
-              <div>
-                <i class="fa-solid fa-caret-left"></i>
-                <span class="quantidade-item">1</span>
-                <i class="fa-solid fa-caret-right"></i>
-              </div>
-              <a href="">Remover</a>
-            </div>
-          </div>
-        </div>
-        <div class="pedido-item">
-          <div>
-            <img src="/delivery-slg.com.br/assets/images/default-images/lanches-produtos.png" alt="">
-            <div>
-              <i class="fa-solid fa-shop"></i>
-              <span>Casa dos Pasteis</span>
-            </div>
-          </div>
-          <div>
-            <h4>Pastel de Frango</h4>
-            <div>
-              <span>23.99</span>
-              <div>
-                <i class="fa-solid fa-caret-left"></i>
-                <span class="quantidade-item">1</span>
-                <i class="fa-solid fa-caret-right"></i>
-              </div>
-              <a href="">Remover</a>
-            </div>
-          </div>
-        </div>
-        <div class="pedido-item">
-          <div>
-            <img src="/delivery-slg.com.br/assets/images/default-images/lanches-produtos.png" alt="">
-            <div>
-              <i class="fa-solid fa-shop"></i>
-              <span>Casa dos Pasteis</span>
-            </div>
-          </div>
-          <div>
-            <h4>Pastel de Frango</h4>
-            <div>
-              <span>23.99</span>
-              <div>
-                <i class="fa-solid fa-caret-left"></i>
-                <span class="quantidade-item">1</span>
-                <i class="fa-solid fa-caret-right"></i>
-              </div>
-              <a href="">Remover</a>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
     <div class="total-dos-pedidos">

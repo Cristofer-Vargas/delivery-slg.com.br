@@ -39,3 +39,11 @@ document.getElementById('searchProductsInput')
   }
 
 })
+
+// Adicionar conteudo ao carrinho
+
+function adicionarAoCarrinho(produto) {
+  // fetch(`../../source/controller/header_controller.php?adc-car=${produto}`)
+  console.log(produto);
+  
+}
