@@ -28,6 +28,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
 
     <div class="max-width-page-limit">
       <section class="max-width-content-limit main-content">
+        <?php
+          if (isset($_GET['busca']) && !empty($_GET['busca'])) {
+          ?>
+            <div class="resultado-busca">
+              <p>Resutado para "<span class="busca"><?= $_GET['busca'] ?></span>"</p>
+            </div>
+          <?php
+          }
+        ?>
         <div class="produtos-main-container">
           <div class="produtos-filtro">
             <div class="filtros-container">

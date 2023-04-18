@@ -1,4 +1,4 @@
-@import './all.scss';
+@import './variables.scss';
 
 main {
 
@@ -6,6 +6,19 @@ main {
 
     img {
       width: 100%;
+    }
+
+  }
+
+  .resultado-busca {
+    padding: 15px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin-bottom: 30px;
+
+    span.busca {
+      color: $text-especial-color;
+      font-weight: bold;
     }
 
   }
