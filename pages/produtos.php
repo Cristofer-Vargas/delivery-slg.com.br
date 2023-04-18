@@ -128,7 +128,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
                   <p>
                     <?= $row->getDescricao() ?>
                   </p>
-                  <button oneclick="adicionarAoCarrinho(<?= $row->getId() ?>)" class="btn-adicionar-carrinho">
+                  <button onclick="adicionarAoCarrinho(<?= $row->getId() ?>)" class="btn-adicionar-carrinho">
                     Adicionar ao carrinho
                   </button>
                 </div>

@@ -12,8 +12,7 @@ class ProdutoDAO
 
     try {
       $stmt = $conection->query('SELECT r.nome as nome_restaurante, p.* FROM `produtos` as p INNER JOIN `restaurantes` 
-      as r ON p.id_Restaurante = r.id ORDER BY LOWER(p.categoria) ASC
-');
+      as r ON p.id_Restaurante = r.id ORDER BY LOWER(p.categoria) ASC');
 
       if ($stmt->rowCount()) {
         $produto = new Produtos();
@@ -132,4 +131,42 @@ class ProdutoDAO
     }
     
   }
+
+  function BuscarPorId(int $id) {
+    $conection = ConexaoBD();
+
+    try {
+      $stmt = $conection->prepare('SELECT * FROM produtos WHERE id = :id');
+      $stmt->bindValue(':id', $id);
+      $stmt->execute();
+
+      if ($stmt->rowCount()) {
+        $produto = new Produtos();
+
+        while ($result = $stmt->fetch(PDO::FETCH_OBJ)) {
+          $produto->setId($result->id);
+          $produto->setNome($result->nome);
+          $produto->setDescricao($result->descricao);
+          $produto->setImagem($result->imagem);
+          $produto->setPreco($result->preco);
+          $produto->setCategoria($result->categoria);
+          $produto->setId_Restaurante($result->id_Restaurante);
+
+        }
+
+        return $produto;
+
+      }
+
+      return false;
+      
+    } catch (PDOException $ex) {
+      $_SESSION['mensagemError'] = 'Erro ao tentar encontrar produto com id';
+      $_SESSION['erroSucessOrFail'] = false;
+      throw $ex;
+      die();
+    }
+
+  }
+
 }

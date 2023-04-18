@@ -42,8 +42,19 @@ document.getElementById('searchProductsInput')
 
 // Adicionar conteudo ao carrinho
 
-function adicionarAoCarrinho(produto) {
-  // fetch(`../../source/controller/header_controller.php?adc-car=${produto}`)
-  console.log(produto);
-  
+function adicionarAoCarrinho(idProduto) {
+  fetch(`/delivery-slg.com.br/source/controller/header_controller.php?adc-car=${idProduto}`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Erro ao carregar dados do servidor.');
+    }
+    return response.text()
+  })
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
 }
