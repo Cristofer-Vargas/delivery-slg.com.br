@@ -768,4 +768,32 @@ div.notification.hidden {
   right: -320px;
 }
 
+div.notification-js-container {
+  width: auto;
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 30px;
+  z-index: 2;
+}
+div.notification-js-container div.notificationJS {
+  width: 200px;
+  height: 150px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+div.notification-js-container div.notificationTrue {
+  background-color: #00ff2a;
+}
+div.notification-js-container div.notificationJS.mostrar {
+  opacity: 1;
+}
+div.notification-js-container div.notificationJS.esconder {
+  opacity: 0;
+}
+
 /*# sourceMappingURL=all.css.map */

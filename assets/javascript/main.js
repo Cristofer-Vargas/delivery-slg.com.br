@@ -44,30 +44,68 @@ document.getElementById('searchProductsInput')
 
 function adicionarAoCarrinho(idProduto) {
   fetch(`/delivery-slg.com.br/source/controller/header_controller.php?adc-car=${idProduto}`)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Erro ao carregar dados do servidor.');
-    }
-    return response.text()
+  .then((response) => {
+    // if (!response.ok) {
+    //   throw new Error('Erro ao carregar dados do servidor.');
+    // }
+    console.log(response)
+    // response.body.json();
   })
-  // .then(data => {
-  //   console.log(data);
-  // })
+  .then((data) => {
+    console.log(data);
+    
+  //   // let html = document.getElementById('notificationPhpJsContainer')
+  //   // html.insertAdjacentHTML('beforeend', NotificationDiv(true, data))
+  //   // html.classList.add('mostrar')
+  //   // setTimeout(() => {
+  //   //   html.classList.add('esconder')
+  //   //   setTimeout(() => {
+  //   //     html.remove();
+  //   //   }, 500)
+  //   // }, 3000)
+  })
   .catch(error => {
     console.error(error);
   });
 
-  const carrinhoConteiner = document.getElementById('carrinhoContainer');
+  // const carrinhoConteiner = document.getElementById('carrinhoContainer');
 
-  let numeroDeProdutos = `
-  <span>
+  // let numeroDeProdutos = `
+  // <span>
     
-  </span>
-  `
+  // </span>
+  // `
 
+}
+
+function NotificationDiv(bool, conteudo) {
+
+  if (bool == true) {
+    let notification = `
+      <div class="notificationJS notificationTrue">
+        ${conteudo}
+      </div>
+    `
+    return notification
+
+  } else if (bool == false) {
+    let notification = `
+      <div class="notificationJS notificationFalse">
+        ${conteudo}
+      </div>
+    `
+    return notification
+  } else {
+    let divErro = `
+    <div>
+      <p>Erro com a integração da notificação</p>
+    </div>
+    `
+    return divErro
+  }
 }
 
 
 function buscarQuantidadeNoCarrinho() {
-  fetch(`/delivery-slg.com.br/source/controller/header_controller.php?bsc-car=true`)
+  fetch(`/delivery-slg.com.br/source/controller/header_controller.php?action=bsc-qtde-car`)
 }

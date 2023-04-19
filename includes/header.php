@@ -4,6 +4,7 @@
 session_start();
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/functions.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/error_message.php');
+$_SESSION['usuario_email'] = 'theo_paulo_oliveira@rodrigofranco.com';
 
 ?>
 

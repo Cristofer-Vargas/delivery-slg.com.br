@@ -35,9 +35,9 @@ class CarrinhoDAO {
       return false;
 
     } catch (PDOException $ex) {
-      $_SESSION['mensagemError'] = 'Erro ao buscar esse carrinho';
-      $_SESSION['erroSucessOrFail'] = false;
-      throw $ex;
+      return new Exception('Erro ao buscar esse carrinho');
+      // $_SESSION['mensagemError'] = '';
+      // $_SESSION['erroSucessOrFail'] = false;
       die();
     }
   }
@@ -48,7 +48,7 @@ class CarrinhoDAO {
 
     try {
       $stmt = $conection->prepare('INSERT INTO carrinho (id_Produto, id_Restaurante, id_Usuario, quantidade)
-      VALUES (:idProd, :idRes, :idUsu, :qtde)');
+      VALUES (:idProd, :idRes, :idUsu, :qtsde)');
       $stmt->bindValue(':idProd', $carrinho->getId_Produto());
       $stmt->bindValue(':idRes', $carrinho->getId_Restaurante());
       $stmt->bindValue(':idUsu', $carrinho->getId_Usuario());
@@ -64,9 +64,28 @@ class CarrinhoDAO {
 
     } catch (PDOException $ex) {
       $conection->rollBack();
-      $_SESSION['mensagemError'] = 'Erro ao inserir no carrinho';
-      $_SESSION['erroSucessOrFail'] = false;
-      throw $ex;
+      return new Exception('Erro ao inserir no carrinho');
+      die();
+    }
+  }
+
+  function buscarNumProdutos() {
+    $conection = ConexaoBD();
+
+    try {
+      $rs = $conection->query('SELECT * FROM carrinho');
+
+      if ($rs->rowCount()) {
+        return $rs->rowCount();
+      } else {
+        return false;
+      }
+
+    } catch (PDOException $ex) {
+      // $_SESSION['mensagemError'] = '';
+      // $_SESSION['erroSucessOrFail'] = false;
+      // throw $ex;
+      return new Exception('Erro ao buscar produtos no carrinho');
       die();
     }
   }
