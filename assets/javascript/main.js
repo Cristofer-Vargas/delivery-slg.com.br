@@ -50,11 +50,24 @@ function adicionarAoCarrinho(idProduto) {
     }
     return response.text()
   })
-  .then(data => {
-    console.log(data);
-  })
+  // .then(data => {
+  //   console.log(data);
+  // })
   .catch(error => {
     console.error(error);
   });
 
+  const carrinhoConteiner = document.getElementById('carrinhoContainer');
+
+  let numeroDeProdutos = `
+  <span>
+    
+  </span>
+  `
+
+}
+
+
+function buscarQuantidadeNoCarrinho() {
+  fetch(`/delivery-slg.com.br/source/controller/header_controller.php?bsc-car=true`)
 }

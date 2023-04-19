@@ -108,15 +108,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
 
       <div class="perfil-logged">
         <ul>
-          <li class="carrinho-container">
+          <li id="carrinhoContainer" class="carrinho-container">
             <label for="carrinhoLateralInput">
               <i class="fa-solid fa-cart-shopping"></i>
             </label>
-            <span>
-              4
-              <!-- Na tabela carrinho da para usar a função rowCount()
-              para trazer o número de itens no carrinho -->
-            </span>
 
           </li>
           <li class="login-container">

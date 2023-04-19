@@ -71,3 +71,7 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
   }
 
 }
+
+if (isset($_GET) && $_GET['bsc-car'] == true) {
+  
+}
