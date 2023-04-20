@@ -53,10 +53,10 @@ function adicionarAoCarrinho(idProduto) {
     if (res.ok == false) {
       throw new Error('Erro em acessar o servidor.');
     }
-    return res.json()
+    return res.json();
   })
   .then(response => {
-    console.log(response)
+    console.log(response);
   })
   // .then((data) => {
   //   console.log(data);
@@ -71,10 +71,12 @@ function adicionarAoCarrinho(idProduto) {
   //   //   }, 500)
   //   // }, 3000)
   //})
+  .finally(() => {
+    buscarQuantidadeNoCarrinho();
+  })
   .catch(error => {
     console.error(error);
   });
-  buscarQuantidadeNoCarrinho()
   // com finally tirar o icone de adicionado com sucesso
 }
 

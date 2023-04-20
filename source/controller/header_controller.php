@@ -8,16 +8,16 @@ require_once('../classes/carrinho.class.php');
 
 if (isset($_GET) && !empty($_GET['adc-car'])) {
   if (!isset($_SESSION['usuario_email'])) {
-    $user = array(
+    $resultRequire[] = [
       'ok' => false,
       'mensagem' => 'Usuário não logado na sessão'
-    );
+    ];
     
   } else {
-    $user = array(
+    $resultRequire[] = [
       'ok' => true,
       'mensagem' => 'Usuário logado na sessão'
-    );
+    ];
 
     $usuarioEmail = $_SESSION['usuario_email'];
 
@@ -25,34 +25,33 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
     $CarrinhoDao = new CarrinhoDAO;
     $loginDAO = new LoginDAO;
     $ProdutoDao = new ProdutoDAO;
-    $OperationReqst = array();
 
     try {
       $produto = $ProdutoDao->BuscarPorId($idProduto);
-      $buscaProd = array(
+      $resultRequire[] = [
         'ok' => true,
         'mensagem' => 'Produto encontrado'
-      );
+      ];
 
     } catch (Exception $ex) {
-      $buscaProd = array(
+      $resultRequire[] = [
         'ok' => false,
         'mensagem' => $ex->getMessage()
-      );
+      ];
     }
 
     try {
       $usuario = $loginDAO->buscaUsuario($usuarioEmail);
-      $buscaUser = array(
+      $resultRequire[] = [
         'ok' => true,
         'mensagem' => 'Usuario da sessão encontrada'
-      );
+      ];
 
     } catch (Exception $ex) {
-      $buscaUser = array(
+      $resultRequire[] = [
         'ok' => true,
         'mensagem' => $ex->getMessage()
-      );
+      ];
     }
 
     if (!empty($produto) && $produto !== false && !empty($usuario) && $usuario !== null || $usuario !== false) {
@@ -64,39 +63,35 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
         $Carrinho->setQuantidade(1);
 
         $result = $CarrinhoDao->inserirNoCarrinho($Carrinho);
-        $insertCar = array(
+        $resultRequire[] = [
           'ok' => true,
           'mensagem' => 'inserido no carrinho com sucesso',
-        );
+        ];
         
       } catch (Exception $ex) {
-        $insertCar = array(
+        $resultRequire[] = [
           'ok' => false,
           'mensagem' => $ex->getMessage(),
-        );
+        ];
       }
-      $RequirementosParaInserir = array(
+      $resultRequire[] = [
         'ok' => true,
         'mensagem' => 'Sessão válida e produtos compátiveis / com restaurante cadastrado',
-      );
+      ];
     } else {
-      $insertCar = array(
-        'ok' => false,
-        'mensagem' => '...',
-      );
-      $RequirementosParaInserir = array(
+      $resultRequire[] = [
         'ok' => false,
         'mensagem' => 'Sessão inválida ou produto incompativel / sem restaurante cadastrado',
-      );
+      ];
     }
 
-    $resultRequire = array(
-      'User' => $user,
-      'buscaProd' => $buscaProd,
-      'buscaUser' => $buscaUser,
-      'insertCar' => $insertCar,
-      'RequirementosParaInserir' => $RequirementosParaInserir
-    );
+    // $resultRequire = array(
+    //   'User' => $user,
+    //   'buscaProd' => $buscaProd,
+    //   'buscaUser' => $buscaUser,
+    //   'insertCar' => $insertCar,
+    //   'RequirementosParaInserir' => $RequirementosParaInserir
+    // );
     echo json_encode($resultRequire);
 
   }
