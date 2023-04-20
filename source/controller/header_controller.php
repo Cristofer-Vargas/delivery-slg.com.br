@@ -61,6 +61,9 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
         $Carrinho->setId_Restaurante($produto->getId_Restaurante());
         $Carrinho->setId_Usuario($usuario->getId());
         $Carrinho->setQuantidade(1);
+        // if ($carrinho->getQuantidade() <= 0 || $carrinho->getQuantidade() == null) {
+        //   $carrinho->setQuantidade(1);
+        // }
 
         $result = $CarrinhoDao->inserirNoCarrinho($Carrinho);
         $resultRequire[] = [
@@ -123,4 +126,40 @@ if (isset($_GET) && $_GET['action'] == 'bsc-qtde-car') {
 
   exit();
 }
-?>
+
+if (isset($_GET) && $_GET['action'] == 'buscar-prods') {
+  $CarrinhoDao = new CarrinhoDAO;
+
+  if (!isset($_SESSION['usuario_email'])) {
+    $resultRequire[] = [
+      'ok' => false,
+      'mensagem' => 'Usuário não logado na sessão'
+    ];
+    
+  } else {
+
+    $resultRequire[] = [
+      'ok' => true,
+      'mensagem' => 'Usuário logado na sessão'
+    ];
+
+    try {
+      $produtos = $CarrinhoDao->buscarProdutos();
+      $resultRequire[] = [
+        'ok' => true,
+        'mensagem' => 'Busca por produtos com sucesso'
+      ];
+    } catch (Exception $ex) {
+      $resultRequire[] = [
+        'ok' => false,
+        'mensagem' => 'Busca por produtos mal sucedida'
+      ];
+    }
+
+    echo json_encode(array(
+      $resultRequire, $produtos
+    ));
+    
+  }
+  exit();
+}

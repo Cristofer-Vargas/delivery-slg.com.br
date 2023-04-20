@@ -107,7 +107,6 @@ function NotificationDiv(bool, conteudo) {
   }
 }
 
-
 function buscarQuantidadeNoCarrinho() {
   //colocar icone carregando
   fetch(`/delivery-slg.com.br/source/controller/header_controller.php?action=bsc-qtde-car`)
@@ -130,4 +129,14 @@ function buscarQuantidadeNoCarrinho() {
     console.log(error)
   })
   // com finally, tirar icone de carregando
+}
+
+function BuscarProdutos() {
+  fetch('/delivery-slg.com.br/source/controller/header_controller.php?action=buscar-prods')
+  .then(res => {
+    return res.json();
+  })
+  .then(data => {
+    console.log(data);
+  })
 }

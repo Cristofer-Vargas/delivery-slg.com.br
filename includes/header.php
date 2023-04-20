@@ -110,7 +110,7 @@ $_SESSION['usuario_email'] = 'theo_paulo_oliveira@rodrigofranco.com';
       <div class="perfil-logged">
         <ul>
           <li id="carrinhoContainer" class="carrinho-container">
-            <label for="carrinhoLateralInput">
+            <label for="carrinhoLateralInput" onclick="BuscarProdutos()">
               <i class="fa-solid fa-cart-shopping"></i>
             </label>
 
