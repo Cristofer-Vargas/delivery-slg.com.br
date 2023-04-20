@@ -237,7 +237,7 @@ div.carrinho-lateral-background {
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 1;
+  z-index: 4;
   transition: width 0.5s;
 }
 div.carrinho-lateral-background label.disable-carrinho-lateral {

@@ -42,17 +42,24 @@ document.getElementById('searchProductsInput')
 
 // Adicionar conteudo ao carrinho
 
+document.addEventListener('DOMContentLoaded', () => {
+  buscarQuantidadeNoCarrinho()
+})
+
 function adicionarAoCarrinho(idProduto) {
+  // colocar com classe ou algo do tipo, um icone de carregando
   fetch(`/delivery-slg.com.br/source/controller/header_controller.php?adc-car=${idProduto}`)
-  .then((response) => {
-    // if (!response.ok) {
-    //   throw new Error('Erro ao carregar dados do servidor.');
-    // }
-    console.log(response)
-    // response.body.json();
+  .then(res => {
+    if (res.ok == false) {
+      throw new Error('Erro em acessar o servidor.');
+    }
+    return res.json()
   })
-  .then((data) => {
-    console.log(data);
+  .then(response => {
+    console.log(response)
+  })
+  // .then((data) => {
+  //   console.log(data);
     
   //   // let html = document.getElementById('notificationPhpJsContainer')
   //   // html.insertAdjacentHTML('beforeend', NotificationDiv(true, data))
@@ -63,19 +70,12 @@ function adicionarAoCarrinho(idProduto) {
   //   //     html.remove();
   //   //   }, 500)
   //   // }, 3000)
-  })
+  //})
   .catch(error => {
     console.error(error);
   });
-
-  // const carrinhoConteiner = document.getElementById('carrinhoContainer');
-
-  // let numeroDeProdutos = `
-  // <span>
-    
-  // </span>
-  // `
-
+  buscarQuantidadeNoCarrinho()
+  // com finally tirar o icone de adicionado com sucesso
 }
 
 function NotificationDiv(bool, conteudo) {
@@ -107,5 +107,25 @@ function NotificationDiv(bool, conteudo) {
 
 
 function buscarQuantidadeNoCarrinho() {
+  //colocar icone carregando
   fetch(`/delivery-slg.com.br/source/controller/header_controller.php?action=bsc-qtde-car`)
+  .then(res => {
+    if (res.ok == false) {
+      throw new Error('Erro em acessar o servidor')
+    }
+    return res.json()
+  })
+  .then(response => {
+    console.log(response)
+    const labelNumberCar = document.getElementById('carrinhoContainer')
+    labelNumberCar.insertAdjacentHTML('beforeend', `
+      <span>
+        ${response.buscaNumProds.dados}
+      </span>
+    `)
+  })
+  .catch(error => {
+    console.log(error)
+  })
+  // com finally, tirar icone de carregando
 }
