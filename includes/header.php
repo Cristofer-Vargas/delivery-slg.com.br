@@ -4,7 +4,8 @@
 session_start();
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/functions.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/error_message.php');
-$_SESSION['usuario_email'] = 'theo_paulo_oliveira@rodrigofranco.com';
+// $_SESSION['usuario_email'] = 'theo_paulo_oliveira@rodrigofranco.com';
+// unset($_SESSION['usuario_email']);
 
 ?>
 
@@ -99,29 +100,36 @@ $_SESSION['usuario_email'] = 'theo_paulo_oliveira@rodrigofranco.com';
           <img src="/delivery-slg.com.br/assets/images/header/lupa-search.png" alt="">
         </div>
       </div>
-
-      <!-- <div class="perfil-cad-login">
-        <ul>
-          <li><a class="perfil-cad-criar-conta" href="/delivery-slg.com.br/pages/cadastrousuario.php" title="Criar Conta">Criar Conta</a></li>
-          <li><a class="button-entrar" href="/delivery-slg.com.br/pages/login.php">Entrar</a></li>
-        </ul>
-      </div> -->
-
+      <?php
+      if (isset($_SESSION) && isset($_SESSION['usuario_email'])) {
+      ?>
       <div class="perfil-logged">
-        <ul>
-          <li id="carrinhoContainer" class="carrinho-container">
-            <label for="carrinhoLateralInput" onclick="BuscarProdutos()">
-              <i class="fa-solid fa-cart-shopping"></i>
-            </label>
+          <ul>
+            <li id="carrinhoContainer" class="carrinho-container">
+              <label for="carrinhoLateralInput" onclick="BuscarProdutos()">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </label>
 
-          </li>
-          <li class="login-container">
-            <a title="Perfil" href="/delivery-slg.com.br/pages/perfilusuario.php">
-              <i class="fa-solid fa-circle-user"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
+            </li>
+            <li class="login-container">
+              <a title="Perfil" href="/delivery-slg.com.br/pages/perfilusuario.php">
+                <i class="fa-solid fa-circle-user"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      <?php
+      } else {
+      ?>
+        <div class="perfil-cad-login">
+          <ul>
+            <li><a class="perfil-cad-criar-conta" href="/delivery-slg.com.br/pages/cadastrousuario.php" title="Criar Conta">Criar Conta</a></li>
+            <li><a class="button-entrar" href="/delivery-slg.com.br/pages/login.php">Entrar</a></li>
+          </ul>
+        </div>
+      <?php
+      }
+      ?>
 
     </section>
   </div>
@@ -157,7 +165,7 @@ $_SESSION['usuario_email'] = 'theo_paulo_oliveira@rodrigofranco.com';
             <a href="#">Remover</a>
           </div>
         </div>
-        
+
       </div>
     </div>
     <div class="total-dos-pedidos">

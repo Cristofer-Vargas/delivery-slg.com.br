@@ -14,10 +14,6 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
     ];
     
   } else {
-    $resultRequire[] = [
-      'ok' => true,
-      'mensagem' => 'Usuário logado na sessão'
-    ];
 
     $usuarioEmail = $_SESSION['usuario_email'];
 
@@ -28,10 +24,6 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
 
     try {
       $produto = $ProdutoDao->BuscarPorId($idProduto);
-      $resultRequire[] = [
-        'ok' => true,
-        'mensagem' => 'Produto encontrado'
-      ];
 
     } catch (Exception $ex) {
       $resultRequire[] = [
@@ -42,14 +34,10 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
 
     try {
       $usuario = $loginDAO->buscaUsuario($usuarioEmail);
-      $resultRequire[] = [
-        'ok' => true,
-        'mensagem' => 'Usuario da sessão encontrada'
-      ];
 
     } catch (Exception $ex) {
       $resultRequire[] = [
-        'ok' => true,
+        'ok' => false,
         'mensagem' => $ex->getMessage()
       ];
     }
@@ -66,10 +54,7 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
         // }
 
         $result = $CarrinhoDao->inserirNoCarrinho($Carrinho);
-        $resultRequire[] = [
-          'ok' => true,
-          'mensagem' => 'inserido no carrinho com sucesso',
-        ];
+
         
       } catch (Exception $ex) {
         $resultRequire[] = [
@@ -77,10 +62,7 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
           'mensagem' => $ex->getMessage(),
         ];
       }
-      $resultRequire[] = [
-        'ok' => true,
-        'mensagem' => 'Sessão válida e produtos compátiveis / com restaurante cadastrado',
-      ];
+
     } else {
       $resultRequire[] = [
         'ok' => false,
@@ -88,13 +70,6 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
       ];
     }
 
-    // $resultRequire = array(
-    //   'User' => $user,
-    //   'buscaProd' => $buscaProd,
-    //   'buscaUser' => $buscaUser,
-    //   'insertCar' => $insertCar,
-    //   'RequirementosParaInserir' => $RequirementosParaInserir
-    // );
     echo json_encode($resultRequire);
 
   }
@@ -106,10 +81,6 @@ if (isset($_GET) && $_GET['action'] == 'bsc-qtde-car') {
 
   try {
     $NumProds = $CarrinhoDao->buscarNumProdutos();
-    $buscaNumProds = array(
-      'ok' => true, 
-      'dados' => $NumProds
-    );
 
   } catch (Exception $ex) {
     $buscaNumProds = array(
@@ -138,17 +109,22 @@ if (isset($_GET) && $_GET['action'] == 'buscar-prods') {
     
   } else {
 
-    $resultRequire[] = [
-      'ok' => true,
-      'mensagem' => 'Usuário logado na sessão'
-    ];
+    $usuarioEmail = $_SESSION['usuario_email'];
+    $loginDAO = new LoginDAO();
 
     try {
-      $produtos = $CarrinhoDao->buscarProdutos();
+      $usuario = $loginDAO->buscaUsuario($usuarioEmail);
+      $usuarioId = $usuario->getId();
+    } catch (Exception $ex) {
       $resultRequire[] = [
-        'ok' => true,
-        'mensagem' => 'Busca por produtos com sucesso'
+        'ok' => false,
+        'mensagem' => 'Busca por usuário mal sucedida'
       ];
+    }
+
+    try {
+      $produtos = $CarrinhoDao->buscarProdutos($usuarioId);
+
     } catch (Exception $ex) {
       $resultRequire[] = [
         'ok' => false,

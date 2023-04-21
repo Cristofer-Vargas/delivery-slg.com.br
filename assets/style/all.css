@@ -165,6 +165,7 @@ header .header-distribuition .perfil-cad-login ul li a.button-entrar {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
   width: 100px;
   height: 44px;
   border-radius: 9px;
