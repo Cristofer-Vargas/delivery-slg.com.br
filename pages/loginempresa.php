@@ -24,11 +24,12 @@
         <div class="max-width-page-limit">
             <section class="max-width-content-limit main-content">
                 <div class="main_content">
-                    <h1>Login</h1>
+                    <h1>Login da Empresa</h1>
                     <p class="text_bold"> <strong>Se já possui uma conta, faça o login</strong> ou crie o seu cadastro...
                     </p>
                     <div class="divdoform">
-                        <form method="POST" action="../source/controller/login.controller.php" class="form-login">
+                        <form method="POST" action="../source/controller/loginempresa.controller.php" class="form-login">
+
                             <div class="form_align">
                                 <label class="style_label" for="E-mail">E-mail ou CPF:</label>
                                 <input type="text" class="cor" id="email" name="email">
@@ -40,7 +41,7 @@
                             <button type="submit" class="btn_logar">
                                 <div>Logar</div>
                             </button>
-                            <a href="/delivery-slg.com.br/pages/cadastrousuario.php" class="btn_criarconta">
+                            <a href="/delivery-slg.com.br/pages/cadastroempresa.php" class="btn_criarconta">
                                 <div>Criar uma conta</div>
                             </a>
                             <a href="#" class="style_link" data-bs-toggle="modal" data-bs-target="#ModalEsqueciSenha">Esqueci minha senha</a>
@@ -57,19 +58,18 @@
                                 <span>OU</span>
                                 <hr>
                             </div>
-                            <a href="./loginempresa.php" class="btn_loginempresa">Logar como empresa</a>
-                        </form>
+                            <a href="./login.php" class="btn_loginempresa">Logar como cliente</a>
                     </div>
+                    </form>
                 </div>
-            </section>
+        </div>
+        </section>
         </div>
     </main>
 
     <div class="modal fade" id="ModalEsqueciSenha" tabindex="-1" role="dialog" aria-labelledby="TituloEsqueciSenha" aria-hidden="true">
-        <?php include_once('./alterasenha.php'); ?>
+        <?php include_once('./alterasenhaempresa.php'); ?>
     </div>
-
-
 
     <?php include_once('../includes/footer.php'); ?>
 </body>

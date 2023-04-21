@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('./sass/variables.css');
 
 body {
     margin: 0px;
@@ -24,26 +23,9 @@ main {
     padding: 40px;
 }
 
-.divdoform button {
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-    width: 280px;
-    height: 48px;
-    text-align: center;
-    border-radius: 100px;
-    border: 0px;
-    font-weight: bold;
-    background-color: #cecece;
-    padding: 0px 12px;
-}
 
 .pd-left-16 {
     padding-left: 34px;
-}
-
-button img {
-    width: 25px;
 }
 
 .text_start {
@@ -77,21 +59,36 @@ form.form-login {
     max-width: 100%;
     width: 200px;
     border-radius: 10px;
-    background-color: rgba(138, 0, 0, 1);
+    background-color: var(--primary-color);
     color: white;
     font-weight: bold;
     height: 32px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    border: 0px;
 }
 
 .btn_criarconta {
     width: 200px;
     border-radius: 10px;
-    background-color: #FFA500;
+    background-color: var(--secundary-color);
     color: white;
     font-weight: bold;
     height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.btn_loginempresa {
+    background-color: var(--text-especial-color);
+    width: 200px;
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,7 +100,6 @@ input {
     height: 45px;
     border: 0px;
     border-radius: 100px;
-    /*background-color: #cecece;*/
     padding: 0px 12px;
 }
 
@@ -111,7 +107,7 @@ input {
     background-color: #cecece;
 }
 
-label.style_label{
+label.style_label {
     padding-bottom: 5px;
     font-weight: bold;
     font-size: 15px;
@@ -119,7 +115,24 @@ label.style_label{
 
 a.style_link {
     text-decoration: none;
-    color: #FF4136;
+    color: var(--text-especial-color);
     text-align: center;
     font-weight: bold;
+}
+
+div.separador {
+    display: flex;
+    align-items: center;
+}
+
+div.separador hr {
+    width: 120px;
+    height: 1px;
+    opacity: 1;
+    background-color: black;
+    border-radius: 10px;
+}
+
+div.separador span {
+    margin: 10px;
 }
