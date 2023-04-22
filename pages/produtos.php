@@ -150,12 +150,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
     <div id="pedirLogin" class="pedir-login">
       <h2>Essa operação exige que você esteja logado!</h2>
       <div>
-        <div>
+        <a href="/delivery-slg.com.br/pages/login.php">
           Logar
-        </div>
-        <div>
+        </a>
+        <a href="/delivery-slg.com.br/pages/cadastrousuario.php">
           Criar conta
-        </div>
+        </a>
       </div>
     </div>
 
