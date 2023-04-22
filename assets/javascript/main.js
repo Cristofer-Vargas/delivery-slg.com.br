@@ -55,8 +55,11 @@ function adicionarAoCarrinho(idProduto) {
     }
     return res.json();
   })
-  .then(response => {
-    console.log(response);
+  .then(data => {
+    console.log(data);
+    if (data[0].ok == false) {
+      // Inserir na tela um modal pedindo para efetuar o login
+    }
   })
   // .then((data) => {
   //   console.log(data);
@@ -116,14 +119,19 @@ function buscarQuantidadeNoCarrinho() {
     }
     return res.json()
   })
-  .then(response => {
-    console.log(response)
-    const labelNumberCar = document.getElementById('carrinhoContainer')
-    labelNumberCar.insertAdjacentHTML('beforeend', `
-      <span>
-        ${response.buscaNumProds.dados}
-      </span>
-    `)
+  .then(data => {
+    console.log(data)
+    if (data.buscaNumProds.ok == false) {
+      
+    } else {
+      const labelNumberCar = document.getElementById('carrinhoContainer')
+      labelNumberCar.insertAdjacentHTML('beforeend', `
+        <span>
+          ${data.buscaNumProds.dados}
+        </span>
+      `)
+
+    }
   })
   .catch(error => {
     console.log(error)

@@ -10,7 +10,7 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
   if (!isset($_SESSION['usuario_email'])) {
     $resultRequire[] = [
       'ok' => false,
-      'mensagem' => 'Usuário não logado na sessão'
+      'mensagem' => 'Usuário não logado'
     ];
     
   } else {
@@ -70,9 +70,9 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
       ];
     }
 
-    echo json_encode($resultRequire);
-
   }
+
+  echo json_encode($resultRequire);
   exit();
 }
 
@@ -86,6 +86,18 @@ if (isset($_GET) && $_GET['action'] == 'bsc-qtde-car') {
     $buscaNumProds = array(
       'ok' => false,
       'mensagem' => $ex->getMessage()
+    );
+  }
+
+  if (isset($_SESSION) && isset($_SESSION['usuario_email'])) {
+    $buscaNumProds = array(
+      'ok' => true,
+      'mensagem' => 'usuário logado'
+    );
+  } else {
+    $buscaNumProds = array(
+      'ok' => false,
+      'mensagem' => 'usuário não logado'
     );
   }
 
