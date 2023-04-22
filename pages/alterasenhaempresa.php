@@ -1,4 +1,4 @@
-  <form id="form_altera_senha" method="POST" class="modal-dialog modal-dialog-centered" role="document">
+<form id="form_altera_senha" method="POST" class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
           <div class="modal-header">
               <h5 class="modal-title" id="TituloEsqueciSenha">Esqueci minha senha</h5>
@@ -68,7 +68,7 @@
               form_Data.append(inp[i].name, inp[i].value);
           }
 
-          fetch('../source/controller/alterarsenha.controller.php', {
+          fetch('../source/controller/alterarsenha.controller.php?tipo=empresa', {
                   method: 'post',
                   body: form_Data
               }).then(res => res.json())

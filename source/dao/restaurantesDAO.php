@@ -47,4 +47,52 @@ class RestaurantesDAO {
     }
   }
 
+  public function buscaRestaurante(string $email)
+    {
+        $pdo = ConexaoBD();
+        try {
+            $stmt = $pdo->prepare("SELECT * FROM restaurantes WHERE email = ? OR cnpj = ?");
+            $stmt->bindValue(1, $email);
+            $stmt->bindValue(2, $email);
+            $stmt->execute();
+            if ($stmt->rowCount()) {
+                $obj = new Restaurantes();
+                while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                    $obj->setId($rs->id);
+                    $obj->setEmail($rs->email);
+                    $obj->setCnpj($rs->cnpj);
+                    $obj->setSenha($rs->senha);
+
+                    $result = clone $obj;
+                }
+                return $result;
+            } else {
+                return NULL;
+            }
+        } catch (PDOException $ex) {
+            echo "Erro: " + $ex->getMessage();
+            die();
+        }
+    }
+    public function alteraSenha(Restaurantes $restaurantes)
+    {
+        $pdo = ConexaoBD();
+        $pdo->beginTransaction();
+        try {
+            $stmt = $pdo->prepare("UPDATE restaurantes SET senha = :senha WHERE id = :id");
+            $stmt->bindValue(":senha", $restaurantes->getSenha());
+            $stmt->bindValue(":id", $restaurantes->getId());
+            $stmt->execute();
+            if ($stmt->rowCount()) {
+                $pdo->commit();
+                return TRUE;
+            }
+            return FALSE;
+        } catch (PDOException $ex) {
+            echo "Erro ao atualizar senha: " . $ex->getMessage();
+            $pdo->rollBack();
+            die();
+        }
+    }
+
 }

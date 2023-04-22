@@ -1,15 +1,18 @@
 <?php
-    require_once('../includes/metas_gerais.php');
+require_once('../includes/metas_gerais.php');
 ?>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../assets/style/all.css">
-    <link rel="stylesheet" href="../assets/style/login.css">
-    <link rel="stylesheet" href="../assets/style/cadastrousuario.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link rel="stylesheet" href="../assets/style/all.css">
+<link rel="stylesheet" href="../assets/style/login.css">
+<link rel="stylesheet" href="../assets/style/cadastrousuario.css">
 
-    <link rel="stylesheet" href="../assets/style/media-queries/all.css">
-    <title>Cadastro de Usuario</title>
+<link rel="stylesheet" href="../assets/style/media-queries/all.css">
+<title>Cadastro de Usuario</title>
 </head>
+
+<!-- Adicionar mensagem de sucesso ao cadastrar usuário -->
+<!-- Fazer verificação se os inputs estão vazios -->
 
 <body>
     <?php include_once('../includes/header.php'); ?>
@@ -18,22 +21,23 @@
     require_once("../source/classes/usuarios.class.php");
     require_once("../source/controller/cadusuario.controller.php");
 
-    $usuarios = new Usuarios ();
+    $usuarios = new Usuarios();
 
+    if (isset($_POST) && (isset($_POST['nome']) || isset($_POST['email']) || isset($_POST['senha']) || isset($_POST['cpf']) || isset($_POST['telefone']))) {
         $nome = isset($_POST['nome']) ? $_POST['nome'] : null;
         $email = isset($_POST['email']) ? $_POST['email'] : null;
         $senha = isset($_POST['senha']) ? $_POST['senha'] : null;
         $cpf = isset($_POST['cpf']) ? $_POST['cpf'] : null;
         $telefone = isset($_POST['telefone']) ? $_POST['telefone'] : null;
-    
+
         if ($nome && $cpf) {
-    
+
             $usuarios->setNome($nome);
             $usuarios->setEmail($email);
             $usuarios->setSenha($senha);
             $usuarios->setCpf($cpf);
             $usuarios->setTelefone($telefone);
-    
+
             $dao = new cadUsuarioController();
             $resultado = $dao->cadastrarUsuario($usuarios);
             if ($resultado) {
@@ -43,14 +47,13 @@
                 $_SESSION['mensagem'] = "Erro ao criar.";
                 $_SESSION['sucesso'] = false;
             }
-            
         } else {
             $_SESSION['mensagem'] = "Campos obrigatórios : Nome e CPF devem ser informados.";
             $_SESSION['sucesso'] = false;
-            
         }
-    
-    
+    }
+
+
 
 
 
@@ -86,6 +89,14 @@
                         </div>
 
                         <button type="submit" class="btn-btn-primary btn_logar">Cadastrar</button>
+                        <?php
+                        if (isset($_SESSION) && isset($_SESSION['mensagem'])) { ?>
+                            <div class="alert alert-danger" role="alert">
+                                <?= $_SESSION['mensagem']; ?>
+                            </div>
+                        <?php unset($_SESSION['mensagem']);
+                        }
+                        ?>
                     </form>
                 </div>
             </section>

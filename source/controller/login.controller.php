@@ -11,27 +11,20 @@ if (isset($_POST)) {
     if (!$email || !$senha) {
         $_SESSION['mensagem'] = "O Email/CPF e a senha devem ser preenchidos."; //campos da página login não foram preenchidos
         header("Location:../../pages/login.php");
-        return 0;
-    }
-
-    if (!isset($login) || empty($login) || empty($login->getId())) {
-        $_SESSION['mensagem'] = "1O Email/CPF e/ou senha inseridos estão incorretos."; //campos da página login estão incorretos
-        header("Location:../../pages/login.php");
-        echo json_encode(array('sucesso' => false, 'mensagem' => "O Email/CPF inseridos estão incorretos"));
         die();
     }
 
     $dao = new loginDAO();
     $login = new Usuarios();
     $login = $dao->buscaUsuario($email);
-    $login->setSenha($senha);
+
 
     if ($login && $senha == $login->getSenha()) {
         $_SESSION['usuario_email'] = $login->getEmail(); //o login foi efetuado com sucesso
         header("Location:../../index.php");
     } else {
-        $_SESSION['mensagem'] = "2O Email/CPF e/ou senha inseridos estão incorretos."; 
+        $_SESSION['mensagem'] = "O Email/CPF e/ou senha inseridos estão incorretos."; //campos da página login estão incorretos
         header("Location:../../pages/login.php");
-        echo json_encode(array('sucesso' => false, 'mensagem' => "2O Email/CPF e/ou senha inseridos estão incorretos"));
+        echo json_encode(array('sucesso' => false, 'mensagem' => "O Email/CPF e/ou senha inseridos estão incorretos"));
     }
 }
