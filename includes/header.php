@@ -34,9 +34,29 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
           </div>
           <hr>
 
-          <div class="distribuition-butons-side-space">
+          <div class="distribuition-butons-side-space">            
+            <a href="/delivery-slg.com.br/pages/perfilusuario.php">
+              <i class="fa-solid fa-circle-user"></i>
+              <h3>Perfil</h3>
+            </a>
+            
+            <a href="/delivery-slg.com.br/pages/cadastrousuario.php">
+              <i class="fa-solid fa-user"></i>
+              <h3>Criar Conta</h3>
+            </a>
+            
+            <a href="/delivery-slg.com.br/pages/login.php">
+              <i class="fa-regular fa-user"></i>
+              <h3>Entrar</h3>
+            </a>
+            
+            <a href="/delivery-slg.com.br/index.php#sobre-nos-sessao" onclick="levarAoSobreNos()">
+              <i class="fa-sharp fa-solid fa-circle-info"></i>
+              <h3>Sobre Nós</h3>
+            </a>
+
             <a href="/delivery-slg.com.br/pages/produtos.php">
-              <i class="fa-solid fa-shop"></i>
+              <i class="fa-solid fa-burger"></i>
               <h3>Produtos</h3>
             </a>
 
@@ -50,20 +70,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
               <h3>Cadastrar Restaurante</h3>
             </a>
 
-            <a href="/delivery-slg.com.br/index.php#sobre-nos-sessao" onclick="levarAoSobreNos()">
-              <i class="fa-sharp fa-solid fa-circle-info"></i>
-              <h3>Sobre Nós</h3>
-            </a>
-
-            <a href="/delivery-slg.com.br/pages/cadastrousuario.php">
-              <i class="fa-solid fa-user"></i>
-              <h3>Criar Conta</h3>
-            </a>
-
-            <a href="/delivery-slg.com.br/pages/login.php">
-              <i class="fa-regular fa-user"></i>
-              <h3>Entrar</h3>
-            </a>
           </div>
 
           <div class="contact-side-space">
@@ -152,7 +158,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
   </div>
 </header>
 
-<input type="checkbox" id="carrinhoLateralInput">
+<input type="checkbox" id="carrinhoLateralInput" checked>
 
 <div class="carrinho-lateral-background">
   <label class="disable-carrinho-lateral" for="carrinhoLateralInput"></label>
@@ -161,6 +167,48 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
       <h3>Carrinho</h3>
       <div class="carrinho-itens-container">
 
+        <div class="pedido-item">
+          <div class="image-container">
+            <div class="image" style="background-image: url('/delivery-slg.com.br/assets/images/default-images/lanches-produtos.png')">
+            </div>
+            <!-- <img src="/delivery-slg.com.br/assets/images/default-images/lanches-produtos.png" alt=""> -->
+            <div class="carrinho-restaurante-nome">
+              <i class="fa-solid fa-shop"></i>
+              <span>Casa dos Pasteis</span>
+            </div>
+          </div>
+          <div class="carrinho-nome-produto">
+            <h4>Pastel de Frango</h4>
+            <span class="carrinho-produto-valor">23.99</span>
+            <div class="carrinho-quantidade-items">
+              <i class="fa-solid fa-caret-left"></i>
+              <span class="quantidade-item">1</span>
+              <i class="fa-solid fa-caret-right"></i>
+            </div>
+            <a href="#">Remover</a>
+          </div>
+        </div>
+        <div class="pedido-item">
+          <div class="image-container">
+            <div class="image" style="background-image: url('/delivery-slg.com.br/assets/images/default-images/lanches-produtos.png')">
+            </div>
+            <!-- <img src="/delivery-slg.com.br/assets/images/default-images/lanches-produtos.png" alt=""> -->
+            <div class="carrinho-restaurante-nome">
+              <i class="fa-solid fa-shop"></i>
+              <span>Casa dos Pasteis</span>
+            </div>
+          </div>
+          <div class="carrinho-nome-produto">
+            <h4>Pastel de Frango</h4>
+            <span class="carrinho-produto-valor">23.99</span>
+            <div class="carrinho-quantidade-items">
+              <i class="fa-solid fa-caret-left"></i>
+              <span class="quantidade-item">1</span>
+              <i class="fa-solid fa-caret-right"></i>
+            </div>
+            <a href="#">Remover</a>
+          </div>
+        </div>
         <div class="pedido-item">
           <div class="image-container">
             <div class="image" style="background-image: url('/delivery-slg.com.br/assets/images/default-images/lanches-produtos.png')">
