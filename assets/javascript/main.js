@@ -43,7 +43,7 @@ document.getElementById('searchProductsInput')
 // Adicionar conteudo ao carrinho
 
 document.addEventListener('DOMContentLoaded', () => {
-  buscarQuantidadeNoCarrinho()
+  BuscarProdutos();
 })
 
 function adicionarAoCarrinho(idProduto) {
@@ -57,27 +57,14 @@ function adicionarAoCarrinho(idProduto) {
   })
   .then(data => {
     console.log(data);
-    if (data[0].ok == false) {
+    if (data.msg.login.ok == false) {
       const inputPedirLogin = document.getElementById('pedirLogin');
       inputPedirLogin.checked = true;
 
     }
   })
-  // .then((data) => {
-  //   console.log(data);
-    
-  //   // let html = document.getElementById('notificationPhpJsContainer')
-  //   // html.insertAdjacentHTML('beforeend', NotificationDiv(true, data))
-  //   // html.classList.add('mostrar')
-  //   // setTimeout(() => {
-  //   //   html.classList.add('esconder')
-  //   //   setTimeout(() => {
-  //   //     html.remove();
-  //   //   }, 500)
-  //   // }, 3000)
-  //})
   .finally(() => {
-    buscarQuantidadeNoCarrinho();
+    BuscarProdutos();
   })
   .catch(error => {
     console.error(error);
@@ -112,9 +99,9 @@ function NotificationDiv(bool, conteudo) {
   }
 }
 
-function buscarQuantidadeNoCarrinho() {
+function BuscarProdutos() {
   //colocar icone carregando
-  fetch(`/delivery-slg.com.br/source/controller/header_controller.php?action=bsc-qtde-car`)
+  fetch(`/delivery-slg.com.br/source/controller/header_controller.php?action=buscar-prods`)
   .then(res => {
     if (res.ok == false) {
       throw new Error('Erro em acessar o servidor')
@@ -123,13 +110,14 @@ function buscarQuantidadeNoCarrinho() {
   })
   .then(data => {
     console.log(data)
-    if (data[0].ok == false) {
+    if (data.msg.login.ok == false) {
       
     } else {
+      let numProds = data.dados.length;
       const labelNumberCar = document.getElementById('carrinhoContainer')
       labelNumberCar.insertAdjacentHTML('beforeend', `
         <span>
-          ${data.dados}
+          ${numProds}
         </span>
       `)
 
@@ -139,14 +127,4 @@ function buscarQuantidadeNoCarrinho() {
     console.log(error)
   })
   // com finally, tirar icone de carregando
-}
-
-function BuscarProdutos() {
-  fetch('/delivery-slg.com.br/source/controller/header_controller.php?action=buscar-prods')
-  .then(res => {
-    return res.json();
-  })
-  .then(data => {
-    console.log(data);
-  })
 }

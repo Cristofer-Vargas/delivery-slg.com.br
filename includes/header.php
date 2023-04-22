@@ -106,7 +106,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
         <div class="perfil-logged">
           <ul>
             <li id="carrinhoContainer" class="carrinho-container">
-              <label for="carrinhoLateralInput" onclick="BuscarProdutos()">
+              <label for="carrinhoLateralInput">
                 <i class="fa-solid fa-cart-shopping"></i>
               </label>
 
