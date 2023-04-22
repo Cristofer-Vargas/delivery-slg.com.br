@@ -7,14 +7,19 @@ require_once('../config/error_message.php');
 require_once('../classes/carrinho.class.php');
 
 if (isset($_GET) && !empty($_GET['adc-car'])) {
-  if (!isset($_SESSION['usuario_email']) && $_SESSION['usuario_email'] !== '') {
+  if (!isset($_SESSION['usuario_email'])) {
     $resultRequire[] = [
       'ok' => false,
       'mensagem' => 'Usuário não logado'
     ];
   } else {
-
     $usuarioEmail = $_SESSION['usuario_email'];
+
+    $resultRequire[] = [
+      'ok' => true,
+      'mensagem' => 'Usuário logado com sucesso, email: ' . "$usuarioEmail"
+    ];
+
 
     $idProduto = addslashes(filter_input(INPUT_GET, 'adc-car'));
     $CarrinhoDao = new CarrinhoDAO;
@@ -75,24 +80,30 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
 if (isset($_GET) && $_GET['action'] == 'bsc-qtde-car') {
 
   if (!isset($_SESSION['usuario_email'])) {
-    $buscaNumProds = array(
+    $buscaNumProds[] = [
       'ok' => false,
       'mensagem' => 'usuário não logado'
-    );
+    ];
   } else {
+    $usuarioEmail = $_SESSION['usuario_email'];
+
+    $resultRequire[] = [
+      'ok' => true,
+      'mensagem' => 'Usuário logado com sucesso, email: ' . "$usuarioEmail"
+    ];
     $CarrinhoDao = new CarrinhoDAO;
 
     try {
       $NumProds = $CarrinhoDao->buscarNumProdutos();
     } catch (Exception $ex) {
-      $buscaNumProds = array(
+      $buscaNumProds[] = [
         'ok' => false,
         'mensagem' => $ex->getMessage()
-      );
+      ];
     }
   }
 
-  echo json_encode($resultRequire);
+  echo json_encode($buscaNumProds);
   exit();
 }
 
@@ -104,8 +115,13 @@ if (isset($_GET) && $_GET['action'] == 'buscar-prods') {
       'mensagem' => 'Usuário não logado na sessão'
     ];
   } else {
-
     $usuarioEmail = $_SESSION['usuario_email'];
+
+    $resultRequire[] = [
+      'ok' => true,
+      'mensagem' => 'Usuário logado com sucesso, email: ' . "$usuarioEmail"
+    ];
+
     $loginDAO = new LoginDAO();
     $CarrinhoDao = new CarrinhoDAO;
 

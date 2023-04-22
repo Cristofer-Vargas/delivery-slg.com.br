@@ -147,17 +147,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
         </div>
       </section>
     </div>
-    <div id="pedirLogin" class="pedir-login">
-      <h2>Essa operação exige que você esteja logado!</h2>
-      <div>
-        <a href="/delivery-slg.com.br/pages/login.php">
-          Logar
-        </a>
-        <a href="/delivery-slg.com.br/pages/cadastrousuario.php">
-          Criar conta
-        </a>
-      </div>
-    </div>
 
   </main>
   <?php include_once('../includes/footer.php'); ?>

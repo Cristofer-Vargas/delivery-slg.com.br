@@ -103,7 +103,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
       <?php
       if (isset($_SESSION) && isset($_SESSION['usuario_email'])) {
       ?>
-      <div class="perfil-logged">
+        <div class="perfil-logged">
           <ul>
             <li id="carrinhoContainer" class="carrinho-container">
               <label for="carrinhoLateralInput" onclick="BuscarProdutos()">
@@ -132,6 +132,23 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
       ?>
 
     </section>
+  </div>
+
+  <input type="checkbox" id="pedirLogin">
+
+  <div id="pedirLogin" class="pedir-login-background">
+    <label for="pedirLogin"></label>
+    <div class="pedir-login-container">
+      <h2>Essa operação exige que você esteja logado!</h2>
+      <div class="pedir-login-sign">
+        <a href="/delivery-slg.com.br/pages/login.php">
+          Logar
+        </a>
+        <a href="/delivery-slg.com.br/pages/cadastrousuario.php">
+          Criar conta
+        </a>
+      </div>
+    </div>
   </div>
 </header>
 
