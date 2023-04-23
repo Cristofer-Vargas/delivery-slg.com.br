@@ -92,6 +92,43 @@ class ProdutoDAO
     }
   }
 
+  function BuscarProdutosPorCategoria(string $categoria) {
+    $conection = ConexaoBD();
+    try {
+      if (!empty($categoria)) {
+        $stmt = $conection->prepare('SELECT * FROM `produtos` WHERE `categoria` = "' . $categoria . '"');
+      } else {
+        $stmt = $conection->prepare("SELECT * FROM produtos ORDER BY categoria ASC");
+      }
+
+      $stmt->execute();
+
+      if ($stmt->rowCount()) {
+        $produto = new Produtos();
+        while ($result = $stmt->fetch(PDO::FETCH_OBJ)) {
+          $produto->setId($result->id);
+          $produto->setNome($result->nome);
+          $produto->setDescricao($result->descricao);
+          $produto->setImagem($result->imagem);
+          $produto->setPreco($result->preco);
+          $produto->setCategoria($result->categoria);
+          $produto->setId_Restaurante($result->id_Restaurante);
+          $arr[] = clone $produto;
+        }
+
+        return $arr;
+      } else {
+        return FALSE;
+      }
+
+    } catch (PDOException $ex) {
+      $_SESSION['mensagemError'] = 'Erro ao buscar produtos com categoria' . $ex->getMessage();
+      $_SESSION['erroSucessOrFail'] = false;
+      throw $ex;
+      die();
+    }
+  }
+
   function BuscarPorNome($busca) {
     $conection = ConexaoBD();
 

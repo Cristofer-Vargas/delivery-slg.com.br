@@ -49,61 +49,61 @@ include_once('./includes/metas_gerais.php')
       </div>
 
       <div class="categoria-icones">
-        <div>
+        <a href="/delivery-slg.com.br/pages/produtos.php?categoria=sorvete">
           <div>
             <img src="/delivery-slg.com.br/assets/images/icones/sorvete-icon.png" alt="Sorvete categoria">
           </div>
           <p>Sorvete</p>
-        </div>
+        </a>
 
-        <div>
+        <a href="/delivery-slg.com.br/pages/produtos.php?categoria=pastel">
           <div>
             <img src="/delivery-slg.com.br/assets/images/icones/pastel-icon.png" alt="Pastel categoria">
           </div>
           <p>Pastel</p>
-        </div>
+        </a>
 
-        <div>
+        <a href="/delivery-slg.com.br/pages/produtos.php?categoria=pizza">
           <div>
             <img src="/delivery-slg.com.br/assets/images/icones/pizza-icon.png" alt="Pizza categoria">
           </div>
           <p>Pizza</p>
-        </div>
+        </a>
 
-        <div>
+        <a href="/delivery-slg.com.br/pages/produtos.php?categoria=açai">
           <div>
             <img src="/delivery-slg.com.br/assets/images/icones/acai-icon.png" alt="Açai categoria">
           </div>
           <p>Açai</p>
-        </div>
+        </a>
 
-        <div>
+        <a href="/delivery-slg.com.br/pages/produtos.php?categoria=frango_frito">
           <div>
             <img src="/delivery-slg.com.br/assets/images/icones/frango-frito-icon.png" alt="Frango frito categoria">
           </div>
           <p>Frango Frito</p>
-        </div>
+        </a>
 
-        <div>
+        <a href="/delivery-slg.com.br/pages/produtos.php?categoria=hamburguer">
           <div>
             <img src="/delivery-slg.com.br/assets/images/icones/hamburguer-icon.png" alt="Hamburguer categoria">
           </div>
           <p>Hamburguer</p>
-        </div>
+        </a>
 
-        <div>
+        <a href="/delivery-slg.com.br/pages/produtos.php?categoria=cachorro_quente">
           <div>
             <img src="/delivery-slg.com.br/assets/images/icones/cachorro-quente-icon.png" alt="Cachorro quente categoria">
           </div>
           <p>Cachorro Quente</p>
-        </div>
+        </a>
 
-        <div>
+        <a href="/delivery-slg.com.br/pages/produtos.php?categoria=x_burguer">
           <div>
             <img src="/delivery-slg.com.br/assets/images/icones/x-burger-icon.png" alt="X-Burguer categoria">
           </div>
           <p>X-Burguer</p>
-        </div>
+        </a>
 
       </div>
 

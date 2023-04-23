@@ -31,6 +31,14 @@ class ProdutosController {
     }
   }
 
+  function BuscarProdutosPorCategoria(string $categoria) {
+    $dao = new ProdutoDAO();
+    $produtos = $dao->BuscarProdutosPorCategoria($categoria);
+    if (!empty($produtos) && $produtos !== false) {
+      return $produtos;
+    }
+  }
+
   function BuscarProdutosPorNome(string $busca) {
     $dao = new ProdutoDAO;
     $produtos = $dao->BuscarPorNome($busca);

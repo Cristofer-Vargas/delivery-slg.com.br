@@ -60,7 +60,9 @@ main div.categoria-section div.categoria-icones {
   gap: 90px;
   overflow-x: auto;
 }
-main div.categoria-section div.categoria-icones > div {
+main div.categoria-section div.categoria-icones > a {
+  display: block;
+  text-decoration: none;
   min-width: 176px;
   height: 168px;
   background-color: #FFA500;
@@ -72,18 +74,18 @@ main div.categoria-section div.categoria-icones > div {
   cursor: pointer;
   transition: opacity ease-in-out 0.3s;
 }
-main div.categoria-section div.categoria-icones > div > p {
+main div.categoria-section div.categoria-icones > a > p {
   font-family: "karla", sans-serif;
   font-size: 18px;
   font-weight: 900;
   color: #fff;
 }
-main div.categoria-section div.categoria-icones > div > div {
+main div.categoria-section div.categoria-icones > a > div {
   padding: 15px;
   border-radius: 50%;
   background-color: #fff;
 }
-main div.categoria-section div.categoria-icones > div:hover {
+main div.categoria-section div.categoria-icones > a:hover {
   opacity: 0.7;
 }
 main div.categoria-section div.categoria-icones::-webkit-scrollbar {

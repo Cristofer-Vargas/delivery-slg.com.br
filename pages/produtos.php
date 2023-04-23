@@ -35,6 +35,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
             <p>Resutado para "<span class="busca"><?= $_GET['busca'] ?></span>"</p>
           </div>
         <?php
+        } else if (isset($_GET['categoria']) && !empty($_GET['categoria'])) {
+        ?>
+          <div class="resultado-busca">
+            <p>Resutado para categoria "<span class="busca"><?= $_GET['categoria'] ?></span>"</p>
+          </div>
+        <?php
         }
         ?>
         <div class="produtos-main-container">
@@ -75,7 +81,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
 
             <?php
             $controller = new ProdutosController();
-            if (isset($_GET) && (isset($_GET['campo']) && isset($_GET['ordem'])) || isset($_GET['busca'])) {
+            if (isset($_GET) && (isset($_GET['campo']) && isset($_GET['ordem'])) || isset($_GET['busca']) || isset($_GET['categoria'])) {
 
               if (isset($_GET['campo']) && isset($_GET['ordem'])) {
                 $campo = addslashes(filter_input(INPUT_GET, 'campo'));
@@ -85,12 +91,17 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
                 } catch (Exception $ex) {
                   MsgPerssonalizadaDeErro();
                 }
-              }
-
-              if (isset($_GET['busca'])) {
+              } else if (isset($_GET['busca'])) {
                 $busca = addslashes(filter_input(INPUT_GET, 'busca'));
                 try {
                   $produtos = $controller->BuscarProdutosPorNome($busca);
+                } catch (Exception $ex) {
+                  MsgPerssonalizadaDeErro();
+                }
+              } else if (isset($_GET['categoria'])) {
+                $categoria = addslashes(filter_input(INPUT_GET, 'categoria'));
+                try {
+                  $produtos = $controller->BuscarProdutosPorCategoria($categoria);
                 } catch (Exception $ex) {
                   MsgPerssonalizadaDeErro();
                 }
