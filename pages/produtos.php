@@ -56,12 +56,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
                 }
                 if (!isset($_GET['busca'])) {
                 ?>
-                  <div class="filtro"><a href="produtos.php?campo=preco&ordem=desc">Maior Preço</a></div>
-                  <div class="filtro"><a href="produtos.php?campo=preco&ordem=asc">Menor Preço</a></div>
-                  <div class="filtro"><a href="produtos.php?campo=categoria&ordem=desc">Categoria Decrescente</a></div>
-                  <div class="filtro"><a href="produtos.php?campo=categoria&ordem=asc">Categoria Crescente</a></div>
-                  <div class="filtro"><a href="produtos.php?campo=id_Restaurante&ordem=desc">Restaurante Decrescente</a></div>
-                  <div class="filtro"><a href="produtos.php?campo=id_Restaurante&ordem=asc">Restaurante Crescente</a></div>
+                  <div class="filtro"><p onclick="Filtrar('preco', 'desc')">Maior Preço</p></div>
+                  <div class="filtro"><p onclick="Filtrar('preco', 'asc')">Menor Preço</p></div>
+                  <div class="filtro"><p onclick="Filtrar('categoria', 'desc')">Categoria Decrescente</p></div>
+                  <div class="filtro"><p onclick="Filtrar('categoria', 'asc')">Categoria Crescente</p></div>
+                  <div class="filtro"><p onclick="Filtrar('id_Restaurante', 'asc')">Restaurante Decrescente</p></div>
+                  <div class="filtro"><p onclick="Filtrar('id_Restaurante', 'desc')">Restaurante Crescente</p></div>
                 <?php
                 } else {
                 ?>
@@ -77,31 +77,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
             
           </div>
 
-          <div class="produtos-cards-lista">
+          <div class="produtos-cards-lista" id="produtosCardLista">
 
             <?php
             $controller = new ProdutosController();
             if (isset($_GET) && (isset($_GET['campo']) && isset($_GET['ordem'])) || isset($_GET['busca']) || isset($_GET['categoria'])) {
 
-              if (isset($_GET['campo']) && isset($_GET['ordem'])) {
-                $campo = addslashes(filter_input(INPUT_GET, 'campo'));
-                $ordem = addslashes(filter_input(INPUT_GET, 'ordem'));
-                try {
-                  $produtos = $controller->BuscarProdutosComFiltro($campo, $ordem);
-                } catch (Exception $ex) {
-                  MsgPerssonalizadaDeErro();
-                }
-              } else if (isset($_GET['busca'])) {
+              if (isset($_GET['busca'])) {
                 $busca = addslashes(filter_input(INPUT_GET, 'busca'));
                 try {
                   $produtos = $controller->BuscarProdutosPorNome($busca);
-                } catch (Exception $ex) {
-                  MsgPerssonalizadaDeErro();
-                }
-              } else if (isset($_GET['categoria'])) {
-                $categoria = addslashes(filter_input(INPUT_GET, 'categoria'));
-                try {
-                  $produtos = $controller->BuscarProdutosPorCategoria($categoria);
                 } catch (Exception $ex) {
                   MsgPerssonalizadaDeErro();
                 }

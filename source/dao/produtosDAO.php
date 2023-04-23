@@ -45,10 +45,12 @@ class ProdutoDAO
   {
     $conection = ConexaoBD();
 
-
-
     try {
-      if (!empty($campo) && !empty($ordem) && $campo !== 'id_Restaurante') {
+      if (!empty($campo) && !empty($ordem) && $campo == 'preco') {
+        $stmt = $conection->prepare('SELECT r.nome as nome_restaurante, p.* FROM `produtos` as p INNER JOIN `restaurantes` 
+        as r ON p.id_Restaurante = r.id ORDER BY ' . $campo . " $ordem");
+
+      } else if (!empty($campo) && !empty($ordem) && $campo !== 'id_Restaurante') {
         $stmt = $conection->prepare('SELECT r.nome as nome_restaurante, p.* FROM `produtos` as p INNER JOIN `restaurantes` 
         as r ON p.id_Restaurante = r.id ORDER BY ' . 'LOWER(' . $campo . ') ' . "$ordem");
 
@@ -57,9 +59,11 @@ class ProdutoDAO
         as r ON p.id_Restaurante = r.id ORDER BY r.nome ' . $ordem);
 
       } else {
-        echo "Compos incorretos para a filtragem de dados";
+        $resultRequire['msg'][] = [
+          'ok' => false,
+          'mensagem' => "Compos incorretos para a filtragem de dados",
+        ];
         $stmt = $conection->prepare("SELECT * FROM produtos ORDER BY categoria ASC");
-        
       }
 
       $stmt->execute();
@@ -67,6 +71,7 @@ class ProdutoDAO
       if ($stmt->rowCount()) {
         $produto = new Produtos();
         $arr = array();
+
         while ($result = $stmt->fetch(PDO::FETCH_OBJ)) {
           $produto->setId($result->id);
           $produto->setNome($result->nome);
@@ -76,17 +81,14 @@ class ProdutoDAO
           $produto->setCategoria($result->categoria);
           $produto->setId_Restaurante($result->id_Restaurante);
           $produto->setNomeRestaurante($result->nome_restaurante);
-          $arr[] = clone $produto;
+          $arr[] = $produto->toArray(); 
         }
 
         return $arr;
       } else {
-        echo "A busca por produtos no filtro não trouxe resultados!";
-        return FALSE;
+        return false;
       }
     } catch (PDOException $ex) {
-      $_SESSION['mensagemError'] = 'Erro ao buscar produtos com filtro';
-      $_SESSION['erroSucessOrFail'] = false;
       throw $ex;
       die();
     }

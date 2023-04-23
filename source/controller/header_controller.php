@@ -77,7 +77,7 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
 // if (isset($_GET) && $_GET['action'] == 'verifica-sessao') {
 // }
 
-if (isset($_GET) && $_GET['action'] == 'buscar-prods') {
+if (isset($_GET) && $_GET['action'] == 'buscar-prods-usuario') {
 
   if (!isset($_SESSION['usuario_email'])) {
     $resultRequire['msg']['login'] = [
