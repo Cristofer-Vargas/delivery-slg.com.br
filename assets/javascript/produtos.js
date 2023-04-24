@@ -16,7 +16,7 @@ function adicionarAoCarrinho(idProduto) {
       }
     })
     .finally(() => {
-      BuscarProdutosDoUsuario();
+      BuscarCarrinhoDoUsuario();
     })
     .catch(error => {
       console.error(error);
@@ -50,7 +50,7 @@ function Filtrar(campo, ordem) {
               <div class="restaurante-name">
                 <i class="fa-solid fa-shop"></i>
                 <span>
-                  ${row.nome_restaurante}
+                  ${row.nomeRestaurante}
                 </span>
               </div>
               <div>

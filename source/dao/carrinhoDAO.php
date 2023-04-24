@@ -41,29 +41,42 @@ class CarrinhoDAO {
     $conection = ConexaoBD();
 
     try {
-      $stmt = $conection->prepare('SELECT * FROM carrinho WHERE id_Usuario = :idUser');
-      $stmt->bindValue(':idUser', $idUser);
+      $stmt = $conection->prepare(
+        'SELECT DISTINCT 
+        r.nome as nome_restaurante, 
+        p.imagem as produto_imagem, 
+        p.nome as produto_nome,
+        p.preco as produto_preco, 
+        c.* FROM carrinho as c 
+        INNER JOIN restaurantes as r 
+        INNER JOIN produtos as p 
+        ON r.id = c.id_Restaurante 
+        AND r.id = p.id_Restaurante 
+        WHERE c.id_Usuario = ' . $idUser . '
+        GROUP BY c.id');
       $stmt->execute();
-
       if ($stmt->rowCount()) {
+        // var_dump($stmt);
         $carrinho = new Carrinho();
-        $arr = array();
 
         while ($result = $stmt->fetch(PDO::FETCH_OBJ)) {
-          // $carrinho->setId($result->id);
-          // $carrinho->setId_Produto($result->id_Produto);
-          // $carrinho->setId_Restaurante($result->id_Restaurante);
-          // $carrinho->setId_Usuario($result->id_Usuario);
-          // $carrinho->setQuantidade($result->quantidade);
+          $carrinho->setId($result->id);
+          $carrinho->setId_Produto($result->id_Produto);
+          $carrinho->setId_Restaurante($result->id_Restaurante);
+          $carrinho->setNome_Restaurante($result->nome_restaurante);
+          $carrinho->setProduto_Imagem($result->produto_imagem);
+          $carrinho->setProduto_Nome($result->produto_nome);
+          $carrinho->setProduto_Preco($result->produto_preco);
+          $carrinho->setId_Usuario($result->id_Usuario);
+          $carrinho->setQuantidade($result->quantidade);
 
-          $arr[] = clone $result;
-
+          $arr[] = $carrinho->toArray();
         }
 
         return $arr;
 
       } else {
-        throw new Exception(' | Não houve produtos no banco de dados | ');
+        return false;
       }
 
     } catch (PDOException $ex) {
