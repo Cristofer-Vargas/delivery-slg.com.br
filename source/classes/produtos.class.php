@@ -10,6 +10,19 @@ class Produtos {
   private string $categoria;
   private string $nomeRestaurante;
 
+  public function toArray() {
+    return [
+      'id' => $this->id,
+      'id_Restaurante' => $this->id_Restaurante,
+      'nome' => $this->nome,
+      'descricao' => $this->descricao,
+      'imagem' => $this->imagem,
+      'preco' => $this->preco,
+      'categoria' => $this->categoria,
+      'nomeRestaurante' => $this->nomeRestaurante,
+    ];
+  }
+
   public function setNomeRestaurante(string $nome) {
     $this->nomeRestaurante = $nome;
   }

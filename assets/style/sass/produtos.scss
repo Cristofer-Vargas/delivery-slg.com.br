@@ -59,7 +59,7 @@ main {
 
         .filtro {
 
-          a {
+          p, a {
             padding: 10px 15px;
             border: 1px solid rgba(0, 0, 0, 0.10);
             border-right: 0px;
@@ -74,14 +74,14 @@ main {
         .limpar-filtro {
           background-color: #3f3f3f;
 
-          a {
+          p, a  {
             color: #fff;
           }
         }
 
         .limpar-filtro:hover {
 
-          a {
+          p, a {
             color: #000;
           }
 

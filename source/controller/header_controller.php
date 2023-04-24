@@ -2,6 +2,7 @@
 session_start();
 require_once('../dao/carrinhoDAO.php');
 require_once('../dao/produtosDAO.php');
+require_once('../dao/restaurantesDAO.php');
 require_once('../dao/loginDAo.php');
 require_once('../config/error_message.php');
 require_once('../classes/carrinho.class.php');
@@ -77,7 +78,7 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
 // if (isset($_GET) && $_GET['action'] == 'verifica-sessao') {
 // }
 
-if (isset($_GET) && $_GET['action'] == 'buscar-prods') {
+if (isset($_GET) && $_GET['action'] == 'buscar-prods-usuario') {
 
   if (!isset($_SESSION['usuario_email'])) {
     $resultRequire['msg']['login'] = [
@@ -93,7 +94,7 @@ if (isset($_GET) && $_GET['action'] == 'buscar-prods') {
     ];
 
     $loginDAO = new LoginDAO();
-    $CarrinhoDao = new CarrinhoDAO;
+    $CarrinhoDao = new CarrinhoDAO();
 
     try {
       $usuario = $loginDAO->buscaUsuario($usuarioEmail);
@@ -107,7 +108,11 @@ if (isset($_GET) && $_GET['action'] == 'buscar-prods') {
 
     try {
       $produtos = $CarrinhoDao->buscarProdutos($usuarioId);
-      $resultRequire['dados'] = $produtos;
+      if ($produtos == false) {
+        $resultRequire['dados'] = false;
+      } else {
+        $resultRequire['dados'] = $produtos;
+      }
     } catch (Exception $ex) {
       $resultRequire['msg'][] = [
         'ok' => false,
