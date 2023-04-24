@@ -12,6 +12,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
 
 <link rel="stylesheet" href="../assets/style/media-queries/all.css">
 <link rel="stylesheet" href="../assets/style/media-queries/produtos.css">
+<script src="/delivery-slg.com.br/assets/javascript/produtos.js" defer></script>
 </head>
 
 <body>
