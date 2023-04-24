@@ -42,19 +42,89 @@ document.getElementById('searchProductsInput')
 
 // Adicionar conteudo ao carrinho
 
+document.addEventListener('DOMContentLoaded', () => {
+  BuscarProdutos();
+})
+
 function adicionarAoCarrinho(idProduto) {
+  // colocar com classe ou algo do tipo, um icone de carregando
   fetch(`/delivery-slg.com.br/source/controller/header_controller.php?adc-car=${idProduto}`)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Erro ao carregar dados do servidor.');
+  .then(res => {
+    if (res.ok == false) {
+      throw new Error('Erro em acessar o servidor.');
     }
-    return response.text()
+    return res.json();
   })
   .then(data => {
     console.log(data);
+    if (data.msg.login.ok == false) {
+      const inputPedirLogin = document.getElementById('pedirLogin');
+      inputPedirLogin.checked = true;
+
+    }
+  })
+  .finally(() => {
+    BuscarProdutos();
   })
   .catch(error => {
     console.error(error);
   });
+  // com finally tirar o icone de adicionado com sucesso
+}
 
+function NotificationDiv(bool, conteudo) {
+
+  if (bool == true) {
+    let notification = `
+      <div class="notificationJS notificationTrue">
+        ${conteudo}
+      </div>
+    `
+    return notification
+
+  } else if (bool == false) {
+    let notification = `
+      <div class="notificationJS notificationFalse">
+        ${conteudo}
+      </div>
+    `
+    return notification
+  } else {
+    let divErro = `
+    <div>
+      <p>Erro com a integração da notificação</p>
+    </div>
+    `
+    return divErro
+  }
+}
+
+function BuscarProdutos() {
+  //colocar icone carregando
+  fetch(`/delivery-slg.com.br/source/controller/header_controller.php?action=buscar-prods`)
+  .then(res => {
+    if (res.ok == false) {
+      throw new Error('Erro em acessar o servidor')
+    }
+    return res.json()
+  })
+  .then(data => {
+    console.log(data)
+    if (data.msg.login.ok == false) {
+      
+    } else {
+      let numProds = data.dados.length;
+      const labelNumberCar = document.getElementById('carrinhoContainer')
+      labelNumberCar.insertAdjacentHTML('beforeend', `
+        <span>
+          ${numProds}
+        </span>
+      `)
+
+    }
+  })
+  .catch(error => {
+    console.log(error)
+  })
+  // com finally, tirar icone de carregando
 }

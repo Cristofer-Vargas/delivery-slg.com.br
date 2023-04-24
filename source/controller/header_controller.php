@@ -8,66 +8,113 @@ require_once('../classes/carrinho.class.php');
 
 if (isset($_GET) && !empty($_GET['adc-car'])) {
   if (!isset($_SESSION['usuario_email'])) {
-    echo 'Usuário não logado na sessão!';
+    $resultRequire['msg']['login'] = [
+      'ok' => false,
+      'mensagem' => 'Usuário não logado'
+    ];
   } else {
+    $usuarioEmail = $_SESSION['usuario_email'];
 
-  $usuarioEmail = $_SESSION['usuario_email'];
+    $resultRequire['msg']['login'] = [
+      'ok' => true,
+      'mensagem' => 'Usuário logado com sucesso, email: ' . "$usuarioEmail"
+    ];
 
-  $idProduto = addslashes(filter_input(INPUT_GET, 'adc-car'));
-  $CarrinhoDao = new CarrinhoDAO;
-  $loginDAO = new LoginDAO;
-  $ProdutoDao = new ProdutoDAO;
 
-  try {
-    $produto = $ProdutoDao->BuscarPorId($idProduto);
-  } catch (Exception $ex) {
-    MsgPerssonalizadaDeErro();
-    echo 'Erro ao encontrar o produtos especificado';
-  }
+    $idProduto = addslashes(filter_input(INPUT_GET, 'adc-car'));
+    $CarrinhoDao = new CarrinhoDAO;
+    $loginDAO = new LoginDAO;
+    $ProdutoDao = new ProdutoDAO;
 
-  try {
-    $usuario = $loginDAO->buscaUsuario($usuarioEmail);
-
-  } catch (Exception $ex) {
-    echo 'Erro ao encontrar o usuario na sessão';
-  }
-
-  if (!empty($produto) && $produto !== false && !empty($usuario) && $usuario !== null || $usuario !== false) {
     try {
-      $Carrinho = new Carrinho();
-      $Carrinho->setId_Produto($produto->getId());
-      $Carrinho->setId_Restaurante($produto->getId_Restaurante());
-      $Carrinho->setId_Usuario($usuario->getId());
-      $Carrinho->setQuantidade(1);
-
-      $result = $CarrinhoDao->inserirNoCarrinho($Carrinho);
-
-      if ($result == true) {
-        echo 'Adicionado com sucesso!';
-      } else {
-        echo 'Não foi possivel adicionar!';
-      }
-
+      $produto = $ProdutoDao->BuscarPorId($idProduto);
     } catch (Exception $ex) {
-      MsgPerssonalizadaDeErro();
-      echo 'Erro ao inserir no carrinho';
+      $resultRequire['msg'][] = [
+        'ok' => false,
+        'mensagem' => $ex->getMessage()
+      ];
     }
 
+    try {
+      $usuario = $loginDAO->buscaUsuario($usuarioEmail);
+    } catch (Exception $ex) {
+      $resultRequire['msg'][] = [
+        'ok' => false,
+        'mensagem' => $ex->getMessage()
+      ];
+    }
+
+    if (!empty($produto) && $produto !== false && (!empty($usuario) && $usuario !== null || $usuario !== false)) {
+      try {
+        $Carrinho = new Carrinho();
+        $Carrinho->setId_Produto($produto->getId());
+        $Carrinho->setId_Restaurante($produto->getId_Restaurante());
+        $Carrinho->setId_Usuario($usuario->getId());
+        $Carrinho->setQuantidade(1);
+        // if ($carrinho->getQuantidade() <= 0 || $carrinho->getQuantidade() == null) {
+        //   $carrinho->setQuantidade(1);
+        // }
+
+        $result = $CarrinhoDao->inserirNoCarrinho($Carrinho);
+      } catch (Exception $ex) {
+        $resultRequire['msg'][] = [
+          'ok' => false,
+          'mensagem' => $ex->getMessage(),
+        ];
+      }
+    } else {
+      $resultRequire['msg'][] = [
+        'ok' => false,
+        'mensagem' => 'Sessão inválida ou produto incompativel / sem restaurante cadastrado',
+      ];
+    }
   }
 
-  // $Retorno = [
-  //   "ErroBuscaProd" => $buscaProd,
-  //   "ErroBuscaUser" => $buscaUser,
-  //   "ErroInserirNoCar" => $inserirNoCar,
-  //   "Operation" => $Operation
-  // ];
-
-  // class Erros {
-  //   public $buscaProd = $buscaProd;
-  //   public $buscaUser = $buscaUser;
-  //   public $inserirNoCar = $inserirNoCar;
-  // }
+  echo json_encode($resultRequire);
   exit();
-  }
+}
 
+// if (isset($_GET) && $_GET['action'] == 'verifica-sessao') {
+// }
+
+if (isset($_GET) && $_GET['action'] == 'buscar-prods') {
+
+  if (!isset($_SESSION['usuario_email'])) {
+    $resultRequire['msg']['login'] = [
+      'ok' => false,
+      'mensagem' => 'Usuário não logado na sessão'
+    ];
+  } else {
+    $usuarioEmail = $_SESSION['usuario_email'];
+
+    $resultRequire['msg']['login'] = [
+      'ok' => true,
+      'mensagem' => 'Usuário logado com sucesso, email: ' . "$usuarioEmail"
+    ];
+
+    $loginDAO = new LoginDAO();
+    $CarrinhoDao = new CarrinhoDAO;
+
+    try {
+      $usuario = $loginDAO->buscaUsuario($usuarioEmail);
+      $usuarioId = $usuario->getId();
+    } catch (Exception $ex) {
+      $resultRequire['msg'][] = [
+        'ok' => false,
+        'mensagem' => 'Busca por usuário mal sucedida'
+      ];
+    }
+
+    try {
+      $produtos = $CarrinhoDao->buscarProdutos($usuarioId);
+      $resultRequire['dados'] = $produtos;
+    } catch (Exception $ex) {
+      $resultRequire['msg'][] = [
+        'ok' => false,
+        'mensagem' => 'Busca por produtos mal sucedida'
+      ];
+    }
+  }
+  echo json_encode($resultRequire);
+  exit();
 }
