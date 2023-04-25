@@ -43,15 +43,16 @@ class CarrinhoDAO {
     try {
       $stmt = $conection->prepare(
         'SELECT  
-        r.nome as nome_restaurante, 
-        p.imagem as produto_imagem, 
-        p.nome as produto_nome,
-        p.preco as produto_preco,  
-          c.* 
-      FROM carrinho as c 
-        INNER JOIN restaurantes as r ON r.id = c.id_Restaurante
-        INNER JOIN produtos as p ON p.id = c.id_Produto
-      WHERE c.id_Usuario = :idUser');
+          r.nome as nome_restaurante, 
+          p.imagem as produto_imagem, 
+          p.nome as produto_nome,
+          p.preco as produto_preco,  
+            c.* 
+        FROM carrinho as c 
+          INNER JOIN restaurantes as r ON r.id = c.id_Restaurante
+          INNER JOIN produtos as p ON p.id = c.id_Produto
+        WHERE c.id_Usuario = :idUser
+        ORDER BY c.id_Restaurante');
       $stmt->bindValue(':idUser', $idUser);
       $stmt->execute();
       if ($stmt->rowCount()) {

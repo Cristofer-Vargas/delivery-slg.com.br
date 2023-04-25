@@ -26,7 +26,6 @@ function BuscarCarrinhoDoUsuario() {
       return res.json()
     })
     .then(data => {
-      console.log(data);
       if (data.msg.login.ok == false) {
 
       } else {
@@ -42,7 +41,6 @@ function BuscarCarrinhoDoUsuario() {
         } else {
           numProds = data.dados.length;
 
-
           labelNumberCar.insertAdjacentHTML('beforeend', `
           <span>
             ${numProds}
@@ -55,7 +53,8 @@ function BuscarCarrinhoDoUsuario() {
 
           let valorSubTotal = 0;
           let prodsCar = data.dados;
-
+          let idRes = [];
+          
           prodsCar.forEach(row => {
             carrinhoContainer.insertAdjacentHTML('beforeend', `
               <div class="pedido-item">
@@ -77,17 +76,32 @@ function BuscarCarrinhoDoUsuario() {
                   </div>
                   <a onclick="removerDoCarrinho(${row.id_Produto})">Remover</a>
                 </div>
-              </div>
+                </div>
             `)  
-            valorSubTotal += Number(row.produto_Preco)
+            valorSubTotal += Number(row.produto_Preco);
+            
+            idRes.push(row.id_Restaurante);
           });
 
+          let countDif = 0;
+          for (let i = 0; i < idRes.length; i++) {
+            let verificador = idRes[i];
+            if (verificador !== idRes[i-1]) {
+              countDif++
+            }
+          }
+          console.log(countDif);
+
+          let valorEntregaCarrinho = document.getElementById('valorEntregaCarrinho')
+          let valorEntrega = Number(countDif * 7);
+          valorEntregaCarrinho.innerHTML = `R$ 7,00 / restaurante = R$ ${valorEntrega.toFixed(2)}`
+
           let subTotalCarrinho = document.getElementById('subTotalCarrinho');
-          subTotalCarrinho.innerHTML = `${valorSubTotal.toFixed(2)}`
+          subTotalCarrinho.innerHTML = `R$ ${valorSubTotal.toFixed(2)}`
 
           let valorTotalCarrinho = document.getElementById('valorTotalCarrinho');
-          let valorTotal = valorSubTotal + 7.00;
-          valorTotalCarrinho.innerHTML = `${valorTotal.toFixed(2)}`
+          let valorTotal = valorSubTotal + valorEntrega;
+          valorTotalCarrinho.innerHTML = `R$ ${valorTotal.toFixed(2)}`
         }
       }
     }
