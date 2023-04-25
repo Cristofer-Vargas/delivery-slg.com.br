@@ -420,7 +420,8 @@ div.carrinho-lateral-background {
               font-size: 1.8em;
             }
 
-            > a {
+            > p.remover-prod {
+              cursor: pointer;
               text-decoration: none;
               color: $text-especial-color;
             }

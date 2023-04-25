@@ -78,7 +78,7 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
 // if (isset($_GET) && $_GET['action'] == 'verifica-sessao') {
 // }
 
-if (isset($_GET) && $_GET['action'] == 'buscar-prods-usuario') {
+if (isset($_GET) &&  !empty($_GET['action']) && $_GET['action'] == 'buscar-prods-usuario') {
 
   if (!isset($_SESSION['usuario_email'])) {
     $resultRequire['msg']['login'] = [
@@ -122,4 +122,9 @@ if (isset($_GET) && $_GET['action'] == 'buscar-prods-usuario') {
   }
   echo json_encode($resultRequire);
   exit();
+}
+
+if (isset($_POST)) {
+  // $idProdCar = addslashes(filter_input(INPUT_POST, 'id'));
+  var_dump($_POST);
 }

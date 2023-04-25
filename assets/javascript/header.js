@@ -7,6 +7,10 @@ function levarAoSobreNos() {
   }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  BuscarCarrinhoDoUsuario();
+})
+
 document.getElementById('searchProductsInput')
   .addEventListener('keydown', (event) => {
 
@@ -74,9 +78,9 @@ function BuscarCarrinhoDoUsuario() {
                     <span class="quantidade-item">${row.quantidade}</span>
                     <i class="fa-solid fa-caret-right"></i>
                   </div>
-                  <a onclick="removerDoCarrinho(${row.id_Produto})">Remover</a>
+                  <p class="remover-prod" onclick="removerDoCarrinho(${row.id})">Remover</p>
                 </div>
-                </div>
+              </div>
             `)  
             valorSubTotal += Number(row.produto_Preco);
             
@@ -90,7 +94,6 @@ function BuscarCarrinhoDoUsuario() {
               countDif++
             }
           }
-          console.log(countDif);
 
           let valorEntregaCarrinho = document.getElementById('valorEntregaCarrinho')
           let valorEntrega = Number(countDif * 7);
@@ -112,10 +115,16 @@ function BuscarCarrinhoDoUsuario() {
   // com finally, tirar icone de carregando
 }
 
-function removerDoCarrinho(idProduto) {
-  // remover no DAO
+function removerDoCarrinho(idNoCarrinho) {
+  fetch(`/delivery-slg.com.br/source/controller/header_controller.php`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'aplication/json'
+    },
+    body: `${idNoCarrinho}`
+  })
+  .then(response => response.json())
+  .then(res => {
+    console.log(res)
+  })
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  BuscarCarrinhoDoUsuario();
-})
