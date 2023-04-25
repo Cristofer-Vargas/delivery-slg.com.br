@@ -42,18 +42,17 @@ class CarrinhoDAO {
 
     try {
       $stmt = $conection->prepare(
-        'SELECT DISTINCT 
+        'SELECT  
         r.nome as nome_restaurante, 
         p.imagem as produto_imagem, 
         p.nome as produto_nome,
-        p.preco as produto_preco, 
-        c.* FROM carrinho as c 
-        INNER JOIN restaurantes as r 
-        INNER JOIN produtos as p 
-        ON r.id = c.id_Restaurante 
-        AND r.id = p.id_Restaurante 
-        WHERE c.id_Usuario = ' . $idUser . '
-        GROUP BY c.id');
+        p.preco as produto_preco,  
+          c.* 
+      FROM carrinho as c 
+        INNER JOIN restaurantes as r ON r.id = c.id_Restaurante
+        INNER JOIN produtos as p ON p.id = c.id_Produto
+      WHERE c.id_Usuario = :idUser');
+      $stmt->bindValue(':idUser', $idUser);
       $stmt->execute();
       if ($stmt->rowCount()) {
         // var_dump($stmt);

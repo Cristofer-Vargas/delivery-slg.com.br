@@ -30,11 +30,15 @@ function BuscarCarrinhoDoUsuario() {
       if (data.msg.login.ok == false) {
 
       } else {
-        let numProds;
         const labelNumberCar = document.getElementById('carrinhoContainer')
 
         if (data.dados == false) {
           numProds = '0';
+          labelNumberCar.insertAdjacentHTML('beforeend', `
+          <span>
+            ${numProds}
+          </span>
+          `)
         } else {
           numProds = data.dados.length;
 
@@ -48,9 +52,11 @@ function BuscarCarrinhoDoUsuario() {
 
           const carrinhoContainer = document.getElementById('carrinhoItensContainer');
           carrinhoContainer.innerHTML = ''
+
+          let valorSubTotal = 0;
           let prodsCar = data.dados;
+
           prodsCar.forEach(row => {
-            console.log(row);
             carrinhoContainer.insertAdjacentHTML('beforeend', `
               <div class="pedido-item">
                 <div class="image-container">
@@ -69,11 +75,19 @@ function BuscarCarrinhoDoUsuario() {
                     <span class="quantidade-item">${row.quantidade}</span>
                     <i class="fa-solid fa-caret-right"></i>
                   </div>
-                  <a href="#">Remover</a>
+                  <a onclick="removerDoCarrinho(${row.id_Produto})">Remover</a>
                 </div>
               </div>
             `)  
+            valorSubTotal += Number(row.produto_Preco)
           });
+
+          let subTotalCarrinho = document.getElementById('subTotalCarrinho');
+          subTotalCarrinho.innerHTML = `${valorSubTotal.toFixed(2)}`
+
+          let valorTotalCarrinho = document.getElementById('valorTotalCarrinho');
+          let valorTotal = valorSubTotal + 7.00;
+          valorTotalCarrinho.innerHTML = `${valorTotal.toFixed(2)}`
         }
       }
     }
@@ -82,6 +96,10 @@ function BuscarCarrinhoDoUsuario() {
       console.log(error)
     })
   // com finally, tirar icone de carregando
+}
+
+function removerDoCarrinho(idProduto) {
+  // remover no DAO
 }
 
 document.addEventListener('DOMContentLoaded', () => {
