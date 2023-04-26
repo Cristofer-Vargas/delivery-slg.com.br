@@ -7,6 +7,10 @@ function levarAoSobreNos() {
   }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  BuscarCarrinhoDoUsuario();
+})
+
 document.getElementById('searchProductsInput')
   .addEventListener('keydown', (event) => {
 
@@ -17,7 +21,15 @@ document.getElementById('searchProductsInput')
   })
 
 function BuscarCarrinhoDoUsuario() {
-  //colocar icone carregando
+  let valorEntregaCarrinho = document.getElementById('valorEntregaCarrinho')
+  let subTotalCarrinho = document.getElementById('subTotalCarrinho');
+  let valorTotalCarrinho = document.getElementById('valorTotalCarrinho');
+  
+  const labelNumberCar = document.getElementById('carrinhoContainer')
+  const carrinhoContainer = document.getElementById('carrinhoItensContainer');
+
+  carrinhoContainer.innerHTML = 'Carregando...'
+
   fetch(`/delivery-slg.com.br/source/controller/header_controller.php?action=buscar-prods-usuario`)
     .then(res => {
       if (res.ok == false) {
@@ -26,18 +38,30 @@ function BuscarCarrinhoDoUsuario() {
       return res.json()
     })
     .then(data => {
-      console.log(data);
       if (data.msg.login.ok == false) {
 
       } else {
-        let numProds;
-        const labelNumberCar = document.getElementById('carrinhoContainer')
-
+        // console.log(data.dados)
         if (data.dados == false) {
-          numProds = '0';
-        } else {
-          numProds = data.dados.length;
+          let numProds = '0';
+          labelNumberCar.insertAdjacentHTML('beforeend', `
+          <span>
+            ${numProds}
+          </span>
+          `)
+          carrinhoContainer.innerHTML = 'Sem produtos no carrinho ...'
 
+          
+          let valorSubTotal = 0.00;
+          let valorEntrega = 0.00;
+          let valorTotal = valorSubTotal + valorEntrega;
+          
+          valorEntregaCarrinho.innerHTML = `R$ 7,00 /restaurante = R$ ${valorEntrega.toFixed(2).replace('.', ',')}`
+          subTotalCarrinho.innerHTML = `R$ ${valorSubTotal.toFixed(2).replace('.', ',')}`
+          valorTotalCarrinho.innerHTML = `R$ ${valorTotal.toFixed(2).replace('.', ',')}`
+
+        } else {
+          let numProds = data.dados.length;
 
           labelNumberCar.insertAdjacentHTML('beforeend', `
           <span>
@@ -46,11 +70,13 @@ function BuscarCarrinhoDoUsuario() {
           `
           )
 
-          const carrinhoContainer = document.getElementById('carrinhoItensContainer');
           carrinhoContainer.innerHTML = ''
-          let prodsCar = data.dados;
+
+          let valorSubTotal = 0.00;
+          const prodsCar = data.dados;
+          const idRes = [];
+
           prodsCar.forEach(row => {
-            console.log(row);
             carrinhoContainer.insertAdjacentHTML('beforeend', `
               <div class="pedido-item">
                 <div class="image-container">
@@ -69,11 +95,27 @@ function BuscarCarrinhoDoUsuario() {
                     <span class="quantidade-item">${row.quantidade}</span>
                     <i class="fa-solid fa-caret-right"></i>
                   </div>
-                  <a href="#">Remover</a>
+                  <p class="remover-prod" onclick="removerDoCarrinho(${row.id})">Remover</p>
                 </div>
               </div>
-            `)  
+            `)
+            valorSubTotal += Number(row.produto_Preco);
+
+            idRes.push(row.id_Restaurante);
           });
+
+          const x = [...new Set(idRes)]
+
+          let valorEntregaCarrinho = document.getElementById('valorEntregaCarrinho')
+          let valorEntrega = Number(x.length * 7);
+          valorEntregaCarrinho.innerHTML = `R$ 7,00 / restaurante = R$ ${valorEntrega.toFixed(2).replace('.', ',')}`
+
+          let subTotalCarrinho = document.getElementById('subTotalCarrinho');
+          subTotalCarrinho.innerHTML = `R$ ${valorSubTotal.toFixed(2).replace('.', ',')}`
+
+          let valorTotalCarrinho = document.getElementById('valorTotalCarrinho');
+          let valorTotal = valorSubTotal + valorEntrega;
+          valorTotalCarrinho.innerHTML = `R$ ${valorTotal.toFixed(2).replace('.', ',')}`
         }
       }
     }
@@ -84,6 +126,24 @@ function BuscarCarrinhoDoUsuario() {
   // com finally, tirar icone de carregando
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  BuscarCarrinhoDoUsuario();
-})
+function removerDoCarrinho(idNoCarrinho) {
+  let formData = new FormData;
+  formData.append('id', idNoCarrinho)
+
+  fetch(`/delivery-slg.com.br/source/controller/header_controller.php`, {
+    method: 'POST',
+    body: formData
+  })
+    .then(response => response.json())
+    .then(res => {
+      // if (res.msg.validacao.ok == true) {
+      //   console.log(res.msg.validacao.mensagem);
+      // }
+    })
+    .finally(() => {
+      BuscarCarrinhoDoUsuario();
+    })
+    .catch(error => {
+      console.log(error);
+    })
+}

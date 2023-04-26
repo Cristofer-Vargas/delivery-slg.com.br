@@ -42,18 +42,18 @@ class CarrinhoDAO {
 
     try {
       $stmt = $conection->prepare(
-        'SELECT DISTINCT 
-        r.nome as nome_restaurante, 
-        p.imagem as produto_imagem, 
-        p.nome as produto_nome,
-        p.preco as produto_preco, 
-        c.* FROM carrinho as c 
-        INNER JOIN restaurantes as r 
-        INNER JOIN produtos as p 
-        ON r.id = c.id_Restaurante 
-        AND r.id = p.id_Restaurante 
-        WHERE c.id_Usuario = ' . $idUser . '
-        GROUP BY c.id');
+        'SELECT  
+          r.nome as nome_restaurante, 
+          p.imagem as produto_imagem, 
+          p.nome as produto_nome,
+          p.preco as produto_preco,  
+            c.* 
+        FROM carrinho as c 
+          INNER JOIN restaurantes as r ON r.id = c.id_Restaurante
+          INNER JOIN produtos as p ON p.id = c.id_Produto
+        WHERE c.id_Usuario = :idUser
+        ORDER BY c.id_Restaurante');
+      $stmt->bindValue(':idUser', $idUser);
       $stmt->execute();
       if ($stmt->rowCount()) {
         // var_dump($stmt);
@@ -116,15 +116,26 @@ class CarrinhoDAO {
     }
   }
 
-  function buscarNumProdutos() {
+  function excluirDoCarrinho(int $idUser, int $idProdCar) {
     $conection = ConexaoBD();
+    $conection->beginTransaction();
 
     try {
-      $rs = $conection->query('SELECT * FROM carrinho');
-      return $rs->rowCount();
+      $stmt = $conection->prepare('DELETE FROM carrinho WHERE id = :idProd AND id_Usuario = :idUser');
+      $stmt->bindValue(':idProd', $idProdCar);
+      $stmt->bindValue(':idUser', $idUser);
+      $stmt->execute();
+
+      if ($stmt == true) {
+        $conection->commit();
+        return true;
+      }
+
+      return false;
 
     } catch (PDOException $ex) {
-      return new Exception('Erro ao buscar produtos do carrinho');
+      $conection->rollBack();
+      throw $ex;
       die();
     }
   }

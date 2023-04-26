@@ -91,7 +91,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
                 } catch (Exception $ex) {
                   MsgPerssonalizadaDeErro();
                 }
+              } else if (isset($_GET['categoria'])) {
+                $categoria = addslashes(filter_input(INPUT_GET, 'categoria'));
+                try {
+                  $produtos = $controller->BuscarProdutosPorCategoria($categoria);
+                } catch (Exception $ex) {
+                  MsgPerssonalizadaDeErro();
+                }
               }
+
+              
             } else {
               $produtos = $controller->BuscarProdutos();
             }

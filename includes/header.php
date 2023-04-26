@@ -174,15 +174,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
         <tbody>
           <tr>
             <th scope="row">Entrega:</th>
-            <td>R$ 7,00</td>
+            <td><span id="valorEntregaCarrinho"></span></td>
           </tr>
           <tr>
             <th scope="row">Subtotal:</th>
-            <td>R$ 23,99</td>
+            <td><span id="subTotalCarrinho"></span></td>
           </tr>
           <tr>
             <th scope="row" class="total-pedidos">Total:</th>
-            <td class="valor-total-pedidos">R$ 30,99</td>
+            <td class="valor-total-pedidos"><span id="valorTotalCarrinho"></span></td>
           </tr>
         </tbody>
       </table>
