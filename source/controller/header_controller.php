@@ -124,7 +124,7 @@ if (isset($_GET) &&  !empty($_GET['action']) && $_GET['action'] == 'buscar-prods
   exit();
 }
 
-if (isset($_POST)) {
+if (isset($_POST) && isset($_POST['id'])){
 
   if (!isset($_SESSION['usuario_email'])) {
     $resultRequire['msg']['login'] = [

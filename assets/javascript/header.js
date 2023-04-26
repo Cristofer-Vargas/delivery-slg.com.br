@@ -44,9 +44,18 @@ function BuscarCarrinhoDoUsuario() {
           </span>
           `)
           carrinhoContainer.innerHTML = '';
-        } else if(data.dados == null || data.dados == undefined) {
-          carrinhoContainer.innerHTML = ''
-          carrinhoContainer.insertAdjacentHTML('beforeend' , '')
+
+          let valorEntregaCarrinho = document.getElementById('valorEntregaCarrinho')
+          let subTotalCarrinho = document.getElementById('subTotalCarrinho');
+          let valorTotalCarrinho = document.getElementById('valorTotalCarrinho');
+          
+          let valorSubTotal = 0.00;
+          let valorEntrega = 0.00;
+          let valorTotal = valorSubTotal + valorEntrega;
+          
+          valorEntregaCarrinho.innerHTML = `R$ 7,00 / restaurante = R$ ${valorEntrega.toFixed(2).replace('.', ',')}`
+          subTotalCarrinho.innerHTML = `R$ ${valorSubTotal.toFixed(2).replace('.', ',')}`
+          valorTotalCarrinho.innerHTML = `R$ ${valorTotal.toFixed(2).replace('.', ',')}`
 
         } else {
           let numProds = data.dados.length;
@@ -60,7 +69,7 @@ function BuscarCarrinhoDoUsuario() {
 
           carrinhoContainer.innerHTML = ''
 
-          let valorSubTotal = 0;
+          let valorSubTotal = 0.00;
           const prodsCar = data.dados;
           const idRes = [];
 
