@@ -53,7 +53,7 @@ function BuscarCarrinhoDoUsuario() {
           let valorEntrega = 0.00;
           let valorTotal = valorSubTotal + valorEntrega;
           
-          valorEntregaCarrinho.innerHTML = `R$ 7,00 / restaurante = R$ ${valorEntrega.toFixed(2).replace('.', ',')}`
+          valorEntregaCarrinho.innerHTML = `R$ 7,00 /restaurante = R$ ${valorEntrega.toFixed(2).replace('.', ',')}`
           subTotalCarrinho.innerHTML = `R$ ${valorSubTotal.toFixed(2).replace('.', ',')}`
           valorTotalCarrinho.innerHTML = `R$ ${valorTotal.toFixed(2).replace('.', ',')}`
 
