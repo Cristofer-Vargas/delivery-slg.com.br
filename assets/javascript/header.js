@@ -21,7 +21,15 @@ document.getElementById('searchProductsInput')
   })
 
 function BuscarCarrinhoDoUsuario() {
-  //colocar icone carregando
+  let valorEntregaCarrinho = document.getElementById('valorEntregaCarrinho')
+  let subTotalCarrinho = document.getElementById('subTotalCarrinho');
+  let valorTotalCarrinho = document.getElementById('valorTotalCarrinho');
+  
+  const labelNumberCar = document.getElementById('carrinhoContainer')
+  const carrinhoContainer = document.getElementById('carrinhoItensContainer');
+
+  carrinhoContainer.innerHTML = 'Carregando...'
+
   fetch(`/delivery-slg.com.br/source/controller/header_controller.php?action=buscar-prods-usuario`)
     .then(res => {
       if (res.ok == false) {
@@ -33,9 +41,7 @@ function BuscarCarrinhoDoUsuario() {
       if (data.msg.login.ok == false) {
 
       } else {
-        const labelNumberCar = document.getElementById('carrinhoContainer')
-        const carrinhoContainer = document.getElementById('carrinhoItensContainer');
-        console.log(data.dados)
+        // console.log(data.dados)
         if (data.dados == false) {
           let numProds = '0';
           labelNumberCar.insertAdjacentHTML('beforeend', `
@@ -43,11 +49,8 @@ function BuscarCarrinhoDoUsuario() {
             ${numProds}
           </span>
           `)
-          carrinhoContainer.innerHTML = '';
+          carrinhoContainer.innerHTML = 'Sem produtos no carrinho ...'
 
-          let valorEntregaCarrinho = document.getElementById('valorEntregaCarrinho')
-          let subTotalCarrinho = document.getElementById('subTotalCarrinho');
-          let valorTotalCarrinho = document.getElementById('valorTotalCarrinho');
           
           let valorSubTotal = 0.00;
           let valorEntrega = 0.00;
