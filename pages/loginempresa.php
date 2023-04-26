@@ -31,7 +31,7 @@
                         <form method="POST" action="../source/controller/loginempresa.controller.php" class="form-login">
 
                             <div class="form_align">
-                                <label class="style_label" for="E-mail">E-mail ou CPF:</label>
+                                <label class="style_label" for="E-mail">E-mail ou CNPJ:</label>
                                 <input type="text" class="cor" id="email" name="email">
                             </div>
                             <div class="form_align">
