@@ -125,6 +125,50 @@ if (isset($_GET) &&  !empty($_GET['action']) && $_GET['action'] == 'buscar-prods
 }
 
 if (isset($_POST)) {
-  // $idProdCar = addslashes(filter_input(INPUT_POST, 'id'));
-  var_dump($_POST);
+
+  if (!isset($_SESSION['usuario_email'])) {
+    $resultRequire['msg']['login'] = [
+      'ok' => false,
+      'mensagem' => 'Usuário não logado na sessão'
+    ];
+
+  } else {
+    $usuarioEmail = $_SESSION['usuario_email'];
+    $idProdCar = addslashes(filter_input(INPUT_POST, 'id'));
+
+    $resultRequire['msg']['login'] = [
+      'ok' => true,
+      'mensagem' => 'Usuário logado com sucesso, email: ' . "$usuarioEmail"
+    ];
+
+    $loginDAO = new LoginDAO();
+    $CarrinhoDao = new CarrinhoDAO();
+
+    try {
+      $usuario = $loginDAO->buscaUsuario($usuarioEmail);
+      $usuarioID = $usuario->getId();
+    } catch (Exception $ex) {
+      $resultRequire['msg'][] = [
+        'ok' => false,
+        'mensagem' => 'Usuário não encontrado'
+      ];
+    }
+
+    try {
+      $result = $CarrinhoDao->excluirDoCarrinho($usuarioID, $idProdCar);
+      $resultRequire['msg']['validacao'] = [
+        'ok' => true,
+        'mensagem' => 'Produto Excluido com sucesso'
+      ];
+    } catch (Exception $ex) {
+      $resultRequire['msg'][] = [
+        'ok' => false,
+        'mensagem' => 'Não foi possível exluir esse item do carrinho'
+      ];
+    }
+
+    echo json_encode($resultRequire);
+
+  }
+
 }

@@ -116,15 +116,26 @@ class CarrinhoDAO {
     }
   }
 
-  function buscarNumProdutos() {
+  function excluirDoCarrinho(int $idUser, int $idProdCar) {
     $conection = ConexaoBD();
+    $conection->beginTransaction();
 
     try {
-      $rs = $conection->query('SELECT * FROM carrinho');
-      return $rs->rowCount();
+      $stmt = $conection->prepare('DELETE FROM carrinho WHERE id = :idProd AND id_Usuario = :idUser');
+      $stmt->bindValue(':idProd', $idProdCar);
+      $stmt->bindValue(':idUser', $idUser);
+      $stmt->execute();
+
+      if ($stmt == true) {
+        $conection->commit();
+        return true;
+      }
+
+      return false;
 
     } catch (PDOException $ex) {
-      return new Exception('Erro ao buscar produtos do carrinho');
+      $conection->rollBack();
+      throw $ex;
       die();
     }
   }

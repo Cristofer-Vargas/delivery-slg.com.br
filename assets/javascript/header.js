@@ -34,16 +34,22 @@ function BuscarCarrinhoDoUsuario() {
 
       } else {
         const labelNumberCar = document.getElementById('carrinhoContainer')
-
+        const carrinhoContainer = document.getElementById('carrinhoItensContainer');
+        console.log(data.dados)
         if (data.dados == false) {
-          numProds = '0';
+          let numProds = '0';
           labelNumberCar.insertAdjacentHTML('beforeend', `
           <span>
             ${numProds}
           </span>
           `)
+          carrinhoContainer.innerHTML = '';
+        } else if(data.dados == null || data.dados == undefined) {
+          carrinhoContainer.innerHTML = ''
+          carrinhoContainer.insertAdjacentHTML('beforeend' , '')
+
         } else {
-          numProds = data.dados.length;
+          let numProds = data.dados.length;
 
           labelNumberCar.insertAdjacentHTML('beforeend', `
           <span>
@@ -52,13 +58,12 @@ function BuscarCarrinhoDoUsuario() {
           `
           )
 
-          const carrinhoContainer = document.getElementById('carrinhoItensContainer');
           carrinhoContainer.innerHTML = ''
 
           let valorSubTotal = 0;
-          let prodsCar = data.dados;
-          let idRes = [];
-          
+          const prodsCar = data.dados;
+          const idRes = [];
+
           prodsCar.forEach(row => {
             carrinhoContainer.insertAdjacentHTML('beforeend', `
               <div class="pedido-item">
@@ -81,30 +86,24 @@ function BuscarCarrinhoDoUsuario() {
                   <p class="remover-prod" onclick="removerDoCarrinho(${row.id})">Remover</p>
                 </div>
               </div>
-            `)  
+            `)
             valorSubTotal += Number(row.produto_Preco);
-            
+
             idRes.push(row.id_Restaurante);
           });
 
-          let countDif = 0;
-          for (let i = 0; i < idRes.length; i++) {
-            let verificador = idRes[i];
-            if (verificador !== idRes[i-1]) {
-              countDif++
-            }
-          }
+          const x = [...new Set(idRes)]
 
           let valorEntregaCarrinho = document.getElementById('valorEntregaCarrinho')
-          let valorEntrega = Number(countDif * 7);
-          valorEntregaCarrinho.innerHTML = `R$ 7,00 / restaurante = R$ ${valorEntrega.toFixed(2)}`
+          let valorEntrega = Number(x.length * 7);
+          valorEntregaCarrinho.innerHTML = `R$ 7,00 / restaurante = R$ ${valorEntrega.toFixed(2).replace('.', ',')}`
 
           let subTotalCarrinho = document.getElementById('subTotalCarrinho');
-          subTotalCarrinho.innerHTML = `R$ ${valorSubTotal.toFixed(2)}`
+          subTotalCarrinho.innerHTML = `R$ ${valorSubTotal.toFixed(2).replace('.', ',')}`
 
           let valorTotalCarrinho = document.getElementById('valorTotalCarrinho');
           let valorTotal = valorSubTotal + valorEntrega;
-          valorTotalCarrinho.innerHTML = `R$ ${valorTotal.toFixed(2)}`
+          valorTotalCarrinho.innerHTML = `R$ ${valorTotal.toFixed(2).replace('.', ',')}`
         }
       }
     }
@@ -116,15 +115,23 @@ function BuscarCarrinhoDoUsuario() {
 }
 
 function removerDoCarrinho(idNoCarrinho) {
+  let formData = new FormData;
+  formData.append('id', idNoCarrinho)
+
   fetch(`/delivery-slg.com.br/source/controller/header_controller.php`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'aplication/json'
-    },
-    body: `${idNoCarrinho}`
+    body: formData
   })
-  .then(response => response.json())
-  .then(res => {
-    console.log(res)
-  })
+    .then(response => response.json())
+    .then(res => {
+      // if (res.msg.validacao.ok == true) {
+      //   console.log(res.msg.validacao.mensagem);
+      // }
+    })
+    .finally(() => {
+      BuscarCarrinhoDoUsuario();
+    })
+    .catch(error => {
+      console.log(error);
+    })
 }
