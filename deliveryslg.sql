@@ -169,12 +169,12 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `rua`, `num`, `comp`, `bai`, `email`, `telefone`, `cpf`, `senha`) VALUES
-(1, 'Theo Paulo Isaac Oliveira', NULL, NULL, NULL, NULL, 'theopaulooliveira@rodrigofranco.com', '5535530751', '31599151073', ''),
-(3, 'Theo Paulo Isaac Oliveira', NULL, NULL, NULL, NULL, 'theo_paulo_oliveira@rodrigofranco.com', '5535530751', '31599151073', 'jrYJolGsLo'),
-(4, 'Ana Silva', 'Rua das Flores', '123', 'Apto 2', 'Centro', 'ana.silva@email.com', '11987654321', '12345678901', 'senha123'),
-(5, 'João Santos', 'Avenida Paulista', '456', 'Sala 101', 'Bela Vista', 'joao.santos@email.com', '11998765432', '10987654321', 'senha456'),
-(6, 'Maria Souza', 'Rua do Comércio', '789', '', 'Centro', 'maria.souza@email.com', '11987654321', '98765432109', 'senha789');
+INSERT INTO `usuarios` (`id`, `nome`,`email`, `telefone`, `cpf`, `senha`) VALUES
+(1, 'Theo Paulo Isaac Oliveira','theopaulooliveira@rodrigofranco.com', '5535530751', '31599151073', ''),
+(3, 'Theo Paulo Isaac Oliveira','theo_paulo_oliveira@rodrigofranco.com', '5535530751', '31599151073', 'jrYJolGsLo'),
+(4, 'Ana Silva','ana.silva@email.com', '11987654321', '12345678901', 'senha123'),
+(5, 'João Santos','joao.santos@email.com', '11998765432', '10987654321', 'senha456'),
+(6, 'Maria Souza','maria.souza@email.com', '11987654321', '98765432109', 'senha789');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
@@ -194,6 +194,6 @@ CREATE TABLE IF NOT EXISTS `enderecos` (
   `complemento` varchar(100) NOT NULL,
   `bairro` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY ('id_usuario') REFERENCES usuarios('id')
+  FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
 ) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
