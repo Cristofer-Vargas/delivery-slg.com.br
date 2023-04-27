@@ -163,7 +163,10 @@ if (isset($_GET) && !empty($_GET['action']) && $_GET['action'] == 'finalizar-com
     }
 
     try {
-      $result = $HistoicoPedidos->adicionar($produtos);
+      $valores = [
+        '' => '',
+      ];
+      $result = $HistoicoPedidos->adicionar($valores);
     } catch(Exception $ex) {
       $resultRequire['msg'][] = [
         'ok' => false,

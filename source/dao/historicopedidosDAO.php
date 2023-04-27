@@ -6,14 +6,18 @@ require_once('../classes/carrinho.class.php');
 
 class HistoricoPedidosDAO {
 
-  public function adicionar(array $produtos) {
+  public function adicionar(array $valores) {
     $connection = ConexaoBD();
     
     try {
 
       $stmt = $connection->prepare('INSERT INTO historico_pedidos 
-      (`id`, `preco`, `data_Compra`, `id_Restaurante`, `quantidade`, `id_Produto`, `id_Usuario`, `status`) 
-      VALUES ()');
+      (`preco`, `data_Compra`, `id_Restaurante`, `quantidade`, `id_Produto`, `id_Usuario`) 
+      VALUES (`preco`, `dataCompra`, `idRestaurante`, `quantidade`, `idProduto`, `idUsuario`, )');
+
+      foreach ($valores as $row) {
+        $stmt->execute($row);
+      }
 
     } catch (PDOException $ex) {
       throw $ex;
