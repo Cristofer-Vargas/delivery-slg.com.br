@@ -157,10 +157,6 @@ DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(150) NOT NULL,
-  `rua` varchar(100),
-  `num` varchar(10),
-  `comp` varchar(100),
-  `bai` varchar(50),
   `email` varchar(100) NOT NULL,
   `telefone` varchar(11) NOT NULL,
   `cpf` varchar(11) NOT NULL,
@@ -184,3 +180,20 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+--
+-- Estrutura da tabela `enderecos`
+--
+
+DROP TABLE IF EXISTS `enderecos`;
+CREATE TABLE IF NOT EXISTS `enderecos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL,
+  `rua` varchar(150) NOT NULL,
+  `numero` varchar(10) NOT NULL,
+  `complemento` varchar(100) NOT NULL,
+  `bairro` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY ('id_usuario') REFERENCES usuarios('id')
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+
