@@ -52,6 +52,4 @@ class LoginDAO
             die();
         }
     }
-
-
 }

@@ -41,6 +41,7 @@ main {
     }
 
     .produtos-filtro {
+      min-width: 300px;
       max-width: 300px;
       background-color: #fff;
       border-radius: 5px;
@@ -98,6 +99,7 @@ main {
 
 
     .produtos-cards-lista {
+      min-height: 100vh;
       display: flex;
       flex-wrap: wrap;
       gap: 20px;

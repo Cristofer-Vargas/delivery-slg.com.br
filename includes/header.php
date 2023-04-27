@@ -186,7 +186,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
           </tr>
         </tbody>
       </table>
-      <button class="finalizar-compra">
+      <button onclick="FinalizarCarrinho()" class="finalizar-compra" id="btnFinalizarCompra">
         Finalizar compra
       </button>
     </div>

@@ -4,6 +4,7 @@ require_once('../dao/carrinhoDAO.php');
 require_once('../dao/produtosDAO.php');
 require_once('../dao/restaurantesDAO.php');
 require_once('../dao/loginDAo.php');
+require_once('../dao/historicopedidosDAO.php');
 require_once('../config/error_message.php');
 require_once('../classes/carrinho.class.php');
 
@@ -122,6 +123,56 @@ if (isset($_GET) &&  !empty($_GET['action']) && $_GET['action'] == 'buscar-prods
   }
   echo json_encode($resultRequire);
   exit();
+}
+
+if (isset($_GET) && !empty($_GET['action']) && $_GET['action'] == 'finalizar-compra') {
+  
+  if (!isset($_SESSION['usuario_email'])) {
+    $resultRequire['msg']['login'] = [
+      'ok' => false,
+      'mensagem' => 'Usuário não logado na sessão'
+    ];
+  } else {
+    $usuarioEmail = $_SESSION['usuario_email'];
+
+    $resultRequire['msg']['login'] = [
+      'ok' => true,
+      'mensagem' => 'Usuário logado com sucesso, email: ' . "$usuarioEmail"
+    ];
+
+    $loginDAO = new LoginDAO();
+    $CarrinhoDao = new CarrinhoDAO();
+    $HistoicoPedidos = new HistoricoPedidosDAO();
+
+    try {
+      $usuario = $loginDAO->buscaUsuario($usuarioEmail);
+    } catch (Exception $ex) {
+      $resultRequire['msg'][] = [
+        'ok' => false,
+        'mensagem' => 'Não foi possivel achar usuário da sessão'
+      ];
+    }
+
+    try {
+      $produtos = $CarrinhoDao->buscarProdutos($usuario->getId());
+    } catch (Exception $ex) {
+      $resultRequire['msg'][] = [
+        'ok' => false,
+        'mensagem' => 'Não foi possivel retornar produtos'
+      ];
+    }
+
+    try {
+      $result = $HistoicoPedidos->adicionar($produtos);
+    } catch(Exception $ex) {
+      $resultRequire['msg'][] = [
+        'ok' => false,
+        'mensagem' => 'Não foi possivel finalizar a compra'
+      ];
+    }
+
+  }
+
 }
 
 if (isset($_POST) && isset($_POST['id'])){

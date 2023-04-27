@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `historico_pedidos` (
   `quantidade` int(100) NOT NULL,
   `id_Produto` int(11) NOT NULL,
   `id_Usuario` int(11) NOT NULL,
-  `status` set('Em andamento','Pronto','Entregue','Não Entregue') NOT NULL,
+  `status` set('Em andamento','Pronto','Entregue','Não Entregue') DEFAULT 'Em andamento' NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_Restaurante` (`id_Restaurante`),
   KEY `id_Produto` (`id_Produto`),

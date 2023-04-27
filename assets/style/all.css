@@ -195,7 +195,8 @@ header .header-distribuition .perfil-logged ul {
 header .header-distribuition .perfil-logged ul li {
   font-size: 22px;
 }
-header .header-distribuition .perfil-logged ul li a, header .header-distribuition .perfil-logged ul li i {
+header .header-distribuition .perfil-logged ul li a,
+header .header-distribuition .perfil-logged ul li i {
   text-decoration: none;
   color: #FF4136;
   transition: color 0.5s;
@@ -367,7 +368,8 @@ div.carrinho-lateral-background .carrinho-lateral-container div.total-dos-pedido
   width: 100%;
   border-collapse: collapse;
 }
-div.carrinho-lateral-background .carrinho-lateral-container div.total-dos-pedidos table tbody td, div.carrinho-lateral-background .carrinho-lateral-container div.total-dos-pedidos table tbody th {
+div.carrinho-lateral-background .carrinho-lateral-container div.total-dos-pedidos table tbody td,
+div.carrinho-lateral-background .carrinho-lateral-container div.total-dos-pedidos table tbody th {
   padding: 5px 10px;
 }
 div.carrinho-lateral-background .carrinho-lateral-container div.total-dos-pedidos table tbody td {
@@ -377,7 +379,8 @@ div.carrinho-lateral-background .carrinho-lateral-container div.total-dos-pedido
   text-align: left;
   font-weight: normal;
 }
-div.carrinho-lateral-background .carrinho-lateral-container div.total-dos-pedidos table tbody th.total-pedidos, div.carrinho-lateral-background .carrinho-lateral-container div.total-dos-pedidos table tbody td.valor-total-pedidos {
+div.carrinho-lateral-background .carrinho-lateral-container div.total-dos-pedidos table tbody th.total-pedidos,
+div.carrinho-lateral-background .carrinho-lateral-container div.total-dos-pedidos table tbody td.valor-total-pedidos {
   font-weight: bolder;
   font-size: 1.3em;
 }
@@ -855,6 +858,13 @@ div.pedir-login-background > div.pedir-login-container div.pedir-login-sign > a:
 }
 div.pedir-login-background > div.pedir-login-container div.pedir-login-sign > a:active {
   border: 1px solid #000;
+}
+
+svg.teste-svg-loading {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  display: inline-block;
 }
 
 /*# sourceMappingURL=all.css.map */
