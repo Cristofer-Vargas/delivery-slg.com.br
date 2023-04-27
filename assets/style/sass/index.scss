@@ -87,7 +87,9 @@ main {
 
       overflow-x: auto;
 
-      >div {
+      >a {
+        display: block;
+        text-decoration: none;
         min-width: 176px;
         height: 168px;
         background-color: $secundary-color;
@@ -118,7 +120,7 @@ main {
 
       }
 
-      >div:hover {
+      >a:hover {
         opacity: 0.7;
 
       }

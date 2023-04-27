@@ -12,3 +12,4 @@
   crossorigin="anonymous" referrerpolicy="no-referrer">
 
   <script src="/delivery-slg.com.br/assets/javascript/main.js" defer></script>
+  <script src="/delivery-slg.com.br/assets/javascript/header.js" defer></script>

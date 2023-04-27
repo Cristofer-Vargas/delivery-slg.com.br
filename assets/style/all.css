@@ -334,7 +334,8 @@ div.carrinho-lateral-background .carrinho-lateral-container > div div.carrinho-i
 div.carrinho-lateral-background .carrinho-lateral-container > div div.carrinho-itens-container div.pedido-item .carrinho-nome-produto .carrinho-produto-valor {
   font-size: 1.8em;
 }
-div.carrinho-lateral-background .carrinho-lateral-container > div div.carrinho-itens-container div.pedido-item .carrinho-nome-produto > a {
+div.carrinho-lateral-background .carrinho-lateral-container > div div.carrinho-itens-container div.pedido-item .carrinho-nome-produto > p.remover-prod {
+  cursor: pointer;
   text-decoration: none;
   color: #FF4136;
 }

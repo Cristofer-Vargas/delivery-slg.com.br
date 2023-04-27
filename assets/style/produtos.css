@@ -42,7 +42,7 @@ main .produtos-main-container .produtos-filtro .filtros-container {
 main .produtos-main-container .produtos-filtro .filtros-container .filtro-title {
   padding: 15px 20px;
 }
-main .produtos-main-container .produtos-filtro .filtros-container .filtro a {
+main .produtos-main-container .produtos-filtro .filtros-container .filtro p, main .produtos-main-container .produtos-filtro .filtros-container .filtro a {
   padding: 10px 15px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-right: 0px;
@@ -55,10 +55,10 @@ main .produtos-main-container .produtos-filtro .filtros-container .filtro a {
 main .produtos-main-container .produtos-filtro .filtros-container .limpar-filtro {
   background-color: #3f3f3f;
 }
-main .produtos-main-container .produtos-filtro .filtros-container .limpar-filtro a {
+main .produtos-main-container .produtos-filtro .filtros-container .limpar-filtro p, main .produtos-main-container .produtos-filtro .filtros-container .limpar-filtro a {
   color: #fff;
 }
-main .produtos-main-container .produtos-filtro .filtros-container .limpar-filtro:hover a {
+main .produtos-main-container .produtos-filtro .filtros-container .limpar-filtro:hover p, main .produtos-main-container .produtos-filtro .filtros-container .limpar-filtro:hover a {
   color: #000;
 }
 main .produtos-main-container .produtos-filtro .filtros-container .filtro:hover {
