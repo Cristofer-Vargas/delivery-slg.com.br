@@ -170,6 +170,9 @@ function loading() {
 function FinalizarCarrinho() {
 
   fetch('/delivery-slg.com.br/source/controller/header_controller.php?action=finalizar-compra')
-  .then(response => {})
+    .then(response => { response.json() })
+    .then(res => {
+      console.log(res);
+    })
 
 }

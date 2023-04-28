@@ -163,10 +163,31 @@ if (isset($_GET) && !empty($_GET['action']) && $_GET['action'] == 'finalizar-com
     }
 
     try {
-      $valores = [
-        '' => '',
-      ];
-      $result = $HistoicoPedidos->adicionar($valores);
+      date_default_timezone_set('America/Sao_Paulo');
+      if ($produtos == false) {
+        $resultRequire['msg'][] = [
+          'ok' => false,
+          'mensagem' => 'Não possue produtos no carrinho'
+        ];
+      } else {
+        
+        $dataCompra = new DateTime('now');
+
+        for ($i = 0; $i < sizeof($produtos); $i++) {
+          $valores[] = [
+            'preco' => $produtos[$i]['produto_Preco'],
+            'dataCompra' => $dataCompra->format('Y-m-d H:m:s'),
+            'idRestaurante' => $produtos[$i]['id_Restaurante'],
+            'quantidade' => $produtos[$i]['quantidade'],
+            'idProduto' => $produtos[$i]['id_Produto'],
+            'idUsuario' => $produtos[$i]['id_Usuario'],
+          ];
+        }
+        
+        $result = $HistoicoPedidos->adicionar($valores);
+        $resultRequire['dados'] = [ $result ];
+        // var_dump($resultRequire);
+      }
     } catch(Exception $ex) {
       $resultRequire['msg'][] = [
         'ok' => false,
@@ -175,6 +196,8 @@ if (isset($_GET) && !empty($_GET['action']) && $_GET['action'] == 'finalizar-com
     }
 
   }
+  echo json_encode($resultRequire);
+  die();
 
 }
 

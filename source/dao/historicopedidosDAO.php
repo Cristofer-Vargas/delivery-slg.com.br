@@ -4,26 +4,48 @@ require_once('../classes/historico_pedidos.class.php');
 require_once('../config/functions.php');
 require_once('../classes/carrinho.class.php');
 
-class HistoricoPedidosDAO {
+class HistoricoPedidosDAO
+{
 
-  public function adicionar(array $valores) {
+  public function adicionar(array $valores)
+  {
     $connection = ConexaoBD();
-    
+
     try {
 
       $stmt = $connection->prepare('INSERT INTO historico_pedidos 
       (`preco`, `data_Compra`, `id_Restaurante`, `quantidade`, `id_Produto`, `id_Usuario`) 
-      VALUES (`preco`, `dataCompra`, `idRestaurante`, `quantidade`, `idProduto`, `idUsuario`, )');
+      VALUES (?, ?, ?, ?, ?, ?)');
 
-      foreach ($valores as $row) {
-        $stmt->execute($row);
+      // $bind = array(":preco", ":dataCompra", ":idRestaurante", ":quantidade", ":idProduto", ":idUsuario");
+
+      foreach ($valores as $data) {
+        // var_dump($data);
+        $keys = array_keys($data);
+        // var_dump($keys);
+        // foreach ($data as $sla) {
+          // $stmt->execute($sla);
+          // echo $sla . "<br>";
+          // $stmt->bindValue(":preco", $sla);
+          // $stmt->bindValue(":dataCompra", $sla);
+          // $stmt->bindValue(":idRestaurante", $sla);
+          // $stmt->bindValue(":quantidade", $sla);
+          // $stmt->bindValue(":idProduto", $sla);
+          // $stmt->bindValue(":idUsuario", $sla);
+        // }
+        $keys = array_keys($data);
+
+        // $teste = array_values($data);
+        // var_dump($teste);
+        for ($i = 0; $i < count($keys); $i++) {
+          $stmt->bindValue($i + 1, $data[$keys[$i]]);
+        }
+        $stmt->execute();
       }
-
     } catch (PDOException $ex) {
-      throw $ex;
+      echo $ex->getMessage();
+      // throw $ex;
       die();
     }
-
   }
-
 }
