@@ -6,7 +6,7 @@
         </div>
         <div class="modal-body col-md-12 offset-md-12 flex column align-items-center">
             <div class="form_align">
-                <label for="E-mail">E-mail ou CPF:</label>
+                <label for="E-mail">E-mail ou CNPJ:</label>
                 <input type="text" class="cor input_altera_senha" id="email" name="email">
             </div>
             <div class="form_align">

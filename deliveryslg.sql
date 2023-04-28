@@ -157,10 +157,6 @@ DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(150) NOT NULL,
-  `rua` varchar(100),
-  `num` varchar(10),
-  `comp` varchar(100),
-  `bai` varchar(50),
   `email` varchar(100) NOT NULL,
   `telefone` varchar(11) NOT NULL,
   `cpf` varchar(11) NOT NULL,
@@ -173,14 +169,31 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `rua`, `num`, `comp`, `bai`, `email`, `telefone`, `cpf`, `senha`) VALUES
-(1, 'Theo Paulo Isaac Oliveira', NULL, NULL, NULL, NULL, 'theopaulooliveira@rodrigofranco.com', '5535530751', '31599151073', ''),
-(3, 'Theo Paulo Isaac Oliveira', NULL, NULL, NULL, NULL, 'theo_paulo_oliveira@rodrigofranco.com', '5535530751', '31599151073', 'jrYJolGsLo'),
-(4, 'Ana Silva', 'Rua das Flores', '123', 'Apto 2', 'Centro', 'ana.silva@email.com', '11987654321', '12345678901', 'senha123'),
-(5, 'João Santos', 'Avenida Paulista', '456', 'Sala 101', 'Bela Vista', 'joao.santos@email.com', '11998765432', '10987654321', 'senha456'),
-(6, 'Maria Souza', 'Rua do Comércio', '789', '', 'Centro', 'maria.souza@email.com', '11987654321', '98765432109', 'senha789');
+INSERT INTO `usuarios` (`id`, `nome`,`email`, `telefone`, `cpf`, `senha`) VALUES
+(1, 'Theo Paulo Isaac Oliveira','theopaulooliveira@rodrigofranco.com', '5535530751', '31599151073', ''),
+(3, 'Theo Paulo Isaac Oliveira','theo_paulo_oliveira@rodrigofranco.com', '5535530751', '31599151073', 'jrYJolGsLo'),
+(4, 'Ana Silva','ana.silva@email.com', '11987654321', '12345678901', 'senha123'),
+(5, 'João Santos','joao.santos@email.com', '11998765432', '10987654321', 'senha456'),
+(6, 'Maria Souza','maria.souza@email.com', '11987654321', '98765432109', 'senha789');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+--
+-- Estrutura da tabela `enderecos`
+--
+
+DROP TABLE IF EXISTS `enderecos`;
+CREATE TABLE IF NOT EXISTS `enderecos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL,
+  `rua` varchar(150) NOT NULL,
+  `numero` varchar(10) NOT NULL,
+  `complemento` varchar(100) NOT NULL,
+  `bairro` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+

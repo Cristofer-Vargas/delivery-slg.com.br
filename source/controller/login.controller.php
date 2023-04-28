@@ -21,6 +21,8 @@ if (isset($_POST)) {
 
     if ($login && $senha == $login->getSenha()) {
         $_SESSION['usuario_email'] = $login->getEmail(); //o login foi efetuado com sucesso
+        $_SESSION['id_usuario'] = $login->getId(); //o login foi efetuado com sucesso
+
         header("Location:../../index.php");
     } else {
         $_SESSION['mensagem'] = "O Email/CPF e/ou senha inseridos estão incorretos."; //campos da página login estão incorretos
