@@ -127,8 +127,30 @@ if (isset($_GET) && !empty($_GET['action']) && $_GET['action'] == 'buscar-prods-
   exit();
 }
 
+if (isset($_GET) && !empty($_GET['busca'])) {
+
+  $ProdutoDao = new ProdutoDAO();
+  $valorProd = addslashes(filter_input(INPUT_GET, 'busca'));
+
+  try {
+    $produtos = $ProdutoDao->BuscarPorNomeEmArray($valorProd);
+    if ($produtos == false) {
+      $resultRequire['dados'] = false;
+    } else {
+      $resultRequire['dados'] = $produtos;
+    }
+  } catch (Exception $ex) {
+    $resultRequire['msg'][] = [
+      'ok' => false,
+      'mensagem' => 'Busca por produtos mal sucedida'
+    ];
+  }
+  echo json_encode($resultRequire);
+  exit();
+}
+
 if (isset($_GET) && !empty($_GET['action']) && $_GET['action'] == 'finalizar-compra') {
-  
+
   if (!isset($_SESSION['usuario_email'])) {
     $resultRequire['msg']['login'] = [
       'ok' => false,
@@ -167,12 +189,12 @@ if (isset($_GET) && !empty($_GET['action']) && $_GET['action'] == 'finalizar-com
     try {
       date_default_timezone_set('America/Sao_Paulo');
       if ($produtos == false) {
-        $resultRequire['msg'][] = [
+        $resultRequire['msg']['carrinho'] = [
           'ok' => false,
           'mensagem' => 'Não possue produtos no carrinho'
         ];
       } else {
-        
+
         $dataCompra = new DateTime('now');
 
         for ($i = 0; $i < sizeof($produtos); $i++) {
@@ -185,32 +207,29 @@ if (isset($_GET) && !empty($_GET['action']) && $_GET['action'] == 'finalizar-com
             'idUsuario' => $produtos[$i]['id_Usuario'],
           ];
         }
-        
+
         $result = $HistoicoPedidos->adicionar($valores);
-        $resultRequire['dados'] = [ $result ];
+        // $resultRequire['dados'] = [ $result ];
         // var_dump($resultRequire);
       }
-    } catch(Exception $ex) {
+    } catch (Exception $ex) {
       $resultRequire['msg'][] = [
         'ok' => false,
         'mensagem' => 'Não foi possivel finalizar a compra'
       ];
     }
-
   }
   echo json_encode($resultRequire);
   die();
-
 }
 
-if (isset($_POST) && isset($_POST['id'])){
+if (isset($_POST) && isset($_POST['id'])) {
 
   if (!isset($_SESSION['usuario_email'])) {
     $resultRequire['msg']['login'] = [
       'ok' => false,
       'mensagem' => 'Usuário não logado na sessão'
     ];
-
   } else {
     $usuarioEmail = $_SESSION['usuario_email'];
     $idProdCar = addslashes(filter_input(INPUT_POST, 'id'));
@@ -247,7 +266,5 @@ if (isset($_POST) && isset($_POST['id'])){
     }
 
     echo json_encode($resultRequire);
-
   }
-
 }

@@ -128,6 +128,7 @@ header {
       height: 100%;
       display: flex;
       align-items: center;
+      position: relative;
 
       >div.search-bar {
         width: 454px;
@@ -170,6 +171,107 @@ header {
           margin-right: 10px;
         }
 
+      }
+
+      // &:hover div.dropdown-busca {
+      //   clip-path: inset(-50%);
+      // }
+
+      div.dropdown-busca {
+        clip-path: inset(0 0 100% 0);
+        position: absolute;
+        top: 50px;
+        background-color: #fff;
+        border-radius: 5px;
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        transition: clip-path ease-in-out 0.5s;
+        
+        .resultado-busca {
+          padding-bottom: 10px;
+
+          > span {
+            color: $text-especial-color;
+          }
+
+        }
+
+        .resultados-container {
+          max-height: 80vh;
+          padding-top: 10px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          overflow: auto;
+          overflow-x: hidden;
+
+          .resultado-produto {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.10);
+            border-radius: 5px;
+            padding: 10px;
+            transition: box-shadow 0.5s, transform 0.5s;
+            
+            &:hover {
+              box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+              transform: translate(4px, -4px);
+
+            }
+
+            .resultado-image-container {
+              padding-right: 10px;
+
+              img {
+                width: 150px;
+              }
+
+            }
+
+            .produto-description {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-evenly;
+
+              h2 {
+                font-size: 18px;
+              }
+
+              p {
+                font-size: 18px;
+              }
+
+              .resultado-adicionar-ao-carrinho {
+                padding: 5px;
+                background-color: #222;
+                border-radius: 5px;
+                color: #fff;
+                cursor: pointer;
+                
+                &:hover {
+                  background-color: #505050;
+
+                }
+
+              }
+
+            }
+
+          }
+
+
+        }
+      }
+
+      div.dropdown-busca.mostrar {
+        clip-path: inset(-50%);
+      }
+
+      div.dropdown-busca.esconder {
+        clip-path: inset(0 0 100% 0);
       }
 
     }
@@ -307,11 +409,11 @@ header {
             border-radius: 5px;
             
             position: absolute;
-            top: 55px;
-            right: -80%;
+            top: 50px;
+            right: 0;
             background-color: #fff;
             box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-            transition: clip-path ease-in-out 0.5s;
+            transition: clip-path ease-in-out 0.8s;
 
             display: flex;
             flex-direction: column;
@@ -321,7 +423,7 @@ header {
               content: '';
               position: absolute;
               top: -16px;
-              right: 7px;
+              right: 0px;
               width: 0;
               height: 0;
               border-top: 10px solid transparent;

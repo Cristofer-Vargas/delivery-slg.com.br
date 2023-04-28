@@ -1,29 +1,3 @@
-function adicionarAoCarrinho(idProduto) {
-  // colocar com classe ou algo do tipo, um icone de carregando
-  fetch(`/delivery-slg.com.br/source/controller/header_controller.php?adc-car=${idProduto}`)
-    .then(res => {
-      if (res.ok == false) {
-        throw new Error('Erro em acessar o servidor.');
-      }
-      return res.json();
-    })
-    .then(data => {
-      if (data.msg.login.ok == false) {
-        const inputPedirLogin = document.getElementById('pedirLogin');
-        inputPedirLogin.checked = true;
-
-      }
-    })
-    .finally(() => {
-      BuscarCarrinhoDoUsuario();
-    })
-    .catch(error => {
-      console.error(error);
-    });
-  // com finally tirar o icone de adicionado com sucesso
-}
-
-
 function Filtrar(campo, ordem) {
   let cardsContainer = document.getElementById('produtosCardLista');
 

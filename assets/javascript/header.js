@@ -20,6 +20,70 @@ document.getElementById('searchProductsInput')
     }
   })
 
+const searchBar = document.getElementById('searchProductsInput');
+// let resultadoBusca = document.getElementById('resultadoBusca')
+let dropdownBusca = document.getElementById('dropdownBusca');
+let containerResultados = document.getElementById('containerResultados');
+let HTMLresultadoBusca = document.getElementById('HTMLresultadoBusca')
+let timeout;
+
+searchBar.addEventListener('input', () => {
+  clearTimeout(timeout);
+  timeout = setTimeout(() => {
+    let searchBarValue = searchBar.value;
+
+    HTMLresultadoBusca.innerHTML = `Resultado para "<span>${searchBarValue}</span>"`
+
+    if (searchBarValue == '' || searchBarValue == null || searchBarValue == undefined) {
+      HTMLresultadoBusca.innerHTML = '';
+      dropdownBusca.classList.remove('mostrar');
+      dropdownBusca.classList.add('esconder');
+
+    } else {
+      dropdownBusca.classList.remove('esconder');
+      dropdownBusca.classList.add('mostrar');
+      containerResultados.innerHTML = '';
+
+      fetch(`/delivery-slg.com.br/source/controller/header_controller.php?busca=${searchBarValue}`)
+        .then(res => res.json())
+        .then(response => {
+          let prods = response.dados;
+
+          if (prods == [] || Object.keys(prods) == 0 || prods.length == 0) {
+            HTMLresultadoBusca.innerHTML = 
+            `Não houve resultados para "<span>${searchBarValue}</span>"`
+          } else {
+
+            prods.forEach(row => {
+              containerResultados.insertAdjacentHTML('beforeend', `
+              <div class="resultado-produto">
+                  <div class="resultado-image-container">
+                    <img src="${row.imagem}" alt="${row.nome}">
+                  </div>
+                  <div class="produto-description">
+                    <h2>${row.nome}</h2>
+                    <p>${row.preco}</p>
+                    <div onclick="adicionarAoCarrinho(${row.id})" class="resultado-adicionar-ao-carrinho">
+                      Adicionar ao carrinho
+                    </div>
+                  </div>
+                </div>
+              `)
+            })
+
+          }
+
+
+
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    }
+  }, 100);
+})
+
+
 function BuscarCarrinhoDoUsuario() {
   let valorEntregaCarrinho = document.getElementById('valorEntregaCarrinho')
   let subTotalCarrinho = document.getElementById('subTotalCarrinho');
@@ -28,16 +92,16 @@ function BuscarCarrinhoDoUsuario() {
   const labelNumberCar = document.getElementById('carrinhoContainer')
   const carrinhoContainer = document.getElementById('carrinhoItensContainer');
 
-  carrinhoContainer.innerHTML = `
-    <svg class="teste-svg-loading" version = "1.1" id = "L9" xmlns = "http://www.w3.org/2000/svg" xmlns: xlink = "http://www.w3.org/1999/xlink" x = "0px"
-      y = "0px" viewBox = "0 0 100 100" enable - background="new 0 0 0 0" xml: space = "preserve" >
-      <path fill="#000"
-        d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
-        <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s" from="0 50 50"
-          to="360 50 50" repeatCount="indefinite" />
-      </path>
-    </svg >
-  `
+  // carrinhoContainer.innerHTML = `
+  //   <svg class="teste-svg-loading" version = "1.1" id = "L9" xmlns = "http://www.w3.org/2000/svg" xmlns: xlink = "http://www.w3.org/1999/xlink" x = "0px"
+  //     y = "0px" viewBox = "0 0 100 100" enable - background="new 0 0 0 0" xml: space = "preserve" >
+  //     <path fill="#000"
+  //       d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+  //       <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s" from="0 50 50"
+  //         to="360 50 50" repeatCount="indefinite" />
+  //     </path>
+  //   </svg >
+  // `
 
   fetch(`/delivery-slg.com.br/source/controller/header_controller.php?action=buscar-prods-usuario`)
     .then(res => {
@@ -131,6 +195,31 @@ function BuscarCarrinhoDoUsuario() {
   // com finally, tirar icone de carregando
 }
 
+function adicionarAoCarrinho(idProduto) {
+  // colocar com classe ou algo do tipo, um icone de carregando
+  fetch(`/delivery-slg.com.br/source/controller/header_controller.php?adc-car=${idProduto}`)
+    .then(res => {
+      if (res.ok == false) {
+        throw new Error('Erro em acessar o servidor.');
+      }
+      return res.json();
+    })
+    .then(data => {
+      if (data.msg.login.ok == false) {
+        const inputPedirLogin = document.getElementById('pedirLogin');
+        inputPedirLogin.checked = true;
+
+      }
+    })
+    .finally(() => {
+      BuscarCarrinhoDoUsuario();
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  // com finally tirar o icone de adicionado com sucesso
+}
+
 function removerDoCarrinho(idNoCarrinho) {
   let formData = new FormData;
   formData.append('id', idNoCarrinho)
@@ -168,11 +257,15 @@ function loading() {
 }
 
 function FinalizarCarrinho() {
+  const carrinhoContainer = document.getElementById('carrinhoItensContainer');
 
   fetch('/delivery-slg.com.br/source/controller/header_controller.php?action=finalizar-compra')
-    .then(response => { response.json() })
+    .then(response => response.json())
     .then(res => {
       console.log(res);
+      if (res.msg.carrinho.ok == false) {
+        carrinhoContainer.innerHTML = `Não é possivel finalizar compra sem produtos ...`
+      }
     })
 
 }
