@@ -104,11 +104,17 @@ header {
             font-weight: normal;
             color: $text-especial-color;
             text-decoration: none;
-            transition: color 0.5s;
+            transition: background 0.5s;
+            background: linear-gradient(currentColor 0 0) 
+            bottom /var(--d, 0) 3px 
+            no-repeat;
+            padding: 10px 0;
           }
 
           >a:hover {
             color: rgba($text-especial-color, $alpha: 0.7);
+            --d: 100%;
+
           }
         }
       }
@@ -228,9 +234,11 @@ header {
 
     .perfil-logged {
       height: 100%;
+      display: flex;
+      align-items: center;
 
       ul {
-        height: 100%;
+        height: auto;
         display: flex;
         align-items: center;
         gap: 50px;
@@ -277,12 +285,67 @@ header {
           }
         }
 
-        li.login-container i {
-          font-size: 32px;
-        }
+        li.login-container {
+          position: relative;
 
-        li.login-container:hover i {
-          color: $secundary-color;
+          i {
+            font-size: 32px;
+            &:hover {
+              color: $secundary-color;
+            }
+          }
+
+          &:hover .dropdown-menu-perfil {
+            clip-path: inset(-50%);
+          }
+
+          .dropdown-menu-perfil {
+            clip-path: inset(0 0 100% 0);
+            width: 140px;
+            height: auto;
+            // padding: 20px;
+            border-radius: 5px;
+            
+            position: absolute;
+            top: 55px;
+            right: -80%;
+            background-color: #fff;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+            transition: clip-path ease-in-out 0.5s;
+
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            &::before {
+              content: '';
+              position: absolute;
+              top: -16px;
+              right: 7px;
+              width: 0;
+              height: 0;
+              border-top: 10px solid transparent;
+              border-right: 14px solid #fff;
+              border-bottom: 10px solid transparent;
+              // box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+              transform: rotate(90deg);
+            }
+
+            > a {
+              font-size: 18px;
+              text-align: center;
+              padding: 10px 5px;
+              display: block;
+              transition: background 0.5s;
+
+              &:hover {
+                background-color: $secundary-color;
+                color: #fff;
+              }
+
+            }
+
+          }
         }
 
       }

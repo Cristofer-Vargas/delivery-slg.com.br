@@ -5,7 +5,6 @@ session_start();
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/functions.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/error_message.php');
 // $_SESSION['usuario_email'] = 'theo_paulo_oliveira@rodrigofranco.com';
-// unset($_SESSION['usuario_email']);
 
 ?>
 
@@ -118,9 +117,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
 
             </li>
             <li class="login-container">
-              <a title="Perfil" href="/delivery-slg.com.br/pages/perfilusuario.php">
+              <div title="Perfil" href="/delivery-slg.com.br/pages/perfilusuario.php">
                 <i class="fa-solid fa-circle-user"></i>
-              </a>
+              </div>
+              <div class="dropdown-menu-perfil">
+                <a href="/delivery-slg.com.br/pages/perfilusuario.php">Meu perfil</a>
+                <a href="#">Gerenciar Endereços</a>
+                <a href="#">Gerenciar Cartões</a>
+                <a href="/delivery-slg.com.br/source/controller/header_controller.php?action=sair-sessao">Sair</a>
+              </div>
             </li>
           </ul>
         </div>

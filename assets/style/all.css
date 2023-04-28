@@ -90,10 +90,13 @@ header .header-distribuition .logo-and-nav > ul li > a {
   font-weight: normal;
   color: #FF4136;
   text-decoration: none;
-  transition: color 0.5s;
+  transition: background 0.5s;
+  background: linear-gradient(currentColor 0 0) bottom/var(--d, 0) 3px no-repeat;
+  padding: 10px 0;
 }
 header .header-distribuition .logo-and-nav > ul li > a:hover {
   color: rgba(255, 65, 54, 0.7);
+  --d: 100%;
 }
 header .header-distribuition .logo-and-nav > a img {
   height: 31px;
@@ -184,9 +187,11 @@ header .header-distribuition .perfil-cad-login ul li a.button-entrar:hover {
 }
 header .header-distribuition .perfil-logged {
   height: 100%;
+  display: flex;
+  align-items: center;
 }
 header .header-distribuition .perfil-logged ul {
-  height: 100%;
+  height: auto;
   display: flex;
   align-items: center;
   gap: 50px;
@@ -222,11 +227,55 @@ header .header-distribuition .perfil-logged ul li.carrinho-container span {
   top: -50%;
   right: -50%;
 }
+header .header-distribuition .perfil-logged ul li.login-container {
+  position: relative;
+}
 header .header-distribuition .perfil-logged ul li.login-container i {
   font-size: 32px;
 }
-header .header-distribuition .perfil-logged ul li.login-container:hover i {
+header .header-distribuition .perfil-logged ul li.login-container i:hover {
   color: #FFA500;
+}
+header .header-distribuition .perfil-logged ul li.login-container:hover .dropdown-menu-perfil {
+  clip-path: inset(-50%);
+}
+header .header-distribuition .perfil-logged ul li.login-container .dropdown-menu-perfil {
+  clip-path: inset(0 0 100% 0);
+  width: 140px;
+  height: auto;
+  border-radius: 5px;
+  position: absolute;
+  top: 55px;
+  right: -80%;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  transition: clip-path ease-in-out 0.5s;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+header .header-distribuition .perfil-logged ul li.login-container .dropdown-menu-perfil::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  right: 7px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-right: 14px solid #fff;
+  border-bottom: 10px solid transparent;
+  transform: rotate(90deg);
+}
+header .header-distribuition .perfil-logged ul li.login-container .dropdown-menu-perfil > a {
+  font-size: 18px;
+  text-align: center;
+  padding: 10px 5px;
+  display: block;
+  transition: background 0.5s;
+}
+header .header-distribuition .perfil-logged ul li.login-container .dropdown-menu-perfil > a:hover {
+  background-color: #FFA500;
+  color: #fff;
 }
 
 input#carrinhoLateralInput {

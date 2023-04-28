@@ -17,11 +17,9 @@ class HistoricoPedidosDAO
       (`preco`, `data_Compra`, `id_Restaurante`, `quantidade`, `id_Produto`, `id_Usuario`) 
       VALUES (?, ?, ?, ?, ?, ?)');
 
-      // $bind = array(":preco", ":dataCompra", ":idRestaurante", ":quantidade", ":idProduto", ":idUsuario");
-
       foreach ($valores as $data) {
-        // var_dump($data);
-        $keys = array_keys($data);
+
+
         // var_dump($keys);
         // foreach ($data as $sla) {
           // $stmt->execute($sla);
@@ -34,9 +32,7 @@ class HistoricoPedidosDAO
           // $stmt->bindValue(":idUsuario", $sla);
         // }
         $keys = array_keys($data);
-
-        // $teste = array_values($data);
-        // var_dump($teste);
+        
         for ($i = 0; $i < count($keys); $i++) {
           $stmt->bindValue($i + 1, $data[$keys[$i]]);
         }

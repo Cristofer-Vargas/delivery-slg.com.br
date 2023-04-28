@@ -76,10 +76,12 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
   exit();
 }
 
-// if (isset($_GET) && $_GET['action'] == 'verifica-sessao') {
-// }
+if (isset($_GET) && !empty($_GET['action']) && $_GET['action'] == 'sair-sessao') {
+  session_destroy();
+  header('Location:/delivery-slg.com.br/index.php');
+}
 
-if (isset($_GET) &&  !empty($_GET['action']) && $_GET['action'] == 'buscar-prods-usuario') {
+if (isset($_GET) && !empty($_GET['action']) && $_GET['action'] == 'buscar-prods-usuario') {
 
   if (!isset($_SESSION['usuario_email'])) {
     $resultRequire['msg']['login'] = [
