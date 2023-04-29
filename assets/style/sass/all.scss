@@ -92,7 +92,7 @@ header {
         display: flex;
         gap: 20px;
         margin: 0;
-        
+
         li {
           margin-bottom: 0;
           height: 100%;
@@ -104,11 +104,17 @@ header {
             font-weight: normal;
             color: $text-especial-color;
             text-decoration: none;
-            transition: color 0.5s;
+            transition: background 0.5s;
+            background: linear-gradient(currentColor 0 0) 
+            bottom /var(--d, 0) 3px 
+            no-repeat;
+            padding: 10px 0;
           }
 
           >a:hover {
             color: rgba($text-especial-color, $alpha: 0.7);
+            --d: 100%;
+
           }
         }
       }
@@ -122,6 +128,7 @@ header {
       height: 100%;
       display: flex;
       align-items: center;
+      position: relative;
 
       >div.search-bar {
         width: 454px;
@@ -164,6 +171,107 @@ header {
           margin-right: 10px;
         }
 
+      }
+
+      // &:hover div.dropdown-busca {
+      //   clip-path: inset(-50%);
+      // }
+
+      div.dropdown-busca {
+        clip-path: inset(0 0 100% 0);
+        position: absolute;
+        top: 50px;
+        background-color: #fff;
+        border-radius: 5px;
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        transition: clip-path ease-in-out 0.5s;
+        
+        .resultado-busca {
+          padding-bottom: 10px;
+
+          > span {
+            color: $text-especial-color;
+          }
+
+        }
+
+        .resultados-container {
+          max-height: 80vh;
+          padding-top: 10px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          overflow: auto;
+          overflow-x: hidden;
+
+          .resultado-produto {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.10);
+            border-radius: 5px;
+            padding: 10px;
+            transition: box-shadow 0.5s, transform 0.5s;
+            
+            &:hover {
+              box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+              transform: translate(4px, -4px);
+
+            }
+
+            .resultado-image-container {
+              padding-right: 10px;
+
+              img {
+                width: 150px;
+              }
+
+            }
+
+            .produto-description {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-evenly;
+
+              h2 {
+                font-size: 18px;
+              }
+
+              p {
+                font-size: 18px;
+              }
+
+              .resultado-adicionar-ao-carrinho {
+                padding: 5px;
+                background-color: #222;
+                border-radius: 5px;
+                color: #fff;
+                cursor: pointer;
+                
+                &:hover {
+                  background-color: #505050;
+
+                }
+
+              }
+
+            }
+
+          }
+
+
+        }
+      }
+
+      div.dropdown-busca.mostrar {
+        clip-path: inset(-50%);
+      }
+
+      div.dropdown-busca.esconder {
+        clip-path: inset(0 0 100% 0);
       }
 
     }
@@ -228,9 +336,11 @@ header {
 
     .perfil-logged {
       height: 100%;
+      display: flex;
+      align-items: center;
 
       ul {
-        height: 100%;
+        height: auto;
         display: flex;
         align-items: center;
         gap: 50px;
@@ -239,14 +349,15 @@ header {
         li {
           font-size: 22px;
 
-          a, i {
+          a,
+          i {
             text-decoration: none;
             color: $text-especial-color;
             transition: color 0.5s;
             cursor: pointer;
           }
         }
-        
+
         li.carrinho-container {
           position: relative;
 
@@ -276,12 +387,67 @@ header {
           }
         }
 
-        li.login-container i{
-          font-size: 32px;
-        }
+        li.login-container {
+          position: relative;
 
-        li.login-container:hover i {
-          color: $secundary-color;
+          i {
+            font-size: 32px;
+            &:hover {
+              color: $secundary-color;
+            }
+          }
+
+          &:hover .dropdown-menu-perfil {
+            clip-path: inset(-50%);
+          }
+
+          .dropdown-menu-perfil {
+            clip-path: inset(0 0 100% 0);
+            width: 140px;
+            height: auto;
+            // padding: 20px;
+            border-radius: 5px;
+            
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: #fff;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+            transition: clip-path ease-in-out 0.8s;
+
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            &::before {
+              content: '';
+              position: absolute;
+              top: -16px;
+              right: 0px;
+              width: 0;
+              height: 0;
+              border-top: 10px solid transparent;
+              border-right: 14px solid #fff;
+              border-bottom: 10px solid transparent;
+              // box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+              transform: rotate(90deg);
+            }
+
+            > a {
+              font-size: 18px;
+              text-align: center;
+              padding: 10px 5px;
+              display: block;
+              transition: background 0.5s;
+
+              &:hover {
+                background-color: $secundary-color;
+                color: #fff;
+              }
+
+            }
+
+          }
         }
 
       }
@@ -303,20 +469,20 @@ div.carrinho-lateral-background {
   position: fixed;
   top: 0;
   right: 0;
-  
+
   z-index: 4;
   transition: width 0.5s;
-  
+
   label.disable-carrinho-lateral {
     width: 100%;
     height: 100vh;
     position: absolute;
     top: 0;
     right: 0;
-    
+
     opacity: 0;
     transition: opacity 0.5s;
-    
+
     background-color: rgba($color: $background-gray-white, $alpha: 0.6);
   }
 
@@ -339,20 +505,20 @@ div.carrinho-lateral-background {
 
     font-family: $primary-font;
 
-    > div::-webkit-scrollbar {
+    >div::-webkit-scrollbar {
       width: 5px;
     }
-    
-    > div::-webkit-scrollbar-thumb {
+
+    >div::-webkit-scrollbar-thumb {
       background-color: $primary-color;
     }
-    
-    > div {
+
+    >div {
       overflow-y: scroll;
       overflow-x: hidden;
       padding-bottom: 20px;
 
-      > h3 {
+      >h3 {
         width: 100%;
         margin: 20px 0;
         text-align: center;
@@ -366,7 +532,7 @@ div.carrinho-lateral-background {
         display: flex;
         flex-direction: column;
         gap: 20px;
-  
+
         div.pedido-item {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -381,7 +547,7 @@ div.carrinho-lateral-background {
             flex-direction: column;
             justify-content: space-between;
 
-            > div.image {
+            >div.image {
               width: 225px;
               height: 130px;
               background-size: cover;
@@ -389,7 +555,7 @@ div.carrinho-lateral-background {
               background-repeat: no-repeat;
             }
 
-            > div.carrinho-restaurante-nome {
+            >div.carrinho-restaurante-nome {
               height: auto;
               display: flex;
               justify-content: center;
@@ -397,7 +563,7 @@ div.carrinho-lateral-background {
               padding: 10px;
               padding-bottom: 0;
 
-              > span {
+              >span {
                 margin-left: 5px;
               }
 
@@ -411,7 +577,7 @@ div.carrinho-lateral-background {
             justify-content: space-between;
             text-align: center;
 
-            > h4 {
+            >h4 {
               font-size: 1.3em;
               color: $text-especial-color;
             }
@@ -420,7 +586,7 @@ div.carrinho-lateral-background {
               font-size: 1.8em;
             }
 
-            > p.remover-prod {
+            >p.remover-prod {
               cursor: pointer;
               text-decoration: none;
               color: $text-especial-color;
@@ -434,7 +600,7 @@ div.carrinho-lateral-background {
               >i {
                 cursor: pointer;
               }
-              
+
               .quantidade-item {
                 font-size: 1.7em;
                 margin: 0 8px;
@@ -450,9 +616,9 @@ div.carrinho-lateral-background {
           box-shadow: -4px 4px 4px 0px rgba(0, 0, 0, .25);
           transform: translate(4px, -4px);
         }
-  
+
       }
-      
+
     }
 
     div.total-dos-pedidos {
@@ -469,7 +635,8 @@ div.carrinho-lateral-background {
 
         tbody {
 
-          td, th {
+          td,
+          th {
             padding: 5px 10px;
           }
 
@@ -482,11 +649,12 @@ div.carrinho-lateral-background {
             font-weight: normal;
           }
 
-          th.total-pedidos, td.valor-total-pedidos {
+          th.total-pedidos,
+          td.valor-total-pedidos {
             font-weight: bolder;
             font-size: 1.3em;
           }
-          
+
           tr:nth-child(2n - 1) {
             background-color: $color-neutro;
           }
@@ -518,7 +686,7 @@ div.carrinho-lateral-background {
 
 }
 
-input#carrinhoLateralInput:checked ~ {
+input#carrinhoLateralInput:checked~ {
 
   div.carrinho-lateral-background {
     width: 100%;
@@ -989,7 +1157,8 @@ div.notification {
     text-align: center;
     padding: 0 8px;
     flex: 1;
-    > i {
+
+    >i {
       margin-right: 8px;
     }
 
@@ -1051,7 +1220,7 @@ div.notification-js-container {
   gap: 30px;
 
   z-index: 2;
-  
+
   div.notificationJS {
     width: 200px;
     height: 150px;
@@ -1079,7 +1248,7 @@ input#pedirLogin {
   display: none;
 }
 
-input#pedirLogin:checked ~ div.pedir-login-background {
+input#pedirLogin:checked~div.pedir-login-background {
   display: block;
 }
 
@@ -1102,7 +1271,7 @@ div.pedir-login-background {
     height: 100%;
   }
 
-  > div.pedir-login-container {
+  >div.pedir-login-container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1112,7 +1281,7 @@ div.pedir-login-background {
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.10);
 
-    > h2 {
+    >h2 {
       color: #222;
       margin-bottom: 40px;
     }
@@ -1141,5 +1310,14 @@ div.pedir-login-background {
 
     }
   }
+
+}
+
+svg.teste-svg-loading {
+
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  display: inline-block;
 
 }

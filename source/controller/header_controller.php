@@ -4,6 +4,7 @@ require_once('../dao/carrinhoDAO.php');
 require_once('../dao/produtosDAO.php');
 require_once('../dao/restaurantesDAO.php');
 require_once('../dao/loginDAo.php');
+require_once('../dao/historicopedidosDAO.php');
 require_once('../config/error_message.php');
 require_once('../classes/carrinho.class.php');
 
@@ -75,10 +76,12 @@ if (isset($_GET) && !empty($_GET['adc-car'])) {
   exit();
 }
 
-// if (isset($_GET) && $_GET['action'] == 'verifica-sessao') {
-// }
+if (isset($_GET) && !empty($_GET['action']) && $_GET['action'] == 'sair-sessao') {
+  session_destroy();
+  header('Location:/delivery-slg.com.br/index.php');
+}
 
-if (isset($_GET) &&  !empty($_GET['action']) && $_GET['action'] == 'buscar-prods-usuario') {
+if (isset($_GET) && !empty($_GET['action']) && $_GET['action'] == 'buscar-prods-usuario') {
 
   if (!isset($_SESSION['usuario_email'])) {
     $resultRequire['msg']['login'] = [
@@ -124,14 +127,109 @@ if (isset($_GET) &&  !empty($_GET['action']) && $_GET['action'] == 'buscar-prods
   exit();
 }
 
-if (isset($_POST) && isset($_POST['id'])){
+if (isset($_GET) && !empty($_GET['busca'])) {
+
+  $ProdutoDao = new ProdutoDAO();
+  $valorProd = addslashes(filter_input(INPUT_GET, 'busca'));
+
+  try {
+    $produtos = $ProdutoDao->BuscarPorNomeEmArray($valorProd);
+    if ($produtos == false) {
+      $resultRequire['dados'] = false;
+    } else {
+      $resultRequire['dados'] = $produtos;
+    }
+  } catch (Exception $ex) {
+    $resultRequire['msg'][] = [
+      'ok' => false,
+      'mensagem' => 'Busca por produtos mal sucedida'
+    ];
+  }
+  echo json_encode($resultRequire);
+  exit();
+}
+
+if (isset($_GET) && !empty($_GET['action']) && $_GET['action'] == 'finalizar-compra') {
 
   if (!isset($_SESSION['usuario_email'])) {
     $resultRequire['msg']['login'] = [
       'ok' => false,
       'mensagem' => 'Usuário não logado na sessão'
     ];
+  } else {
+    $usuarioEmail = $_SESSION['usuario_email'];
 
+    $resultRequire['msg']['login'] = [
+      'ok' => true,
+      'mensagem' => 'Usuário logado com sucesso, email: ' . "$usuarioEmail"
+    ];
+
+    $loginDAO = new LoginDAO();
+    $CarrinhoDao = new CarrinhoDAO();
+    $HistoicoPedidos = new HistoricoPedidosDAO();
+
+    try {
+      $usuario = $loginDAO->buscaUsuario($usuarioEmail);
+    } catch (Exception $ex) {
+      $resultRequire['msg'][] = [
+        'ok' => false,
+        'mensagem' => 'Não foi possivel achar usuário da sessão'
+      ];
+    }
+
+    try {
+      $produtos = $CarrinhoDao->buscarProdutos($usuario->getId());
+    } catch (Exception $ex) {
+      $resultRequire['msg'][] = [
+        'ok' => false,
+        'mensagem' => 'Não foi possivel retornar produtos'
+      ];
+    }
+
+    try {
+      date_default_timezone_set('America/Sao_Paulo');
+      if ($produtos == false) {
+        $resultRequire['msg']['carrinho'] = [
+          'ok' => false,
+          'mensagem' => 'Não possue produtos no carrinho'
+        ];
+      } else {
+
+        $dataCompra = new DateTime('now');
+
+        for ($i = 0; $i < sizeof($produtos); $i++) {
+          $valores[] = [
+            'preco' => $produtos[$i]['produto_Preco'],
+            'dataCompra' => $dataCompra->format('Y-m-d H:m:s'),
+            'idRestaurante' => $produtos[$i]['id_Restaurante'],
+            'quantidade' => $produtos[$i]['quantidade'],
+            'idProduto' => $produtos[$i]['id_Produto'],
+            'idUsuario' => $produtos[$i]['id_Usuario'],
+          ];
+        }
+
+        $result = $HistoicoPedidos->adicionar($valores);
+        // $resultRequire['dados'] = [ $result ];
+        // var_dump($resultRequire);
+      }
+    } catch (Exception $ex) {
+      $resultRequire['msg'][] = [
+        'ok' => false,
+        'mensagem' => 'Não foi possivel finalizar a compra'
+      ];
+    }
+  }
+  echo json_encode($resultRequire);
+  die();
+}
+
+if (isset($_POST) && isset($_POST['id'])) {
+
+  if (!isset($_SESSION['usuario_email'])) {
+    $resultRequire['msg']['login'] = [
+      'ok' => false,
+      'mensagem' => 'Usuário não logado na sessão'
+    ];
   } else {
     $usuarioEmail = $_SESSION['usuario_email'];
     $idProdCar = addslashes(filter_input(INPUT_POST, 'id'));
@@ -168,7 +266,5 @@ if (isset($_POST) && isset($_POST['id'])){
     }
 
     echo json_encode($resultRequire);
-
   }
-
 }

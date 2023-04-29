@@ -140,4 +140,29 @@ class CarrinhoDAO {
     }
   }
 
+  function finalizarCompra(int $idUser) {
+    $conection = ConexaoBD();
+    $conection->beginTransaction();
+
+    try {
+
+      $stmt = $conection->prepare('DELETE FROM carrinho WHERE id_Usuario = :idUser');
+      $stmt->bindValue(':idUser', $idUser);
+      $stmt->execute();
+
+      if ($stmt == true) {
+        $conection->commit();
+        return true;
+      } else {
+        return false;
+      }
+
+    } catch (PDOException $ex) {
+      $conection->rollBack();
+      throw $ex;
+      die();
+    }
+
+  }
+
 }

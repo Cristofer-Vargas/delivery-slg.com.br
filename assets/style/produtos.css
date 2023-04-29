@@ -27,7 +27,7 @@ main .produtos-main-container .produtos-cards-lista {
   grid-area: produtos;
 }
 main .produtos-main-container .produtos-filtro {
-  max-width: 300px;
+  width: 280px;
   background-color: #fff;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.25);
@@ -66,6 +66,7 @@ main .produtos-main-container .produtos-filtro .filtros-container .filtro:hover 
   background-color: #ebebeb;
 }
 main .produtos-main-container .produtos-cards-lista {
+  min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;

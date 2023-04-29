@@ -7,7 +7,6 @@ if (!isset($_SESSION)) {
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/functions.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/error_message.php');
 // $_SESSION['usuario_email'] = 'theo_paulo_oliveira@rodrigofranco.com';
-// unset($_SESSION['usuario_email']);
 
 ?>
 
@@ -36,22 +35,22 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
           </div>
           <hr>
 
-          <div class="distribuition-butons-side-space">            
+          <div class="distribuition-butons-side-space">
             <a href="/delivery-slg.com.br/pages/perfilusuario.php">
               <i class="fa-solid fa-circle-user"></i>
               <h3>Perfil</h3>
             </a>
-            
+
             <a href="/delivery-slg.com.br/pages/cadastrousuario.php">
               <i class="fa-solid fa-user"></i>
               <h3>Criar Conta</h3>
             </a>
-            
+
             <a href="/delivery-slg.com.br/pages/login.php">
               <i class="fa-regular fa-user"></i>
               <h3>Entrar</h3>
             </a>
-            
+
             <a href="/delivery-slg.com.br/index.php#sobre-nos-sessao" onclick="levarAoSobreNos()">
               <i class="fa-sharp fa-solid fa-circle-info"></i>
               <h3>Sobre Nós</h3>
@@ -107,6 +106,26 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
           <input id="searchProductsInput" type="text" class="searchProductsInput" placeholder="Ache seu lanche da vez!" maxlength="50">
           <img src="/delivery-slg.com.br/assets/images/header/lupa-search.png" alt="">
         </div>
+        <div id="dropdownBusca" class="dropdown-busca">
+          <div id="HTMLresultadoBusca" class="resultado-busca">
+          </div>
+          <div class="resultados-container" id="containerResultados">
+
+            <!-- <div id="resultadoProduto" class="resultado-produto">
+              <div id="ImagemProduto" class="resultado-image-container">
+                <img src="/delivery-slg.com.br/assets/images/default-images/lanches-produtos.png" alt="">
+              </div>
+              <div id="produtoDescription" class="produto-description">
+                <h2>Cachorro Quente Simples</h2>
+                <p>9,99</p>
+                <div id="adicionarAoCarrinho" onclick="adicionarAoCarrinho()" class="resultado-adicionar-ao-carrinho">
+                  Adicionar ao carrinho
+                </div>
+              </div>
+            </div> -->
+
+          </div>
+        </div>
       </div>
       <?php
       if (isset($_SESSION) && isset($_SESSION['usuario_email'])) {
@@ -120,9 +139,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
 
             </li>
             <li class="login-container">
-              <a title="Perfil" href="/delivery-slg.com.br/pages/perfilusuario.php">
+              <div title="Perfil" href="/delivery-slg.com.br/pages/perfilusuario.php">
                 <i class="fa-solid fa-circle-user"></i>
-              </a>
+              </div>
+              <div class="dropdown-menu-perfil">
+                <a href="/delivery-slg.com.br/pages/perfilusuario.php">Meu perfil</a>
+                <a href="#">Gerenciar Endereços</a>
+                <a href="#">Gerenciar Cartões</a>
+                <a href="/delivery-slg.com.br/source/controller/header_controller.php?action=sair-sessao">Sair</a>
+              </div>
             </li>
           </ul>
         </div>
@@ -188,7 +213,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/err
           </tr>
         </tbody>
       </table>
-      <button class="finalizar-compra">
+      <button onclick="FinalizarCarrinho()" class="finalizar-compra" id="btnFinalizarCompra">
         Finalizar compra
       </button>
     </div>

@@ -26,7 +26,7 @@ class ProdutoDAO
           $produto->setCategoria($result->categoria);
           $produto->setId_Restaurante($result->id_Restaurante);
           $produto->setNomeRestaurante($result->nome_restaurante);
-          $arr[] = clone $produto;
+          $arr[] = $produto->toArray();
         }
 
         return $arr;
@@ -159,6 +159,46 @@ class ProdutoDAO
       } else {
         $_SESSION['mensagemError'] = 'Não foi possível um resultado para: ' . $busca;
         $_SESSION['erroSucessOrFail'] = false;
+        return false;
+      }
+
+    } catch (PDOException $ex) {
+      $_SESSION['mensagemError'] = 'Erro ao tentar encontrar produtos no banco de dados';
+      $_SESSION['erroSucessOrFail'] = false;
+      throw $ex;
+      die();
+    }
+    
+  }
+  
+  function BuscarPorNomeEmArray($busca) {
+    $conection = ConexaoBD();
+
+    try {
+      $stmt = $conection->prepare("SELECT r.nome as nome_restaurante, p.* FROM `produtos` as p INNER JOIN `restaurantes` 
+      as r ON p.id_Restaurante = r.id WHERE p.nome LIKE '%". $busca ."%'");
+      $stmt->execute();
+
+      if ($stmt->rowCount()) {
+        $produto = new Produtos();
+        $arr = array();
+
+        while ($result = $stmt->fetch(PDO::FETCH_OBJ)) {
+          $produto->setId($result->id);
+          $produto->setNome($result->nome);
+          $produto->setDescricao($result->descricao);
+          $produto->setImagem($result->imagem);
+          $produto->setPreco($result->preco);
+          $produto->setCategoria($result->categoria);
+          $produto->setId_Restaurante($result->id_Restaurante);
+          $produto->setNomeRestaurante($result->nome_restaurante);
+          $arr[] = $produto->toArray(); 
+        }
+
+        return $arr;
+        var_dump($arr);
+
+      } else {
         return false;
       }
 

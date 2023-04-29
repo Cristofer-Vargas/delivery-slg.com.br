@@ -50,32 +50,23 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
               <h2 class="filtro-title">Filtros</h2>
               <div class="filtro-btn">
                 <?php
-                if (isset($_GET) && isset($_GET['campo']) || isset($_GET['ordem'])) {
-                ?>
-                  <div class="filtro limpar-filtro"><a href="produtos.php">Limpar Filtro</a></div>
-                <?php
-                }
-                if (!isset($_GET['busca'])) {
-                ?>
+                if (isset($_GET['busca']) || isset($_GET['categoria'])) {
+                  ?>
+                    <div class="filtro limpar-filtro"><a href="produtos.php">Limpar Filtro</a></div>
+                  <?php
+                } else {
+                  ?>
                   <div class="filtro"><p onclick="Filtrar('preco', 'desc')">Maior Preço</p></div>
                   <div class="filtro"><p onclick="Filtrar('preco', 'asc')">Menor Preço</p></div>
                   <div class="filtro"><p onclick="Filtrar('categoria', 'desc')">Categoria Decrescente</p></div>
                   <div class="filtro"><p onclick="Filtrar('categoria', 'asc')">Categoria Crescente</p></div>
                   <div class="filtro"><p onclick="Filtrar('id_Restaurante', 'asc')">Restaurante Decrescente</p></div>
                   <div class="filtro"><p onclick="Filtrar('id_Restaurante', 'desc')">Restaurante Crescente</p></div>
-                <?php
-                } else {
-                ?>
-                  <div class="filtro limpar-filtro"><a href="produtos.php">Limpar Filtro</a></div>
-                <?php
+                  <?php
                 }
                 ?>
               </div>
             </div>
-          </div>
-
-          <div id='notificationPhpJsContainer' class="notification-js-container">
-            
           </div>
 
           <div class="produtos-cards-lista" id="produtosCardLista">
@@ -109,41 +100,39 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/config/fun
             if (!empty($produtos)) {
               foreach ($produtos as $row) :
             ?>
-
-                <div class="card-produto">
-                  <div class="nome-image-restaurante">
-                    <div class="restaurante-name">
-                      <i class="fa-solid fa-shop"></i>
-                      <span>
-                        <?= $controller->BuscarNomeRestaurante($row->getId_Restaurante()) ?></span>
-                    </div>
-                    <div>
-                      <img src="<?= $row->getImagem() ?>" alt="<?= $row->getNome() ?>">
-                    </div>
+              <div class="card-produto">
+                <div class="nome-image-restaurante">
+                  <div class="restaurante-name">
+                    <i class="fa-solid fa-shop"></i>
+                    <span>
+                      <?= $controller->BuscarNomeRestaurante($row->getId_Restaurante()) ?></span>
                   </div>
-                  <div class="informacoes-restaurante flip-card">
-                    <div class="produto-nome-preco card-front">
-                      <h2><?= $row->getNome() ?></h2>
-                      <div class="produto-preco">
-                        <span class="tipo-preco">
-                          R$
-                        </span>
-                        <span class="valor-produto">
-                          <?= $row->getPreco() ?>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="card-back">
-                      <p>
-                        <?= $row->getDescricao() ?>
-                      </p>
-                      <button onclick="adicionarAoCarrinho(<?= $row->getId() ?>)" class="btn-adicionar-carrinho">
-                        Adicionar ao carrinho
-                      </button>
-                    </div>
+                  <div>
+                    <img src="<?= $row->getImagem() ?>" alt="<?= $row->getNome() ?>">
                   </div>
                 </div>
-
+                <div class="informacoes-restaurante flip-card">
+                  <div class="produto-nome-preco card-front">
+                    <h2><?= $row->getNome() ?></h2>
+                    <div class="produto-preco">
+                      <span class="tipo-preco">
+                        R$
+                      </span>
+                      <span class="valor-produto">
+                        <?= $row->getPreco() ?>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="card-back">
+                    <p>
+                      <?= $row->getDescricao() ?>
+                    </p>
+                    <button onclick="adicionarAoCarrinho(<?= $row->getId() ?>)" class="btn-adicionar-carrinho">
+                      Adicionar ao carrinho
+                    </button>
+                  </div>
+                </div>
+              </div>
             <?php endforeach;
             } else {
               echo "Não foi possível retornar resusltados!";
