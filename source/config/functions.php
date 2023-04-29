@@ -24,3 +24,9 @@ function ConexaoBD()
     echo 'Erro ao conectar ao banco: ' . $ex->getMessage();
   }
 }
+
+function validaSessao() {
+  if (!isset($_SESSION) || !isset($_SESSION['usuario_email']) || !$_SESSION['id_usuario']) {
+    header("Location: ../pages/login.php");
+  }
+}
