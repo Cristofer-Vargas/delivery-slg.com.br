@@ -1,5 +1,8 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/controller/enderecos.controller.php');
+session_start();
+validaSessao();
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -22,6 +25,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/delivery-slg.com.br/source/controller
 <body>
     <?php include_once('../includes/header.php'); ?>
     <?php
+
+   
+
     $controller = new EnderecosController();
     $enderecos = $controller->buscarEnderecos($_SESSION['id_usuario']);
     $end = new Enderecos();
