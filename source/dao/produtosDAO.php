@@ -26,7 +26,7 @@ class ProdutoDAO
           $produto->setCategoria($result->categoria);
           $produto->setId_Restaurante($result->id_Restaurante);
           $produto->setNomeRestaurante($result->nome_restaurante);
-          $arr[] = $produto->toArray();
+          $arr[] = clone $produto;
         }
 
         return $arr;
@@ -176,7 +176,8 @@ class ProdutoDAO
 
     try {
       $stmt = $conection->prepare("SELECT r.nome as nome_restaurante, p.* FROM `produtos` as p INNER JOIN `restaurantes` 
-      as r ON p.id_Restaurante = r.id WHERE p.nome LIKE '%". $busca ."%'");
+      as r ON p.id_Restaurante = r.id WHERE p.nome LIKE :busca");
+      $stmt->bindValue(':busca', "%" . $busca . "%");
       $stmt->execute();
 
       if ($stmt->rowCount()) {
@@ -196,7 +197,6 @@ class ProdutoDAO
         }
 
         return $arr;
-        var_dump($arr);
 
       } else {
         return false;

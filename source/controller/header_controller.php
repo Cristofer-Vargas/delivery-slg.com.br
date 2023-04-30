@@ -194,6 +194,10 @@ if (isset($_GET) && !empty($_GET['action']) && $_GET['action'] == 'finalizar-com
           'mensagem' => 'Não possue produtos no carrinho'
         ];
       } else {
+        $resultRequire['msg']['carrinho'] = [
+          'ok' => true,
+          'mensagem' => 'Produtos existentes no carrinho'
+        ];
 
         $dataCompra = new DateTime('now');
 
@@ -209,8 +213,21 @@ if (isset($_GET) && !empty($_GET['action']) && $_GET['action'] == 'finalizar-com
         }
 
         $result = $HistoicoPedidos->adicionar($valores);
-        // $resultRequire['dados'] = [ $result ];
-        // var_dump($resultRequire);
+
+        $resultCar = $CarrinhoDao->removerDoCarrinho($usuario->getId());
+
+        if ($resultCar) {
+          $resultRequire['msg']['compra'] = [
+            'ok' => true,
+            'mensagem' => 'Compra finalizada com sucesso'
+          ];
+        } else {
+          $resultRequire['msg']['compra'] = [
+            'ok' => false,
+            'mensagem' => 'Erro ao finalizar a compra'
+          ];
+
+        }
       }
     } catch (Exception $ex) {
       $resultRequire['msg'][] = [
